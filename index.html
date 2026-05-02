@@ -1,0 +1,3035 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ryan Borths — Director of Talent Acquisition</title>
+    <meta name="description"
+        content="Director of Talent Acquisition building AI-forward recruiting engines for high-growth healthcare and technology companies. Currently Head of Talent at Optimal Care." />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ryan Borths — Director of Talent Acquisition" />
+    <meta property="og:description"
+        content="I build recruiting functions that scale with business growth. AI-forward operator across HealthTech, SaaS, and Fortune 500 retail." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="headshot.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ---------- Tokens ---------- */
+        :root {
+            --ink: #0a1628;
+            /* deep navy — primary dark */
+            --ink-2: #0f1e33;
+            /* slightly lighter navy */
+            --ink-soft: #1b2b44;
+            /* card on dark */
+            --paper: #f7f5f0;
+            /* warm off-white */
+            --paper-2: #ffffff;
+            /* pure white surface */
+            --line: #e5e1d7;
+            /* subtle warm border */
+            --line-dark: rgba(255, 255, 255, 0.1);
+            --muted: #5b6473;
+            /* secondary text on light */
+            --muted-dark: rgba(255, 255, 255, 0.62);
+            --accent: #06b6d4;
+            /* cyan — confident, technical */
+            --accent-2: #0891b2;
+            /* deeper cyan for hover */
+            --highlight: #fde68a;
+            /* warm marker for emphasis */
+            --serif: "Fraunces", Georgia, "Times New Roman", serif;
+            --sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+            --mono: "JetBrains Mono", ui-monospace, monospace;
+            --max: 1240px;
+            --pad: clamp(20px, 4vw, 56px);
+            --radius: 14px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            font-weight: 400;
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--ink);
+            color: var(--accent);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ---------- Layout helpers ---------- */
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding-left: var(--pad);
+            padding-right: var(--pad);
+        }
+
+        section {
+            padding: clamp(72px, 10vw, 140px) 0;
+            position: relative;
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 24px;
+            height: 1px;
+            background: var(--accent-2);
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(36px, 5.5vw, 68px);
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            margin-top: 18px;
+            color: var(--ink);
+        }
+
+        .section-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-2);
+        }
+
+        .section-lede {
+            font-size: clamp(16px, 1.3vw, 18px);
+            color: var(--muted);
+            max-width: 56ch;
+            margin-top: 22px;
+            line-height: 1.65;
+        }
+
+        /* ---------- Nav ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: saturate(140%) blur(12px);
+            -webkit-backdrop-filter: saturate(140%) blur(12px);
+            border-bottom: 1px solid var(--line-dark);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 18px;
+            padding-bottom: 18px;
+            color: #fff;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #fff;
+        }
+
+        .brand-mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            display: grid;
+            place-items: center;
+            color: var(--ink);
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.78);
+            transition: color 180ms ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--ink);
+            padding: 11px 20px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            transition:
+                transform 200ms ease,
+                background 200ms ease;
+        }
+
+        .nav-cta:hover {
+            background: #fff;
+            transform: translateY(-1px);
+        }
+
+        .nav-burger {
+            display: none;
+            background: none;
+            border: 0;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 880px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            background: var(--ink);
+            color: #fff;
+            padding-top: clamp(80px, 10vw, 130px);
+            padding-bottom: clamp(80px, 10vw, 130px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 78% 18%,
+                    rgba(6, 182, 212, 0.18),
+                    transparent 45%),
+                radial-gradient(circle at 12% 90%,
+                    rgba(6, 182, 212, 0.08),
+                    transparent 50%);
+            pointer-events: none;
+        }
+
+        /* faint dot grid overlay */
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px,
+                    transparent 1px);
+            background-size: 28px 28px;
+            mask-image: linear-gradient(to bottom,
+                    black 0%,
+                    black 60%,
+                    transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom,
+                    black 0%,
+                    black 60%,
+                    transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: clamp(40px, 6vw, 88px);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .hero-eyebrow .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.18);
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.18);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(6, 182, 212, 0.04);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(44px, 7vw, 96px);
+            line-height: 0.98;
+            letter-spacing: -0.025em;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: clamp(17px, 1.4vw, 19px);
+            line-height: 1.62;
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 56ch;
+            margin-bottom: 38px;
+        }
+
+        .hero-sub strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 26px;
+            border-radius: 999px;
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 220ms ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--ink);
+        }
+
+        .btn-primary:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.5);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn .arrow {
+            transition: transform 220ms ease;
+        }
+
+        .btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Hero portrait card */
+        .hero-card {
+            background: linear-gradient(160deg, var(--ink-soft), var(--ink-2));
+            border: 1px solid var(--line-dark);
+            border-radius: 18px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle at top right,
+                    rgba(6, 182, 212, 0.25),
+                    transparent 70%);
+        }
+
+        .portrait {
+            aspect-ratio: 1 / 1;
+            background: var(--ink);
+            border: 1px solid var(--line-dark);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            /* Subtle tonal harmony: cool the greens, retain skin warmth */
+            filter: saturate(0.78) contrast(1.04) brightness(0.96);
+            transition:
+                filter 600ms ease,
+                transform 800ms ease;
+        }
+
+        .hero-card:hover .portrait img {
+            filter: saturate(1) contrast(1.06) brightness(1);
+            transform: scale(1.02);
+        }
+
+        /* Subtle cyan-tinted vignette to lock the photo into the palette */
+        .portrait::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 70% 0%,
+                    rgba(6, 182, 212, 0.06),
+                    transparent 55%),
+                linear-gradient(180deg, transparent 60%, rgba(10, 22, 40, 0.18) 100%);
+            pointer-events: none;
+        }
+
+        .hero-card-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .meta-cell {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--line-dark);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .meta-cell .k {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+            margin-bottom: 6px;
+        }
+
+        .meta-cell .v {
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .meta-cell .v .accent {
+            color: var(--accent);
+        }
+
+        /* Hero stats strip */
+        .hero-stats {
+            margin-top: clamp(60px, 8vw, 90px);
+            border-top: 1px solid var(--line-dark);
+            border-bottom: 1px solid var(--line-dark);
+            padding: 28px 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-mini .num {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(28px, 3vw, 40px);
+            line-height: 1;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-mini .num em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .stat-mini .lbl {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+
+        @media (max-width: 880px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ---------- About ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+            gap: clamp(36px, 6vw, 88px);
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--ink);
+            margin-bottom: 20px;
+        }
+
+        .about-text p:first-of-type {
+            font-family: var(--serif);
+            font-size: clamp(22px, 2vw, 26px);
+            font-weight: 400;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+        }
+
+        .about-text p:first-of-type em {
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .pillars {
+            display: grid;
+            gap: 16px;
+        }
+
+        .pillar {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            transition:
+                transform 240ms ease,
+                border-color 240ms ease,
+                box-shadow 240ms ease;
+        }
+
+        .pillar:hover {
+            transform: translateY(-2px);
+            border-color: var(--ink);
+            box-shadow: 0 10px 30px -16px rgba(10, 22, 40, 0.18);
+        }
+
+        .pillar h4 {
+            font-family: var(--sans);
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-num {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--accent-2);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .pillar p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        @media (max-width: 880px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Impact / Big metrics ---------- */
+        .impact {
+            background: var(--paper);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+            margin-top: 56px;
+        }
+
+        .metric {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 32px;
+            grid-column: span 4;
+            position: relative;
+            overflow: hidden;
+            transition:
+                border-color 220ms ease,
+                transform 220ms ease;
+        }
+
+        .metric:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+        .metric.span-6 {
+            grid-column: span 6;
+        }
+
+        .metric.dark {
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+        }
+
+        .metric.dark .metric-label {
+            color: var(--muted-dark);
+        }
+
+        .metric.dark .metric-context {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .metric-num {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(56px, 6vw, 88px);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .metric.dark .metric-num {
+            color: #fff;
+        }
+
+        .metric-num em {
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .metric.dark .metric-num em {
+            color: var(--accent);
+        }
+
+        .metric-num .unit {
+            font-family: var(--sans);
+            font-size: 0.32em;
+            font-weight: 600;
+            letter-spacing: 0;
+            color: var(--muted);
+            margin-left: 4px;
+            align-self: center;
+        }
+
+        .metric.dark .metric-num .unit {
+            color: var(--muted-dark);
+        }
+
+        .metric-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .metric-context {
+            margin-top: 18px;
+            font-size: 14.5px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .metric-context strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .metric.dark .metric-context strong {
+            color: #fff;
+        }
+
+        @media (max-width: 980px) {
+
+            .metric,
+            .metric.span-6 {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .metric,
+            .metric.span-6 {
+                grid-column: span 12;
+            }
+        }
+
+        /* ---------- Experience timeline ---------- */
+        .experience {
+            background: var(--paper-2);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .timeline {
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: var(--line);
+        }
+
+        .job {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 28px;
+            padding: 28px 0;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .job:last-child {
+            border-bottom: 0;
+        }
+
+        .job-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            margin-top: 4px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .job-dot::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: var(--ink);
+            border-radius: 50%;
+        }
+
+        .job.current .job-dot {
+            border-color: var(--accent);
+        }
+
+        .job.current .job-dot::after {
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2);
+        }
+
+        .job-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 12px 18px;
+            margin-bottom: 8px;
+        }
+
+        .job-role {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(22px, 2vw, 28px);
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+
+        .job-co {
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--accent-2);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .job-meta {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+            margin-bottom: 14px;
+        }
+
+        .job-meta span+span::before {
+            content: "·";
+            margin: 0 10px;
+            color: var(--line);
+        }
+
+        .job-bullets {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 8px;
+            max-width: 78ch;
+        }
+
+        .job-bullets li {
+            font-size: 15.5px;
+            color: var(--ink);
+            line-height: 1.65;
+            padding-left: 22px;
+            position: relative;
+        }
+
+        .job-bullets li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-2);
+            font-weight: 600;
+        }
+
+        .job-bullets li strong {
+            font-weight: 700;
+        }
+
+        /* ---------- Case Studies ---------- */
+        .cases {
+            background: var(--paper);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin-top: 56px;
+        }
+
+        .case {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 38px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition:
+                transform 240ms ease,
+                border-color 240ms ease,
+                box-shadow 240ms ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 320ms ease;
+        }
+
+        .case:hover {
+            border-color: var(--ink);
+            transform: translateY(-3px);
+            box-shadow: 0 24px 40px -28px rgba(10, 22, 40, 0.25);
+        }
+
+        .case:hover::before {
+            width: 100%;
+        }
+
+        .case.feature {
+            grid-column: span 2;
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+            flex-direction: row;
+            align-items: stretch;
+            padding: 0;
+        }
+
+        .case.feature::before {
+            background: var(--accent);
+        }
+
+        .case-feature-text {
+            padding: 48px;
+            flex: 1.2;
+        }
+
+        .case-feature-art {
+            flex: 1;
+            background:
+                radial-gradient(circle at 70% 30%,
+                    rgba(6, 182, 212, 0.2),
+                    transparent 60%),
+                var(--ink-soft);
+            border-left: 1px solid var(--line-dark);
+            display: grid;
+            place-items: center;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-tag {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 6px 12px;
+            border-radius: 999px;
+            align-self: flex-start;
+            font-weight: 500;
+        }
+
+        .case.feature .case-tag {
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.16);
+        }
+
+        .case h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(24px, 2.4vw, 32px);
+            line-height: 1.18;
+            letter-spacing: -0.015em;
+            color: inherit;
+        }
+
+        .case h3 em {
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .case.feature h3 em {
+            color: var(--accent);
+        }
+
+        .case-body {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: var(--muted);
+        }
+
+        .case.feature .case-body {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .case-result {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--line);
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+
+        .case.feature .case-result {
+            border-color: var(--line-dark);
+            color: var(--accent);
+        }
+
+        /* big stat in feature art */
+        .feature-stat {
+            text-align: center;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-stat .num {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(80px, 11vw, 168px);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            color: #fff;
+        }
+
+        .feature-stat .num em {
+            font-style: italic;
+            color: var(--accent);
+            font-weight: 300;
+        }
+
+        .feature-stat .lbl {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.64);
+            margin-top: 14px;
+        }
+
+        .case-feature-art::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at center,
+                    black 30%,
+                    transparent 75%);
+            -webkit-mask-image: radial-gradient(circle at center,
+                    black 30%,
+                    transparent 75%);
+        }
+
+        @media (max-width: 880px) {
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case.feature {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+
+            .case-feature-art {
+                border-left: 0;
+                border-top: 1px solid var(--line-dark);
+                padding: 32px;
+            }
+
+            .case-feature-text {
+                padding: 32px;
+            }
+        }
+
+        /* ---------- AI Portfolio ---------- */
+        .portfolio {
+            background: var(--ink);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px,
+                    transparent 1px);
+            background-size: 32px 32px;
+            mask-image: linear-gradient(to bottom,
+                    transparent 0%,
+                    black 30%,
+                    black 70%,
+                    transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom,
+                    transparent 0%,
+                    black 30%,
+                    black 70%,
+                    transparent 100%);
+            pointer-events: none;
+        }
+
+        .portfolio .eyebrow {
+            color: var(--accent);
+        }
+
+        .portfolio .eyebrow::before {
+            background: var(--accent);
+        }
+
+        .portfolio .section-title {
+            color: #fff;
+        }
+
+        .portfolio .section-title em {
+            color: var(--accent);
+        }
+
+        .portfolio .section-lede {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool {
+            background: var(--ink-soft);
+            border: 1px solid var(--line-dark);
+            border-radius: var(--radius);
+            padding: 32px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition:
+                border-color 240ms ease,
+                transform 240ms ease,
+                background 240ms ease;
+            position: relative;
+            overflow: hidden;
+            color: inherit;
+        }
+
+        a.tool {
+            cursor: pointer;
+        }
+
+        .tool:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            background: rgba(6, 182, 212, 0.04);
+        }
+
+        .tool-external {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line-dark);
+            display: grid;
+            place-items: center;
+            color: var(--muted-dark);
+            transition: all 240ms ease;
+        }
+
+        .tool:hover .tool-external {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--ink);
+            transform: translate(2px, -2px);
+        }
+
+        .tool-external svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .tool-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tool-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(6, 182, 212, 0.12);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            display: grid;
+            place-items: center;
+            color: var(--accent);
+        }
+
+        .tool-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .tool-type {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+
+        .tool h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 22px;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+
+        .tool p {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .tool-foot {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid var(--line-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+
+        .tool-foot .live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+        }
+
+        .tool-foot .live::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+        }
+
+        @media (max-width: 980px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Skills / Tech Stack ---------- */
+        .skills {
+            background: var(--paper);
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 56px;
+        }
+
+        .stack {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 32px 30px;
+        }
+
+        .stack h4 {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .chip {
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--line);
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 180ms ease;
+        }
+
+        .chip:hover {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .chip.implemented {
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+        }
+
+        .chip.implemented::after {
+            content: " ✓";
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .competencies {
+            margin-top: 56px;
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: clamp(36px, 5vw, 60px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .competencies::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle,
+                    rgba(6, 182, 212, 0.18),
+                    transparent 60%);
+            pointer-events: none;
+        }
+
+        .competencies h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(24px, 2.4vw, 32px);
+            margin-bottom: 30px;
+            letter-spacing: -0.01em;
+        }
+
+        .competencies h3 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .comp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .comp-cat {
+            border-left: 2px solid var(--accent);
+            padding-left: 18px;
+        }
+
+        .comp-cat h5 {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .comp-cat ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .comp-cat li {
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, 0.84);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 880px) {
+
+            .stack-grid,
+            .comp-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Insights / Newsletter ---------- */
+        .insights {
+            background: var(--paper-2);
+            border-top: 1px solid var(--line);
+        }
+
+        .insights-wrap {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: clamp(36px, 6vw, 88px);
+            align-items: start;
+        }
+
+        .topics {
+            display: grid;
+            gap: 14px;
+        }
+
+        .topic {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 18px;
+            align-items: center;
+            padding: 18px 22px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            transition: all 220ms ease;
+        }
+
+        .topic:hover {
+            border-color: var(--ink);
+        }
+
+        .topic-num {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+            width: 28px;
+        }
+
+        .topic-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .topic-text .t {
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--ink);
+            line-height: 1.35;
+        }
+
+        .topic-text .s {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .topic-tag {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            padding: 4px 8px;
+            background: rgba(6, 182, 212, 0.08);
+            border-radius: 4px;
+        }
+
+        /* Featured article card (Substack) */
+        .article-feature {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 36px 36px 32px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            transition: border-color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
+            position: relative;
+            overflow: hidden;
+            color: inherit;
+        }
+
+        a.article-feature { cursor: pointer; }
+
+        .article-feature::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 320ms ease;
+        }
+
+        .article-feature:hover {
+            border-color: var(--ink);
+            transform: translateY(-3px);
+            box-shadow: 0 24px 40px -28px rgba(10, 22, 40, 0.25);
+        }
+
+        .article-feature:hover::before { width: 100%; }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .article-meta .pub {
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+
+        .article-feature h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(24px, 2.6vw, 34px);
+            line-height: 1.18;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+        }
+
+        .article-feature h3 em {
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .article-subtitle {
+            font-family: var(--serif);
+            font-style: italic;
+            font-weight: 300;
+            font-size: 17px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-top: -6px;
+        }
+
+        .article-excerpt {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: var(--ink);
+            border-left: 2px solid var(--accent);
+            padding-left: 18px;
+            margin-top: 4px;
+        }
+
+        .article-cta {
+            margin-top: 8px;
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 220ms ease;
+        }
+
+        .article-feature:hover .article-cta {
+            gap: 14px;
+        }
+
+        .newsletter-card {
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: clamp(32px, 4vw, 48px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-card::before {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle,
+                    rgba(6, 182, 212, 0.3),
+                    transparent 60%);
+        }
+
+        .newsletter-soon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 6px 12px;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 999px;
+            background: rgba(6, 182, 212, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-soon::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        .newsletter-card h3 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(28px, 3.4vw, 42px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 18px 0 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-card h3 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .newsletter-card p {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.78);
+            margin-bottom: 28px;
+            max-width: 46ch;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--line-dark);
+            border-radius: 999px;
+            padding: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            font-family: var(--sans);
+            font-size: 14px;
+            padding: 10px 16px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        .newsletter-form button {
+            border: 0;
+            background: var(--accent);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 13px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 200ms ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #fff;
+        }
+
+        .newsletter-note {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted-dark);
+            margin-top: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 880px) {
+            .insights-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Contact / Footer ---------- */
+        .contact {
+            background: var(--ink);
+            color: #fff;
+            padding: clamp(80px, 10vw, 130px) 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 80%;
+            background: radial-gradient(ellipse at center,
+                    rgba(6, 182, 212, 0.1),
+                    transparent 60%);
+            pointer-events: none;
+        }
+
+        .contact-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-head {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 70px;
+        }
+
+        .contact-head .eyebrow {
+            color: var(--accent);
+        }
+
+        .contact-head .eyebrow::before {
+            background: var(--accent);
+        }
+
+        .contact-head h2 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 1.02;
+            letter-spacing: -0.025em;
+            margin-top: 18px;
+            color: #fff;
+        }
+
+        .contact-head h2 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .contact-head p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.72);
+            margin-top: 22px;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--ink-soft);
+            border: 1px solid var(--line-dark);
+            border-radius: var(--radius);
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 240ms ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            background: rgba(6, 182, 212, 0.04);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+        }
+
+        .contact-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .contact-card .k {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+
+        .contact-card .v {
+            font-size: 15px;
+            color: #fff;
+            word-break: break-word;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        @media (max-width: 880px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .foot {
+            margin-top: clamp(80px, 10vw, 130px);
+            border-top: 1px solid var(--line-dark);
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .foot-brand {
+            font-family: var(--serif);
+            font-size: 18px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.84);
+        }
+
+        .foot-meta {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted-dark);
+            letter-spacing: 0.08em;
+        }
+
+        .foot-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .foot-links a {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+            transition: color 180ms ease;
+        }
+
+        .foot-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ---------- Reveal animation on scroll ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition:
+                opacity 700ms ease,
+                transform 700ms ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- =========================== NAV =========================== -->
+    <nav class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="#top">
+                <span class="brand-mark">RB</span>
+                <span>Ryan Borths</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#cases">Case Studies</a></li>
+                <li><a href="#portfolio">AI Portfolio</a></li>
+                <li><a href="#insights">Insights</a></li>
+            </ul>
+            <a class="nav-cta" href="#contact">Get in touch <span class="arrow">→</span></a>
+        </div>
+    </nav>
+
+    <!-- =========================== HERO =========================== -->
+    <header id="top" class="hero">
+        <div class="wrap">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-eyebrow">
+                        <span class="dot"></span>Talent Acquisition · Builder · Operator
+                    </div>
+                    <h1>
+                        Build <em>recruiting systems</em> that turn hiring into a growth
+                        engine.
+                    </h1>
+                    <p class="hero-sub">
+                        <strong>Talent Acquisition Leader· AI-Forward Recruiting
+                            Operator.</strong>
+                        15+ years building, scaling, and modernizing TA functions across
+                        Healthcare, global SaaS, and Fortune 500 retail — from zero-to-one
+                        builds in hypergrowth to standardizing operations across 8+
+                        countries and 195+ locations.
+                    </p>
+                    <div class="hero-ctas">
+                        <a class="btn btn-primary" href="#cases">View case studies <span class="arrow">→</span></a>
+                        <a class="btn btn-ghost" href="#contact">Let's connect</a>
+                    </div>
+                </div>
+                <aside class="hero-card">
+                    <div class="portrait">
+                        <img src="headshot.jpg" alt="Ryan Borths" loading="eager" decoding="async" />
+                    </div>
+                    <div class="hero-card-meta">
+                        <div class="meta-cell">
+                            <div class="k">Currently</div>
+                            <div class="v">
+                                Head of Talent <span class="accent">@ Optimal Care</span>
+                            </div>
+                        </div>
+                        <div class="meta-cell">
+                            <div class="k">Based in</div>
+                            <div class="v">Grand Rapids, MI</div>
+                        </div>
+                        <div class="meta-cell">
+                            <div class="k">Specialty</div>
+                            <div class="v">AI-Forward Recruiting</div>
+                        </div>
+                        <div class="meta-cell">
+                            <div class="k">Domains</div>
+                            <div class="v">HealthTech · SaaS · Retail</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-mini">
+                    <div class="num"><em>20%</em></div>
+                    <div class="lbl">YoY Hiring Growth</div>
+                </div>
+                <div class="stat-mini">
+                    <div class="num"><em>92%</em></div>
+                    <div class="lbl">Offer Acceptance</div>
+                </div>
+                <div class="stat-mini">
+                    <div class="num"><em>3×</em></div>
+                    <div class="lbl">Outreach Efficiency via AI</div>
+                </div>
+                <div class="stat-mini">
+                    <div class="num"><em>2,400</em></div>
+                    <div class="lbl">Hires in 3 Weeks (COVID)</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================== ABOUT =========================== -->
+    <section id="about">
+        <div class="wrap">
+            <span class="eyebrow">About</span>
+            <h2 class="section-title">A builder, not a <em>backfiller.</em></h2>
+
+            <div class="about-grid" style="margin-top: 56px">
+                <div class="about-text">
+                    <p>
+                        I've led talent acquisition and recruiting operations
+                        transformations across
+                        <em>healthcare, technology, and retail</em> — helping
+                        organizations build stronger systems, better processes, and more
+                        effective teams.
+                    </p>
+                    <p>
+                        My approach combines an AI-forward, data-driven mindset with the
+                        discipline of an operator. I treat recruiting as a system to be
+                        engineered: pipelines, interview infrastructure, scorecards,
+                        capacity models, and feedback loops — all instrumented and
+                        continuously improved.
+                    </p>
+                    <p>
+                        I've built recruiting from the ground up at a healthcare startup
+                        during hypergrowth, run global technical recruiting operations at
+                        an $8B telehealth leader, and led 13-person teams across 195+
+                        locations at a Fortune 400 retailer. Today I also build production
+                        AI tools that ship into live recruiting workflows.
+                    </p>
+                </div>
+
+                <div class="pillars">
+                    <div class="pillar">
+                        <h4><span class="pillar-num">01</span> Systems Thinking</h4>
+                        <p>
+                            Recruiting is a system. ATS architecture, interview rubrics,
+                            sourcing taxonomy, and feedback loops are designed — not
+                            improvised.
+                        </p>
+                    </div>
+                    <div class="pillar">
+                        <h4><span class="pillar-num">02</span> AI-Forward Operations</h4>
+                        <p>
+                            I build and deploy custom GPTs and agentic workflows that
+                            multiply recruiter output. AI augments judgment; it doesn't
+                            replace it.
+                        </p>
+                    </div>
+                    <div class="pillar">
+                        <h4>
+                            <span class="pillar-num">03</span> First-Principles Diagnosis
+                        </h4>
+                        <p>
+                            I don't optimize symptoms. I trace turnover spikes, offer
+                            declines, and pipeline collapse to root causes and rebuild from
+                            there.
+                        </p>
+                    </div>
+                    <div class="pillar">
+                        <h4><span class="pillar-num">04</span> Executive Partnership</h4>
+                        <p>
+                            I partner directly with CEOs, CFOs, and engineering leadership
+                            on capacity modeling, comp strategy, and org design — not just
+                            requisitions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== IMPACT =========================== -->
+    <section id="impact" class="impact">
+        <div class="wrap">
+            <span class="eyebrow">Measurable Outcomes</span>
+            <h2 class="section-title">Strategic <em>impact.</em></h2>
+            <p class="section-lede">
+                Selected results from current and recent engagements. Every number
+                traces back to a documented system, process, or program — never a
+                one-off.
+            </p>
+
+            <div class="impact-grid">
+                <div class="metric">
+                    <div class="metric-label">
+                        YoY Hiring Productivity · Optimal Care
+                    </div>
+                    <div class="metric-num">
+                        <em>37.5</em><span class="unit">%</span>
+                    </div>
+                    <div class="metric-context">
+                        Sustained YoY increase in
+                        <strong>monthly hires per recruiter,</strong> demonstrating that
+                        improved systems and processes are driving better hiring outcomes.
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">Offer Acceptance Rate</div>
+                    <div class="metric-num"><em>92</em><span class="unit">%</span></div>
+                    <div class="metric-context">
+                        <strong>38-day time-to-accept</strong> against a 40-day target — a
+                        function of comp benchmarking, structured interviews, and
+                        white-glove candidate experience.
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">Early-Stage Turnover Reduction</div>
+                    <div class="metric-num"><em>70</em><span class="unit">%</span></div>
+                    <div class="metric-context">
+                        Diagnosed an initial 50% 60-day turnover rate as a
+                        <strong>root-cause interview-quality problem</strong>. Rebuilt
+                        hiring-manager enablement; drove sustained turnover to 7%.
+                    </div>
+                </div>
+
+                <div class="metric span-6 dark">
+                    <div class="metric-label">
+                        COVID-19 Emergency Hiring Response · SpartanNash
+                    </div>
+                    <div class="metric-num">
+                        <em>2,400</em><span class="unit">hires</span>
+                    </div>
+                    <div class="metric-context">
+                        Co-led the company's COVID-19 emergency hiring response.
+                        <strong>2,400 employees in 3 weeks</strong> through agile resource
+                        redeployment under extreme ambiguity, enabling business continuity
+                        during a national crisis.
+                    </div>
+                </div>
+
+                <div class="metric span-6">
+                    <div class="metric-label">
+                        2022 Performance vs. OKRs · Teladoc Health
+                    </div>
+                    <div class="metric-num">
+                        <em>167</em><span class="unit">%</span>
+                    </div>
+                    <div class="metric-context">
+                        Ranked <strong>top 5 of 22 global recruiters</strong>. Sourced
+                        FAANG-caliber engineering talent across multiple countries,
+                        competing against Big Tech compensation with a mission-first
+                        employer brand.
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">Global Tech Recruiting Operations</div>
+                    <div class="metric-num"><em>30</em><span class="unit">%</span></div>
+                    <div class="metric-context">
+                        Standardized technical recruiting workflows, interview scheduling,
+                        and SOPs across 5+ countries for the world’s largest telehealth
+                        platform,
+                        <strong>driving a 30% efficiency improvement</strong> hiring
+                        software engineering, DevOps, data engineering, infrastructure,
+                        and security teams.
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">Referral Conversion · Optimal Care</div>
+                    <div class="metric-num">
+                        <em>38.9</em><span class="unit">%</span>
+                    </div>
+                    <div class="metric-context">
+                        Designed and launched a formalized Employee Referral Program.
+                        <strong>97.8% referral-hire retention</strong> downstream.
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">
+                        Technical Job Catalog Rebuild · Teladoc
+                    </div>
+                    <div class="metric-num">
+                        <em>1,020</em><span class="unit">+ roles</span>
+                    </div>
+                    <div class="metric-context">
+                        Led cross-functional team of six to rebuild the entire technical
+                        job description library with leveling alignment — streamlining req
+                        creation, comp governance, and hiring-manager training.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== EXPERIENCE =========================== -->
+    <section id="experience" class="experience">
+        <div class="wrap">
+            <span class="eyebrow">Career Track</span>
+            <h2 class="section-title">15 years of <em>operating</em> at scale.</h2>
+
+            <div class="timeline">
+                <article class="job current">
+                    <div class="job-dot"></div>
+                    <div>
+                        <div class="job-head">
+                            <h3 class="job-role">
+                                Director, Talent Management
+                                <span style="color: var(--muted); font-style: italic">(Head of Recruiting)</span>
+                            </h3>
+                            <span class="job-co">Optimal Care</span>
+                        </div>
+                        <div class="job-meta">
+                            <span>Mar 2024 – Present</span>
+                            <span>$8M+ Healthcare Startup</span>
+                            <span>Grand Rapids, MI · Hybrid</span>
+                        </div>
+                        <ul class="job-bullets">
+                            <li>
+                                Built the recruiting function from the ground up during
+                                hypergrowth — led
+                                <strong>Paycor → Greenhouse ATS migration</strong> and Gem CRM
+                                launch; rebuilt workflows, scorecards, and job architecture
+                                across all service lines.
+                            </li>
+                            <li>
+                                Partner directly with <strong>CEO and CFO</strong> on monthly
+                                headcount forecasting and capacity modeling; authored the
+                                organization's first structured pay-scale review, surfacing
+                                comp gaps driving offer declines.
+                            </li>
+                            <li>
+                                Led the company-wide
+                                <strong>employer brand overhaul</strong> following the
+                                Careline → Optimal Care rebrand: rewrote EVP, relaunched
+                                career site, standardized job descriptions, modernized every
+                                candidate-facing asset.
+                            </li>
+                            <li>
+                                Pioneered <strong>agentic AI sourcing workflows</strong> that
+                                tripled outreach efficiency and outperformed paid-board
+                                saturation; deployed a suite of custom GPTs and web apps
+                                across the team.
+                            </li>
+                            <li>
+                                Delivered
+                                <strong>20% YoY hiring growth, 92% offer acceptance, 38-day
+                                    time-to-accept</strong>, and drove early-stage turnover from 50% to a sustained 10%.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job current">
+                    <div class="job-dot"></div>
+                    <div>
+                        <div class="job-head">
+                            <h3 class="job-role">Talent Management Consultant</h3>
+                            <span class="job-co">GLG (Gerson Lehrman Group)</span>
+                        </div>
+                        <div class="job-meta">
+                            <span>Jan 2024 – Present</span>
+                            <span>Concurrent Engagement</span>
+                            <span>Remote</span>
+                        </div>
+                        <ul class="job-bullets">
+                            <li>
+                                Vetted <strong>GLG Network expert</strong> advising TA and
+                                People leaders at enterprise and high-growth clients across
+                                healthcare, SaaS, and PE-backed industries on AI-enabled
+                                recruiting transformation and HR technology selection.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job">
+                    <div class="job-dot"></div>
+                    <div>
+                        <div class="job-head">
+                            <h3 class="job-role">
+                                Global Manager, TA Operations &amp; Programs
+                            </h3>
+                            <span class="job-co">Teladoc Health</span>
+                        </div>
+                        <div class="job-meta">
+                            <span>Jun 2021 – Jan 2024</span>
+                            <span>$8B Global Telehealth Leader</span>
+                            <span>Remote</span>
+                        </div>
+                        <ul class="job-bullets">
+                            <li>
+                                Led
+                                <strong>global technical recruiting operations</strong> for
+                                the world's largest telehealth platform — standardized
+                                workflows and SOPs across 5+ countries, delivering 30%
+                                efficiency improvement.
+                            </li>
+                            <li>
+                                Led a cross-functional team of six to rebuild Teladoc's
+                                <strong>1,020+ role technical job description library</strong>
+                                with leveling alignment.
+                            </li>
+                            <li>
+                                Partnered with R&amp;D and engineering leadership on headcount
+                                forecasting, capacity planning, and enterprise talent
+                                development programs.
+                            </li>
+                            <li>
+                                As Senior Technical Recruiter (2021–2023):
+                                <strong>Top 5 of 22 global recruiters</strong>; exceeded
+                                hiring OKRs by <strong>167% in 2022</strong>; recruited from
+                                Meta, Google, Amazon, Apple, Microsoft.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job">
+                    <div class="job-dot"></div>
+                    <div>
+                        <div class="job-head">
+                            <h3 class="job-role">
+                                Manager, Talent Acquisition
+                                <span style="color: var(--muted); font-style: italic">(Head of Recruiting)</span>
+                            </h3>
+                            <span class="job-co">SpartanNash</span>
+                        </div>
+                        <div class="job-meta">
+                            <span>Nov 2019 – May 2021</span>
+                            <span>$10B+ Fortune 400 Food Retailer</span>
+                            <span>Grand Rapids, MI</span>
+                        </div>
+                        <ul class="job-bullets">
+                            <li>
+                                Directed a
+                                <strong>13-person recruiting team across 195+ locations</strong>
+                                — established standardized processes, metrics, and career
+                                development frameworks driving 69.6% retail and 67.8%
+                                distribution efficiency improvements.
+                            </li>
+                            <li>
+                                Architected and led <strong>Workday ATS</strong> design,
+                                testing, and implementation; managed a $3.1M annual
+                                recruitment budget with vendor negotiations and OFCCP
+                                compliance.
+                            </li>
+                            <li>
+                                Co-led the COVID-19 emergency hiring response —
+                                <strong>2,400 employees in 3 weeks</strong> through agile
+                                resource redeployment and structured decision-making under
+                                extreme ambiguity.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job">
+                    <div class="job-dot"></div>
+                    <div>
+                        <div class="job-head">
+                            <h3 class="job-role">
+                                Senior Technical Recruiter / TA Project Manager
+                            </h3>
+                            <span class="job-co">Meijer</span>
+                        </div>
+                        <div class="job-meta">
+                            <span>May 2011 – Nov 2019</span>
+                            <span>$20B+ Top 25 U.S. Retailer</span>
+                            <span>Grand Rapids, MI</span>
+                        </div>
+                        <ul class="job-bullets">
+                            <li>
+                                Led cross-functional
+                                <strong>ATS implementation across U.S., Hong Kong, and
+                                    Bangladesh</strong>
+                                operations — vendor relations, system integrations, and
+                                compliance across three countries.
+                            </li>
+                            <li>
+                                Spearheaded targeted recruitment strategies for software
+                                engineering and infrastructure roles during periods of rapid
+                                digital transformation — laying the technical-recruiting
+                                foundation later scaled at SpartanNash and Teladoc.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== CASE STUDIES =========================== -->
+    <section id="cases" class="cases">
+        <div class="wrap">
+            <span class="eyebrow">Case Studies</span>
+            <h2 class="section-title">A few defining <em>builds.</em></h2>
+            <p class="section-lede">
+                Each represents a complete system change — built, deployed, measured,
+                and iterated.
+            </p>
+
+            <div class="case-grid">
+                <article class="case feature">
+                    <div class="case-feature-text">
+                        <span class="case-tag">Featured · Optimal Care · 2024</span>
+                        <h3 style="margin-top: 18px">
+                            Building a recruiting function from <em>baseline</em> during
+                            hypergrowth.
+                        </h3>
+                        <p class="case-body" style="margin-top: 14px">
+                            Joined a healthcare startup with limited recruiting
+                            infrastructure and manual processes. Owned everything from ATS
+                            migration and CRM launch to interview architecture, employer
+                            brand, comp benchmarking, and agentic AI sourcing workflows.
+                            Partnered with the CEO and CFO weekly on forecasting and
+                            capacity. Delivered 20% YoY hiring growth in a fully employed
+                            market.
+                        </p>
+                        <div class="case-result" style="margin-top: 24px">
+                            ATS migration · employer brand overhaul · AI sourcing ·
+                            pay-scale program · referral program
+                        </div>
+                    </div>
+                    <div class="case-feature-art">
+                        <div class="feature-stat">
+                            <div class="num">16 → <em>43</em></div>
+                            <div class="lbl">Fills per month / from a walking start</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="case">
+                    <span class="case-tag">Teladoc Health · 2022–2024</span>
+                    <h3>
+                        Standardizing global technical recruiting across
+                        <em>5+ countries.</em>
+                    </h3>
+                    <p class="case-body">
+                        Led a six-person cross-functional team to rebuild Teladoc's entire
+                        technical job description library — a 1,020+ role catalog with
+                        leveling alignment — and standardize SOPs, scheduling, and intake
+                        across regions. The result was a 30% efficiency improvement and a
+                        single source of truth for compensation governance and
+                        hiring-manager training.
+                    </p>
+                    <div class="case-result">
+                        30% efficiency · 1,020+ roles cataloged · 5+ countries
+                    </div>
+                </article>
+
+                <article class="case">
+                    <span class="case-tag">SpartanNash · March 2020</span>
+                    <h3>Hiring 2,400 frontline workers in <em>three weeks.</em></h3>
+                    <p class="case-body">
+                        Co-led the organization's COVID-19 emergency hiring response.
+                        Redeployed recruiting resources, compressed assessment cycles, and
+                        built structured decision-making frameworks for hiring managers
+                        operating under extreme ambiguity — enabling business continuity
+                        for a $10B+ food retailer during a national crisis.
+                    </p>
+                    <div class="case-result">
+                        2,400 hires · 21 days · 195+ locations
+                    </div>
+                </article>
+
+                <article class="case">
+                    <span class="case-tag">Optimal Care · 2024</span>
+                    <h3>
+                        Diagnosing turnover as an <em>interview-quality</em> problem.
+                    </h3>
+                    <p class="case-body">
+                        A 60-day turnover baseline of 50% wasn't a sourcing problem or a
+                        comp problem — first-principles funnel diagnosis traced it to
+                        inconsistent interview rigor. Rebuilt hiring-manager enablement
+                        with structured scorecards, designed a formalized Employee
+                        Referral Program, and drove early-stage turnover to a sustained
+                        7%.
+                    </p>
+                    <div class="case-result">
+                        50% → 7% turnover · 38.9% referral conversion · 97.8% referral
+                        retention
+                    </div>
+                </article>
+
+                <article class="case">
+                    <span class="case-tag">Optimal Care · 2024</span>
+                    <h3>Deploying <em>agentic AI</em> across the recruiting team.</h3>
+                    <p class="case-body">
+                        Designed, built, and deployed a suite of custom GPTs and web apps
+                        spanning sourcing, outreach, market intelligence, and recruiter
+                        performance analytics. Multiplied outreach efficiency,
+                        outperformed competitor paid-advertising on national job boards,
+                        and raised proactive outreach targets from 30 to 100 per
+                        recruiter.
+                    </p>
+                    <div class="case-result">
+                        Multiplied outreach efficiency · 5 production tools shipped
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== AI PORTFOLIO =========================== -->
+    <section id="portfolio" class="portfolio">
+        <div class="wrap">
+            <span class="eyebrow">AI &amp; Automation Portfolio</span>
+            <h2 class="section-title">
+                Production AI tools, shipped into <em>live workflows.</em>
+            </h2>
+            <p class="section-lede">
+                Custom web applications and GPTs I've designed, built, and deployed
+                for use by recruiting teams. All currently in active use.
+            </p>
+
+            <div class="tools-grid">
+                <a class="tool" href="https://opal.google/app/1E6Y76fszzNZjGqIdDpLRKnaE9tvbbOSO" target="_blank"
+                    rel="noopener">
+                    <div class="tool-external">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H8M17 7v9" />
+                        </svg>
+                    </div>
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M3 5h18M3 12h18M3 19h12" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Google Opal</span>
+                    </div>
+                    <h3>TalentStrategist</h3>
+                    <p>
+                        End-to-end recruiting strategy generator. Converts any job
+                        description into a complete playbook: market calibration, comp
+                        benchmarking, interview plan, sourcing personas, competitor talent
+                        map, outreach sequences, and close plan.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Strategy · Planning</span>
+                        <span class="live">Live</span>
+                    </div>
+                </a>
+
+                <a class="tool" href="https://opal.google/app/1cRQSrcMwszx5ymnJabdb2wQq--4tD1Rw" target="_blank"
+                    rel="noopener">
+                    <div class="tool-external">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H8M17 7v9" />
+                        </svg>
+                    </div>
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M3 11l18-8-8 18-2-8-8-2z" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Google Opal</span>
+                    </div>
+                    <h3>TalentAmplifier</h3>
+                    <p>
+                        Job-posting promotion engine. Turns a live req URL into
+                        platform-tailored content for LinkedIn, X, and AI video scripts —
+                        eliminating the bottleneck of recruiter content creation.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Brand · Distribution</span>
+                        <span class="live">Live</span>
+                    </div>
+                </a>
+
+                <a class="tool" href="https://opal.google/app/1aK_GrBTN3XhhLwYOCA0JXPGwShS4TMT1" target="_blank"
+                    rel="noopener">
+                    <div class="tool-external">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H8M17 7v9" />
+                        </svg>
+                    </div>
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M3 21V9l6-6 6 6 6-3v15z" />
+                                <path d="M9 21V12" />
+                                <path d="M15 21V9" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Google Opal</span>
+                    </div>
+                    <h3>Recruiter Insight</h3>
+                    <p>
+                        Recruiter performance analytics. Ingests team metrics and outputs
+                        individual 100-point scorecards, performance-tier diagnostics, and
+                        targeted coaching plans — the basis for objective performance
+                        management.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Analytics · Coaching</span>
+                        <span class="live">Live</span>
+                    </div>
+                </a>
+
+                <a class="tool" href="https://opal.google/app/1v7qfHk1bKmXhlJ-TY0xAGy0f8QW88RvD" target="_blank"
+                    rel="noopener">
+                    <div class="tool-external">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H8M17 7v9" />
+                        </svg>
+                    </div>
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Google Opal</span>
+                    </div>
+                    <h3>Market Map Pro</h3>
+                    <p>
+                        Labor market intelligence tool. Generates supply/demand analysis,
+                        comp ranges, competitor mapping, and hiring-difficulty scoring for
+                        any role in any geography. Used in capacity planning conversations
+                        with execs.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Market Intel</span>
+                        <span class="live">Live</span>
+                    </div>
+                </a>
+
+                <a class="tool" href="https://chatgpt.com/g/g-6819243fd018819184b7fdc73bcaa503-clinical-recruiter-scout"
+                    target="_blank" rel="noopener">
+                    <div class="tool-external">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H8M17 7v9" />
+                        </svg>
+                    </div>
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <circle cx="11" cy="11" r="7" />
+                                <path d="M21 21l-4.5-4.5" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Custom GPT</span>
+                    </div>
+                    <h3>Clinical Recruiter Scout</h3>
+                    <p>
+                        Sourcing agent for clinical roles. Returns ranked candidate
+                        profiles with LinkedIn links, Boolean strings, comp intel, and
+                        ready-to-send outreach templates.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Sourcing · Clinical</span>
+                        <span class="live">Live</span>
+                    </div>
+                </a>
+
+                <div class="tool" style="
+              background: rgba(6, 182, 212, 0.04);
+              border-color: rgba(6, 182, 212, 0.3);
+            ">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">In Development</span>
+                    </div>
+                    <h3>Always shipping.</h3>
+                    <p>
+                        I treat the recruiting function as a product. New tools go from
+                        idea to deployed-and-in-use across the team in days. Have a
+                        workflow problem worth solving? Let's talk.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Build · Ship · Iterate</span>
+                        <a href="#contact" style="color: var(--accent)">Talk to me →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== SKILLS / TECH STACK =========================== -->
+    <section id="skills" class="skills">
+        <div class="wrap">
+            <span class="eyebrow">Capability &amp; Stack</span>
+            <h2 class="section-title">What I bring to the <em>table.</em></h2>
+            <p class="section-lede">
+                Multi-platform implementation experience across ATS/HRIS, sourcing,
+                analytics, and AI tooling. Hands-on with every system on this list.
+            </p>
+
+            <div class="stack-grid">
+                <div class="stack">
+                    <h4>ATS &amp; HRIS</h4>
+                    <div class="chip-list">
+                        <span class="chip implemented">Greenhouse</span>
+                        <span class="chip implemented">Workday</span>
+                        <span class="chip implemented">UKG Ready</span>
+                        <span class="chip implemented">Yello</span>
+                        <span class="chip">Hodes iQ</span>
+                        <span class="chip">Jobvite</span>
+                        <span class="chip">Taleo</span>
+                        <span class="chip">Paycor</span>
+                        <span class="chip">UltiPro</span>
+                        <span class="chip">iCIMS</span>
+                    </div>
+                    <div style="
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--muted);
+                margin-top: 14px;
+                letter-spacing: 0.06em;
+              ">
+                        ✓ = Led implementation
+                    </div>
+                </div>
+
+                <div class="stack">
+                    <h4>AI &amp; Sourcing</h4>
+                    <div class="chip-list">
+                        <span class="chip implemented">Gem</span>
+                        <span class="chip">Eightfold</span>
+                        <span class="chip">Metaview</span>
+                        <span class="chip">Happenstance</span>
+                        <span class="chip">SeekOut</span>
+                        <span class="chip">Juicebox (PeopleGPT)</span>
+                        <span class="chip">Apollo</span>
+                        <span class="chip">LinkedIn Recruiter</span>
+                        <span class="chip">Cursor</span>
+                        <span class="chip">Claude Code</span>
+                        <span class="chip">n8n</span>
+                        <span class="chip">Custom GPTs</span>
+                        <span class="chip">Custom Web Apps</span>
+                    </div>
+                    <div style="
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--muted);
+                margin-top: 14px;
+                letter-spacing: 0.06em;
+              ">
+                        ✓ = Led implementation
+                    </div>
+                </div>
+
+                <div class="stack">
+                    <h4>Analytics &amp; Ops</h4>
+                    <div class="chip-list">
+                        <span class="chip">Tableau</span>
+                        <span class="chip">Oracle BI</span>
+                        <span class="chip">Power BI</span>
+                        <span class="chip">Advanced Excel</span>
+                        <span class="chip">Predictive Index</span>
+                        <span class="chip">Criteria Corp</span>
+                        <span class="chip">Saville WAVE</span>
+                        <span class="chip">Jira</span>
+                        <span class="chip">Google Workspace</span>
+                        <span class="chip">Notion</span>
+                        <span class="chip">Slack</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="competencies">
+                <h3>Core <em>competencies.</em></h3>
+                <div class="comp-grid">
+                    <div class="comp-cat">
+                        <h5>Talent Strategy &amp; Leadership</h5>
+                        <ul>
+                            <li>TA Strategy &amp; Operating Model</li>
+                            <li>Global TA Operations</li>
+                            <li>
+                                Technical Recruiting (SWE, DevOps, Data, Security, Infra)
+                            </li>
+                            <li>Workforce Planning &amp; Capacity Modeling</li>
+                            <li>Executive Partnership (C-Suite)</li>
+                            <li>Recruiting Team Leadership &amp; Coaching</li>
+                        </ul>
+                    </div>
+                    <div class="comp-cat">
+                        <h5>Systems, Data &amp; AI</h5>
+                        <ul>
+                            <li>ATS/HRIS Implementation (5+ systems)</li>
+                            <li>Agentic AI Sourcing Workflows</li>
+                            <li>Custom GPT &amp; Web App Development</li>
+                            <li>Recruiting Analytics &amp; Executive Dashboards</li>
+                            <li>Change Management</li>
+                            <li>First-Principles Funnel Diagnosis</li>
+                        </ul>
+                    </div>
+                    <div class="comp-cat">
+                        <h5>Brand &amp; Experience</h5>
+                        <ul>
+                            <li>Employer Brand &amp; EVP</li>
+                            <li>Candidate Experience Design</li>
+                            <li>Interview Infrastructure &amp; Scorecards</li>
+                            <li>Talent Marketing</li>
+                            <li>DEI &amp; Inclusive Hiring</li>
+                            <li>Compensation Benchmarking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== INSIGHTS / NEWSLETTER =========================== -->
+    <section id="insights" class="insights">
+        <div class="wrap">
+            <span class="eyebrow">Insights &amp; Writing</span>
+            <h2 class="section-title">
+                Frameworks for the <em>AI-forward</em> recruiting era.
+            </h2>
+            <p class="section-lede">
+                I write <a href="https://ryanborths240896.substack.com/" target="_blank" rel="noopener" style="color: var(--accent-2); text-decoration: none; border-bottom: 1px solid currentColor;">The Recruiting Operator</a> — a Substack on building, scaling, and AI-enabling the recruiting function. Practical frameworks from inside live operations, not theory.
+            </p>
+
+            <div class="insights-wrap" style="margin-top: 56px">
+                <a class="article-feature" href="https://ryanborths240896.substack.com/p/if-you-cannot-audit-ai-hiring-do" target="_blank" rel="noopener">
+                    <div class="article-meta">
+                        <span class="pub">The Recruiting Operator</span>
+                        <span>Latest Issue</span>
+                    </div>
+                    <h3>If You Cannot Audit AI Hiring, <em>Do Not Scale It.</em></h3>
+                    <p class="article-subtitle">
+                        Build trust. Add accountability. Scale with confidence.
+                    </p>
+                    <p class="article-excerpt">
+                        Most recruiting teams are focused on adding AI. That is the wrong focus. The real issue is trust.
+                    </p>
+                    <span class="article-cta">Read on Substack <span class="arrow">→</span></span>
+                </a>
+
+                <aside class="newsletter-card">
+                    <span class="newsletter-soon">Substack · Live Now</span>
+                    <h3>Subscribe to <em>The Recruiting Operator.</em></h3>
+                    <p>
+                        Practical breakdowns on building, scaling, and AI-enabling the recruiting function — from someone running it in production.
+                    </p>
+                    <a href="https://ryanborths240896.substack.com/subscribe" target="_blank" rel="noopener" class="btn btn-primary" style="align-self: flex-start; position: relative; z-index: 1;">
+                        Subscribe on Substack <span class="arrow">→</span>
+                    </a>
+                    <div class="newsletter-note" style="margin-top: 18px;">
+                        Free. New posts delivered straight to your inbox.
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== CONTACT =========================== -->
+    <section id="contact" class="contact">
+        <div class="wrap contact-inner">
+            <div class="contact-head">
+                <span class="eyebrow">Contact</span>
+                <h2>Let's build something <em>great.</em></h2>
+                <p>
+                    If you're building a recruiting function, scaling one, or
+                    rethinking how AI changes your talent strategy — I'd like to
+                    hear about it.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <a class="contact-card" href="mailto:rrborths@gmail.com">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <path d="M3 7l9 6 9-6" />
+                        </svg>
+                    </div>
+                    <div class="k">Email</div>
+                    <div class="v">rrborths@gmail.com</div>
+                </a>
+                <a class="contact-card" href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.5 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.44h-4.55v-6.6c0-1.57-.03-3.59-2.19-3.59-2.2 0-2.53 1.71-2.53 3.48V22H7.72V8z" />
+                        </svg>
+                    </div>
+                    <div class="k">LinkedIn</div>
+                    <div class="v">linkedin.com/in/ryanborths</div>
+                </a>
+                <a class="contact-card" href="tel:+12488609964">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0122 16.92z" />
+                        </svg>
+                    </div>
+                    <div class="k">Phone</div>
+                    <div class="v">248.860.9964</div>
+                </a>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path d="M12 22s-8-7.58-8-13a8 8 0 1116 0c0 5.42-8 13-8 13z" />
+                            <circle cx="12" cy="9" r="3" />
+                        </svg>
+                    </div>
+                    <div class="k">Based in</div>
+                    <div class="v">
+                        Grand Rapids, MI <br /><span style="color: var(--muted-dark); font-size: 13px">Hybrid ·
+                            Remote-friendly</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap foot">
+                <span class="foot-brand">Ryan Borths</span>
+                <div class="foot-links">
+                    <a href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://ryanborths240896.substack.com/" target="_blank" rel="noopener">Substack</a>
+                    <a href="mailto:rrborths@gmail.com">Email</a>
+                    <a href="#top">Top ↑</a>
+                </div>
+                <span class="foot-meta">© 2026 Ryan Borths · Built with intention</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Reveal-on-scroll for low-key entrance animation
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add("in");
+                        io.unobserve(e.target);
+                    }
+                });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+        );
+
+        document
+            .querySelectorAll(
+                ".metric, .case, .tool, .pillar, .stack, .job, .topic, .competencies",
+            )
+            .forEach((el) => {
+                el.classList.add("reveal");
+                io.observe(el);
+            });
+
+        // Active section highlight in nav
+        const sections = document.querySelectorAll("section[id], header[id]");
+        const navLinks = document.querySelectorAll(".nav-links a");
+        const navIO = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        const id = e.target.id;
+                        navLinks.forEach((l) => {
+                            const match = l.getAttribute("href") === "#" + id;
+                            l.style.color = match ? "var(--accent)" : "";
+                        });
+                    }
+                });
+            },
+            { threshold: 0.5 },
+        );
+        sections.forEach((s) => navIO.observe(s));
+    </script>
+</body>
+
+</html>
