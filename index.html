@@ -181,17 +181,11 @@
         }
 
         .brand-mark {
-            width: 28px;
-            height: 28px;
-            border-radius: 7px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            display: grid;
-            place-items: center;
-            color: var(--ink);
-            font-family: var(--sans);
-            font-weight: 700;
-            font-size: 13px;
-            letter-spacing: 0;
+            height: 44px;
+            width: auto;
+            border-radius: 8px;
+            display: block;
+            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.15);
         }
 
         .nav-links {
@@ -1979,8 +1973,8 @@
     <!-- =========================== NAV =========================== -->
     <nav class="nav">
         <div class="wrap nav-inner">
-            <a class="brand" href="#top">
-                <span class="brand-mark">RB</span>
+            <a class="brand" href="#top" aria-label="Ryan Borths — home">
+                <img class="brand-mark" src="brand-mark.png" alt="Ryan Borths" width="64" height="44" />
                 <span>Ryan Borths</span>
             </a>
             <ul class="nav-links">
@@ -2765,12 +2759,13 @@
                         <span class="chip implemented">Workday</span>
                         <span class="chip implemented">UKG Ready</span>
                         <span class="chip implemented">Yello</span>
-                        <span class="chip">Hodes iQ</span>
+                        <span class="chip">iCIMS</span>
                         <span class="chip">Jobvite</span>
                         <span class="chip">Taleo</span>
                         <span class="chip">Paycor</span>
                         <span class="chip">UltiPro</span>
-                        <span class="chip">iCIMS</span>
+                        <span class="chip">SuccessFactors</span>
+                        <span class="chip">Hodes iQ</span>
                     </div>
                     <div style="
                 font-family: var(--mono);
@@ -2796,6 +2791,8 @@
                         <span class="chip">LinkedIn Recruiter</span>
                         <span class="chip">Cursor</span>
                         <span class="chip">Claude Code</span>
+                        <span class="chip">Codex</span>
+                        <span class="chip">Antigravity</span>
                         <span class="chip">n8n</span>
                         <span class="chip">Custom GPTs</span>
                         <span class="chip">Custom Web Apps</span>
@@ -2880,24 +2877,31 @@
                 Frameworks for the <em>AI-forward</em> recruiting era.
             </h2>
             <p class="section-lede">
-                I write <a href="https://ryanborths240896.substack.com/" target="_blank" rel="noopener" style="color: var(--accent-2); text-decoration: none; border-bottom: 1px solid currentColor;">The Recruiting Operator</a> — a Substack on building, scaling, and AI-enabling the recruiting function. Practical frameworks from inside live operations, not theory.
+                I write <a href="https://www.recruitingoperator.com/" target="_blank" rel="noopener" style="color: var(--accent-2); text-decoration: none; border-bottom: 1px solid currentColor;">The Recruiting Operator</a> — a Substack on building, scaling, and AI-enabling the recruiting function. Practical frameworks from inside live operations, not theory.
             </p>
 
             <div class="insights-wrap" style="margin-top: 56px">
-                <a class="article-feature" href="https://ryanborths240896.substack.com/p/if-you-cannot-audit-ai-hiring-do" target="_blank" rel="noopener">
-                    <div class="article-meta">
-                        <span class="pub">The Recruiting Operator</span>
-                        <span>Latest Issue</span>
-                    </div>
-                    <h3>If You Cannot Audit AI Hiring, <em>Do Not Scale It.</em></h3>
-                    <p class="article-subtitle">
-                        Build trust. Add accountability. Scale with confidence.
-                    </p>
-                    <p class="article-excerpt">
-                        Most recruiting teams are focused on adding AI. That is the wrong focus. The real issue is trust.
-                    </p>
-                    <span class="article-cta">Read on Substack <span class="arrow">→</span></span>
-                </a>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <a class="article-feature" href="https://www.recruitingoperator.com/p/the-next-ai-recruiting-upgrade-is" target="_blank" rel="noopener">
+                        <div class="article-meta">
+                            <span class="pub">The Recruiting Operator</span>
+                            <span>Latest Issue</span>
+                        </div>
+                        <h3>The Next AI Recruiting Upgrade Is <em>Operational Discipline.</em></h3>
+                        <p class="article-subtitle">
+                            Work queues, evaluation, and human review — not bigger chat windows.
+                        </p>
+                        <p class="article-excerpt">
+                            Stop using AI like a brainstorming buddy. Treat it like junior operational capacity: defined inputs, structured outputs, human review at the gates.
+                        </p>
+                        <span class="article-cta">Read on Substack <span class="arrow">→</span></span>
+                    </a>
+
+                    <a href="https://www.recruitingoperator.com/p/if-you-cannot-audit-ai-hiring-do" target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 6px; padding: 18px 22px; background: var(--ink-soft); border: 1px solid var(--line-dark); border-radius: var(--radius-sm); color: rgba(255,255,255,0.85); transition: border-color 200ms ease;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line-dark)'">
+                        <span style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--muted-dark); text-transform: uppercase;">Previous post</span>
+                        <span style="font-family: var(--serif); font-size: 18px; font-weight: 500;">If You Cannot Audit AI Hiring, <em>Do Not Scale It.</em> <span class="arrow" style="color: var(--accent);">→</span></span>
+                    </a>
+                </div>
 
                 <aside class="newsletter-card">
                     <span class="newsletter-soon">Substack · Live Now</span>
@@ -2905,7 +2909,7 @@
                     <p>
                         Practical breakdowns on building, scaling, and AI-enabling the recruiting function — from someone running it in production.
                     </p>
-                    <a href="https://ryanborths240896.substack.com/subscribe" target="_blank" rel="noopener" class="btn btn-primary" style="align-self: flex-start; position: relative; z-index: 1;">
+                    <a href="https://www.recruitingoperator.com/subscribe" target="_blank" rel="noopener" class="btn btn-primary" style="align-self: flex-start; position: relative; z-index: 1;">
                         Subscribe on Substack <span class="arrow">→</span>
                     </a>
                     <div class="newsletter-note" style="margin-top: 18px;">
@@ -2950,15 +2954,14 @@
                     <div class="k">LinkedIn</div>
                     <div class="v">linkedin.com/in/ryanborths</div>
                 </a>
-                <a class="contact-card" href="tel:+12488609964">
+                <a class="contact-card" href="https://x.com/RyanBorths" target="_blank" rel="noopener">
                     <div class="contact-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                            <path
-                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0122 16.92z" />
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                         </svg>
                     </div>
-                    <div class="k">Phone</div>
-                    <div class="v">248.860.9964</div>
+                    <div class="k">X / Twitter</div>
+                    <div class="v">@RyanBorths</div>
                 </a>
                 <div class="contact-card">
                     <div class="contact-icon">
@@ -2979,7 +2982,8 @@
                 <span class="foot-brand">Ryan Borths</span>
                 <div class="foot-links">
                     <a href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="https://ryanborths240896.substack.com/" target="_blank" rel="noopener">Substack</a>
+                    <a href="https://x.com/RyanBorths" target="_blank" rel="noopener">X</a>
+                    <a href="https://www.recruitingoperator.com/" target="_blank" rel="noopener">Substack</a>
                     <a href="mailto:rrborths@gmail.com">Email</a>
                     <a href="#top">Top ↑</a>
                 </div>
