@@ -2553,3 +2553,56 @@ a.article-feature { cursor: pointer; }
         gap: 18px;
     }
 }
+
+/* ---------- Compact Insights post links ---------- */
+
+.post-link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 22px;
+    background: var(--ink-soft);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-sm);
+    color: rgba(255, 255, 255, 0.85);
+    transition: border-color 200ms ease;
+}
+
+.post-link:hover {
+    border-color: var(--accent);
+}
+
+.post-link-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted-dark);
+    text-transform: uppercase;
+}
+
+.post-link-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.post-link-title .arrow {
+    color: var(--accent);
+}
+
+.post-link-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: 4px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-2);
+    transition: gap 220ms ease;
+}
+
+.post-link-all:hover {
+    gap: 14px;
+}
