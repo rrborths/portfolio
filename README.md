@@ -1,5 +1,23 @@
 # Ryan Borths — Portfolio
 
-Personal portfolio site for Ryan Borths, Director of Talent Acquisition.
+Personal portfolio site for Ryan Borths, Head of Talent Acquisition and recruiting
+operating-system builder.
 
-Single-page static site, deployed on Vercel.
+Static site, deployed on Vercel.
+
+## Structure
+
+```
+index.html                              Homepage (single page, section anchors)
+styles.css                              Shared design system — tokens + all components
+case-studies/marketsync-ta/index.html   Case study: MarketSync TA
+vercel.json                             cleanUrls so /case-studies/marketsync-ta resolves
+```
+
+All styling lives in `styles.css` and is shared by every page. Add a new case study
+by creating `case-studies/<slug>/index.html`, linking `/styles.css`, and reusing the
+existing component classes (`.cs-hero`, `.decisions`, `.tools-grid`, `.boundaries`,
+`.stack-rows`). Page-specific CSS goes at the bottom of `styles.css`, not inline.
+
+Asset paths on case study pages must be absolute (`/brand-mark.png`), and homepage
+anchors must be prefixed (`/#portfolio`).

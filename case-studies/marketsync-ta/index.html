@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarketSync TA — Executive Talent Intelligence Platform | Ryan Borths</title>
+    <meta name="description"
+        content="Case study: MarketSync TA, an AI-driven labor market intelligence and workflow platform built by Ryan Borths to move recruiting teams from order-taking to strategic business advising." />
+    <link rel="canonical" href="https://www.ryanborths.com/case-studies/marketsync-ta" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MarketSync TA — Executive Talent Intelligence Platform" />
+    <meta property="og:description"
+        content="A working portfolio application that puts labor market evidence inside the recruiting workflow: market demand, hiring manager intake, relocation calibration, pipeline data hygiene, and executive strategy briefs." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.ryanborths.com/case-studies/marketsync-ta" />
+    <meta property="og:image" content="/headshot.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon set -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0a1628" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <!-- =========================== NAV =========================== -->
+    <nav class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="/" aria-label="Ryan Borths — home">
+                <img class="brand-mark" src="/brand-mark.png" alt="Ryan Borths" width="64" height="44" />
+                <span>Ryan Borths</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#assessment">Assessment</a></li>
+                <li><a href="/#impact">Proof</a></li>
+                <li><a href="/#cases">In-house Case Studies</a></li>
+                <li><a href="/#operating-system">Operating System</a></li>
+                <li><a href="/#experience">About</a></li>
+                <li><a href="/#insights">Insights</a></li>
+            </ul>
+            <a class="nav-cta" href="#contact">Compare notes <span class="arrow">→</span></a>
+        </div>
+    </nav>
+
+    <!-- =========================== HERO =========================== -->
+    <header id="top" class="cs-hero">
+        <div class="wrap">
+            <div class="crumb">
+                <a href="/">Portfolio</a>
+                <span class="sep">/</span>
+                <a href="/#portfolio">Practical AI</a>
+                <span class="sep">/</span>
+                <span>MarketSync TA</span>
+            </div>
+
+            <h1>MarketSync TA: an <em>executive talent intelligence</em> platform.</h1>
+
+            <p class="cs-sub">
+                A working application built to answer a question recruiting leaders get
+                asked constantly and rarely have evidence for: <strong>what is actually
+                    happening in this labor market, and what should we do differently
+                    because of it?</strong> MarketSync TA pulls public labor market data
+                into the moment a hiring decision is made — intake, calibration,
+                relocation, pipeline review — and exports the result as a brief an
+                executive can read.
+            </p>
+
+            <div class="cs-actions">
+                <a class="btn btn-primary" href="https://marketsync-ta-663237649522.us-central1.run.app/"
+                    target="_blank" rel="noopener">Open the live app <span class="arrow">→</span></a>
+                <a class="btn btn-ghost" href="#workflows">See the workflows</a>
+                <span class="repo-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                        <rect x="4" y="10" width="16" height="11" rx="2" />
+                        <path d="M8 10V7a4 4 0 018 0v3" />
+                    </svg>
+                    Private repo — available on request
+                </span>
+            </div>
+
+            <div class="spec-strip">
+                <div class="spec-cell">
+                    <div class="k">Role</div>
+                    <div class="v">Sole designer, engineer, and operator</div>
+                </div>
+                <div class="spec-cell">
+                    <div class="k">Status</div>
+                    <div class="v">Live public demonstration</div>
+                </div>
+                <div class="spec-cell">
+                    <div class="k">Core stack</div>
+                    <div class="v">Next.js · TypeScript · Tailwind · Cloud Run · Firestore</div>
+                </div>
+                <div class="spec-cell">
+                    <div class="k">Data</div>
+                    <div class="v">Public labor market APIs · synthetic candidate records</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================== PROBLEM =========================== -->
+    <section id="problem">
+        <div class="wrap">
+            <span class="eyebrow">The problem</span>
+            <h2 class="section-title">Recruiting teams are asked for headcount. They are rarely asked for a
+                <em>point of view.</em>
+            </h2>
+
+            <div class="split" style="margin-top: 34px">
+                <div class="prose">
+                    <p>
+                        In most organizations the recruiting function receives a
+                        requisition, agrees to a target date, and starts working. The
+                        market context that would change the conversation — how many
+                        competing postings exist for that role in that geography, what the
+                        real supply looks like, what a relocation actually costs the
+                        candidate — arrives late, arrives inside a vendor deck, or does not
+                        arrive at all.
+                    </p>
+                    <p>
+                        The gap is not data availability. Public labor market data is
+                        abundant. The gap is that <strong>the data does not live where the
+                            decision is made.</strong> By the time someone assembles a
+                        market read, the intake meeting is over, the offer is out, and the
+                        hiring manager has already anchored on a timeline nobody
+                        stress-tested.
+                    </p>
+                </div>
+                <div class="prose">
+                    <p>
+                        I have run this problem from the inside — ATS migrations, capacity
+                        modeling with a CEO and CFO, pay-scale reviews, hiring manager
+                        enablement across multiple organizations. The recurring failure
+                        mode is the same: recruiters have the relationship and the
+                        instinct, but not a repeatable way to bring evidence into the room.
+                    </p>
+                    <p>
+                        MarketSync TA is my attempt to build that instrument rather than
+                        write another framework about it. It is a portfolio application —
+                        a demonstration of how the workflow could work — and it is built to
+                        production engineering standards so the architecture argument holds
+                        up under scrutiny.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== APPROACH =========================== -->
+    <section id="approach" class="cases">
+        <div class="wrap">
+            <span class="eyebrow">Design principles</span>
+            <h2 class="section-title">Four decisions that shaped <em>the build.</em></h2>
+            <p class="section-lede">
+                Most recruiting tools optimize for output volume. This one optimizes for
+                whether a hiring manager or an executive will actually trust and act on
+                what comes out of it.
+            </p>
+
+            <div class="decisions">
+                <div class="decision">
+                    <div class="n">01</div>
+                    <div>
+                        <h4>Every number carries its provenance.</h4>
+                        <p>
+                            Each data point returned by the platform is tagged with its
+                            source, a confidence indicator, and a fetch timestamp. A market
+                            figure an executive cannot trace is a figure they will not use
+                            in a board conversation — so traceability is a first-class
+                            field, not a footnote.
+                        </p>
+                    </div>
+                </div>
+                <div class="decision">
+                    <div class="n">02</div>
+                    <div>
+                        <h4>Degraded providers are declared, not hidden.</h4>
+                        <p>
+                            A Data Source Registry shows each provider as live, sandbox, or
+                            degraded. When an upstream API is unavailable, the interface says
+                            so rather than quietly serving stale or empty results. Silent
+                            failure is how analytics tools lose the credibility they take
+                            months to earn.
+                        </p>
+                    </div>
+                </div>
+                <div class="decision">
+                    <div class="n">03</div>
+                    <div>
+                        <h4>Output has to leave the tool.</h4>
+                        <p>
+                            Strategy work gets consumed in documents, decks, and ATS fields
+                            — not in a dashboard nobody logs into. Intake agendas map to
+                            Greenhouse- and Workday-style custom fields, and the Executive
+                            Strategy Playbook exports to Markdown in one click so the brief
+                            travels to wherever the decision is being written down.
+                        </p>
+                    </div>
+                </div>
+                <div class="decision">
+                    <div class="n">04</div>
+                    <div>
+                        <h4>No real candidate data, by design.</h4>
+                        <p>
+                            The Candidate Hygiene Dashboard runs entirely on synthetic
+                            sample records. A public portfolio demonstration is the wrong
+                            place for real candidate PII, and building it correctly from the
+                            start is part of the argument for how AI should enter recruiting
+                            workflows at all.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== WORKFLOWS =========================== -->
+    <section id="workflows" class="portfolio">
+        <div class="wrap">
+            <span class="eyebrow">What it does</span>
+            <h2 class="section-title">Seven workflows, one <em>decision path.</em></h2>
+            <p class="section-lede">
+                The modules are sequenced the way a real requisition moves: read the
+                market, run a better intake, calibrate the offer, verify the pipeline,
+                and hand leadership something they can act on.
+            </p>
+
+            <div class="tools-grid">
+                <div class="tool">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M3 21V9l6-6 6 6 6-3v15z" />
+                                <path d="M9 21V12" />
+                                <path d="M15 21V9" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Adzuna API</span>
+                    </div>
+                    <h3>Market Demand &amp; Hiring Volume</h3>
+                    <p>
+                        Posting volume, demand trends, and geographic heatmaps for a role
+                        and market. The opening evidence for whether a timeline is
+                        realistic before anyone commits to it.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Market Intel</span>
+                        <span class="live">Live provider</span>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M4 4h16v13H8l-4 4z" />
+                                <path d="M8 9h8M8 13h5" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">AI Playbook</span>
+                    </div>
+                    <h3>Dynamic Hiring Manager Intake</h3>
+                    <p>
+                        Generates a structured intake agenda grounded in that role's market
+                        read — the questions a recruiter should be asking, and the market
+                        realities the manager needs to hear before committing to a plan.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Intake · Enablement</span>
+                        <span class="live">Core workflow</span>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <rect x="3" y="4" width="18" height="16" rx="2" />
+                                <path d="M3 10h18M9 10v10" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">ATS Integration</span>
+                    </div>
+                    <h3>ATS Custom Field Mapping</h3>
+                    <p>
+                        Maps generated intake output to Greenhouse- and Workday-style custom
+                        fields so the strategy survives contact with the system of record
+                        instead of dying in a document.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Greenhouse · Workday patterns</span>
+                        <span class="live">Core workflow</span>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M6 3h9l5 5v13H6z" />
+                                <path d="M15 3v5h5" />
+                                <path d="M9 13h6M9 17h4" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Markdown export</span>
+                    </div>
+                    <h3>Executive Strategy Playbook</h3>
+                    <p>
+                        Compiles the market read, intake plan, and calibration inputs into a
+                        single executive brief with one-click Markdown export — built for
+                        the leader who wants the argument, not the dashboard.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Executive Communication</span>
+                        <span class="live">Core workflow</span>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M12 22s-8-7.58-8-13a8 8 0 1116 0c0 5.42-8 13-8 13z" />
+                                <circle cx="12" cy="9" r="3" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Teleport API</span>
+                    </div>
+                    <h3>Relocation Offer Calculator</h3>
+                    <p>
+                        Converts a relocation conversation into a defensible cost-of-living
+                        offset range instead of an instinct-driven negotiation — designed to
+                        take guesswork out of geographic offer decisions.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Compensation · Calibration</span>
+                        <span class="live">Live provider</span>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Abstract API · synthetic data</span>
+                    </div>
+                    <h3>Candidate Hygiene Dashboard</h3>
+                    <p>
+                        Validates pipeline record quality and email deliverability across a
+                        synthetic candidate set — surfacing the data problems that quietly
+                        distort every funnel metric a recruiting leader reports.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Data Quality</span>
+                        <span class="live">Synthetic data</span>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Governance</span>
+                    </div>
+                    <h3>Data Source Registry</h3>
+                    <p>
+                        A live status view of every configured provider — Adzuna, Teleport,
+                        Abstract, Firestore, BLS, O*NET, USAJOBS — showing whether each is
+                        live, sandboxed, or degraded, with source and confidence metadata
+                        attached.
+                    </p>
+                    <div class="tool-foot">
+                        <span>Trust · Transparency</span>
+                        <span class="live">Always visible</span>
+                    </div>
+                </div>
+
+                <div class="tool" style="background: rgba(6, 182, 212, 0.04); border-color: rgba(6, 182, 212, 0.3)">
+                    <div class="tool-head">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M7 17L17 7M17 7H8M17 7v9" />
+                            </svg>
+                        </div>
+                        <span class="tool-type">Try it</span>
+                    </div>
+                    <h3>Walk the workflow yourself.</h3>
+                    <p>
+                        The application is publicly accessible. Run a market query, generate
+                        an intake agenda, and export the brief — the fastest way to judge
+                        whether the argument holds.
+                    </p>
+                    <div class="tool-foot">
+                        <span>No login required</span>
+                        <a href="https://marketsync-ta-663237649522.us-central1.run.app/" target="_blank"
+                            rel="noopener" style="color: var(--accent)">Open the app →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== ARCHITECTURE =========================== -->
+    <section id="architecture">
+        <div class="wrap">
+            <span class="eyebrow">Architecture</span>
+            <h2 class="section-title">Built the way I would want a vendor to <em>build it.</em></h2>
+            <p class="section-lede">
+                The engineering choices are deliberate. A recruiting leader evaluating AI
+                tooling should be able to ask how deployment credentials are handled and
+                get a real answer — so I built this one to be able to answer that
+                question about my own work.
+            </p>
+
+            <div class="stack-rows" style="margin-top: 34px">
+                <div class="stack-row">
+                    <div class="layer">Application</div>
+                    <div class="detail">
+                        Next.js (App Router) · React · TypeScript · Tailwind CSS
+                        <span>— server components for data-fetching routes, typed provider
+                            contracts so a degraded API surfaces as a handled state rather
+                            than a runtime error.</span>
+                    </div>
+                </div>
+                <div class="stack-row">
+                    <div class="layer">Runtime</div>
+                    <div class="detail">
+                        Google Cloud Run (us-central1)
+                        <span>— scales to zero between sessions, which is the correct cost
+                            profile for a public demonstration with bursty traffic.</span>
+                    </div>
+                </div>
+                <div class="stack-row">
+                    <div class="layer">Containerization</div>
+                    <div class="detail">
+                        Multi-stage Docker build on <code
+                            style="font-family: var(--mono); font-size: 13px">node:20-alpine</code>
+                        <span>— build dependencies stay out of the runtime image, keeping the
+                            deployed artifact small and cold starts short.</span>
+                    </div>
+                </div>
+                <div class="stack-row">
+                    <div class="layer">Persistence</div>
+                    <div class="detail">
+                        Cloud Firestore
+                        <span>— candidate and system state, with the synthetic dataset kept
+                            isolated from any live provider response.</span>
+                    </div>
+                </div>
+                <div class="stack-row">
+                    <div class="layer">CI/CD</div>
+                    <div class="detail">
+                        GitHub Actions
+                        <span>— build, containerize, and deploy on merge; no manual deploy
+                            step and no local credentials in the release path.</span>
+                    </div>
+                </div>
+                <div class="stack-row">
+                    <div class="layer">Security</div>
+                    <div class="detail">
+                        Google Workload Identity Federation
+                        <span>— keyless deployment. No long-lived service account JSON key
+                            is stored in the repository or in CI secrets, which removes the
+                            most common credential-leak path in this kind of pipeline.</span>
+                    </div>
+                </div>
+                <div class="stack-row">
+                    <div class="layer">Data providers</div>
+                    <div class="detail">
+                        Adzuna (job market) · Teleport (cost of living) · Abstract (email
+                        validation)
+                        <span>— with routing and infrastructure in place for BLS, O*NET, and
+                            USAJOBS.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== BOUNDARIES =========================== -->
+    <section id="boundaries" class="cases">
+        <div class="wrap">
+            <div class="boundaries">
+                <span class="eyebrow" style="color: var(--accent)">Honest scope</span>
+                <h3>What this demonstrates — and what it <em>does not claim.</em></h3>
+                <p class="lede">
+                    This is a portfolio application, not a production client system. I
+                    would rather state the boundaries plainly than let a demo imply
+                    results it has not earned.
+                </p>
+
+                <div class="claims-grid">
+                    <div class="claims-col demonstrates">
+                        <h4>What it demonstrates</h4>
+                        <ul>
+                            <li>
+                                Designing a recruiting workflow around evidence and decision
+                                points rather than activity volume.
+                            </li>
+                            <li>
+                                Shipping and operating a containerized application on managed
+                                cloud infrastructure end to end.
+                            </li>
+                            <li>
+                                Integrating multiple third-party data providers behind a
+                                consistent contract with source, confidence, and freshness
+                                metadata.
+                            </li>
+                            <li>
+                                Applying secure deployment practice — keyless federated
+                                identity, automated release, no stored credentials.
+                            </li>
+                            <li>
+                                Translating labor market data into artifacts an executive
+                                audience will actually read.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="claims-col limits">
+                        <h4>What it does not claim</h4>
+                        <ul>
+                            <li>
+                                No measured business outcomes. The workflows are
+                                <em>designed to</em> accelerate intake preparation and
+                                <em>architected to</em> reduce guesswork — not benchmarked
+                                against a control group.
+                            </li>
+                            <li>
+                                All candidate records are synthetic. No real candidate data
+                                has been processed by this application.
+                            </li>
+                            <li>
+                                Some providers run in sandbox or degraded mode depending on
+                                credential availability; the registry reports current status.
+                            </li>
+                            <li>
+                                It is not a production client system, and it is not currently
+                                operating inside any employer's hiring process.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== NEXT =========================== -->
+    <section id="next">
+        <div class="wrap">
+            <div class="split">
+                <div>
+                    <h3 class="h3-rule">Where it goes <em>next.</em></h3>
+                    <div class="prose">
+                        <ul>
+                            <li>
+                                <strong>Complete the public-data layer.</strong> Routing exists
+                                for BLS, O*NET, and USAJOBS; wiring them fully would broaden
+                                the market read beyond posting-volume signals into occupational
+                                and wage data.
+                            </li>
+                            <li>
+                                <strong>Write back to the ATS.</strong> Field mapping is the
+                                first step; a Greenhouse API integration would let an intake
+                                plan land directly on the requisition.
+                            </li>
+                            <li>
+                                <strong>Workspaces and authentication.</strong> Required before
+                                anything resembling multi-team use, and deliberately out of
+                                scope for a public demonstration.
+                            </li>
+                            <li>
+                                <strong>Instrumentation.</strong> If this ran inside a real
+                                function, the honest next step is measuring intake cycle time
+                                and offer-decline reasons before and after — so the claims
+                                section above could finally include numbers.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="h3-rule">Why I built <em>it.</em></h3>
+                    <div class="prose">
+                        <p>
+                            I have spent twenty years inside recruiting functions and the last
+                            several building the systems that hold them together — ATS
+                            migrations, capacity models, scorecards, enablement programs, and
+                            a set of AI workflows used by working recruiters.
+                        </p>
+                        <p>
+                            MarketSync TA is the version of that work where I owned the whole
+                            stack: the problem framing, the product decisions, the
+                            architecture, the deployment pipeline, and the security posture.
+                            It exists because I think the next generation of recruiting
+                            leadership will need to speak both languages — the operating model
+                            and the system underneath it.
+                        </p>
+                        <p>
+                            If you are building in HR technology, workforce intelligence, or
+                            B2B SaaS and this is the kind of thinking you want in the room, I
+                            am happy to walk through it.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cs-cta" style="margin-top: clamp(40px, 6vw, 68px)">
+                <h3>Want the walkthrough, or the <em>code review?</em></h3>
+                <div class="cs-actions" style="margin-top: 0">
+                    <a class="btn btn-primary"
+                        href="mailto:rrborths@gmail.com?subject=MarketSync%20TA%20walkthrough">Request a walkthrough
+                        <span class="arrow">→</span></a>
+                    <a class="btn btn-ghost" href="https://marketsync-ta-663237649522.us-central1.run.app/"
+                        target="_blank" rel="noopener" style="color: var(--ink); border-color: var(--line)">Open the
+                        live app</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================== CONTACT / FOOTER =========================== -->
+    <section id="contact" class="contact">
+        <div class="wrap contact-inner">
+            <div class="contact-head">
+                <span class="eyebrow">Contact</span>
+                <h2>Building something where recruiting has to be a <em>system, not a service desk?</em></h2>
+                <p>
+                    I am open to remote Head of Talent Acquisition and talent operations
+                    roles with technology, HR/workforce tech, and B2B SaaS companies, and
+                    to selected consulting engagements. Start with a 20-minute
+                    conversation — if it is not a fit, I will say so.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <a class="contact-card"
+                    href="mailto:rrborths@gmail.com?subject=MarketSync%20TA%20%E2%80%94%20conversation">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <path d="M3 7l9 6 9-6" />
+                        </svg>
+                    </div>
+                    <div class="k">Compare notes with Ryan</div>
+                    <div class="v">Start a conversation</div>
+                </a>
+                <a class="contact-card" href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.5 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.44h-4.55v-6.6c0-1.57-.03-3.59-2.19-3.59-2.2 0-2.53 1.71-2.53 3.48V22H7.72V8z" />
+                        </svg>
+                    </div>
+                    <div class="k">LinkedIn</div>
+                    <div class="v">linkedin.com/in/ryanborths</div>
+                </a>
+                <a class="contact-card" href="https://x.com/RyanBorths" target="_blank" rel="noopener">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </div>
+                    <div class="k">X / Twitter</div>
+                    <div class="v">@RyanBorths</div>
+                </a>
+                <a class="contact-card" href="/#portfolio">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                    </div>
+                    <div class="k">Back to portfolio</div>
+                    <div class="v">More Practical AI work</div>
+                </a>
+            </div>
+
+            <div class="wrap foot">
+                <span class="foot-brand">Ryan Borths</span>
+                <div class="foot-links">
+                    <a href="/">Home</a>
+                    <a href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://x.com/RyanBorths" target="_blank" rel="noopener">X</a>
+                    <a href="https://www.recruitingoperator.com/" target="_blank" rel="noopener">Substack</a>
+                    <a href="mailto:rrborths@gmail.com">Email</a>
+                    <a href="#top">Top ↑</a>
+                </div>
+                <span class="foot-meta">© 2026 Ryan Borths · Built with intention</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Reveal-on-scroll, matched to the homepage behaviour
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add("in");
+                        io.unobserve(e.target);
+                    }
+                });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+        );
+
+        document
+            .querySelectorAll(".tool, .decision, .stack-row, .boundaries")
+            .forEach((el) => {
+                el.classList.add("reveal");
+                io.observe(el);
+            });
+    </script>
+</body>
+
+</html>
