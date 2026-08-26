@@ -21,7 +21,15 @@ existing component classes (`.cs-hero`, `.decisions`, `.tools-grid`, `.boundarie
 `.stack-rows`). Page-specific CSS goes at the bottom of `styles.css`, not inline.
 
 Asset paths on case study pages must be absolute (`/brand-mark.png`), and homepage
-anchors must be prefixed (`/#portfolio`).
+anchors must be prefixed (`/#portfolio`). Within the homepage itself use bare
+anchors (`#portfolio`) so smooth scroll and the active-section highlight still work.
+
+Feature a case study from the Practical AI section with `<a class="tool featured">`.
+If visitors might look for it in the wrong section, add a `.bridge` callout there —
+a compact one-line cross-link, never a second copy of the full card.
+
+The nav row fits seven links, the logo and the CTA only at >=1000px; below that it
+hides. Adding an eighth link means shortening labels or rethinking the row.
 
 Both pages carry JSON-LD in `<head>`. The homepage defines the canonical `Person`
 node (`https://www.ryanborths.com/#ryan`); case studies reference it by `@id` rather
