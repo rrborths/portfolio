@@ -2606,3 +2606,21 @@ a.article-feature { cursor: pointer; }
 .post-link-all:hover {
     gap: 14px;
 }
+
+/* ---------- Tertiary hero CTA (lower-page / advisory) ---------- */
+
+.cta-tertiary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    transition: gap 220ms ease;
+}
+
+.cta-tertiary:hover {
+    gap: 14px;
+}
