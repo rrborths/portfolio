@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Synthetic recruiting operations portfolio demonstration." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%2300a5dc' stroke-width='8'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%231672f3'/%3E%3C/svg%3E" />
+    <title>Recruiting Control Room</title>
+    <script>
+      if (location.hash.startsWith('#intake/')) {
+        window.__intakeWorkflowRequestedStage = location.hash.slice('#intake/'.length);
+        history.replaceState(null, '', `${location.pathname}${location.search}#intake`);
+      } else if (!location.hash) {
+        history.replaceState(null, '', `${location.pathname}${location.search}#intake`);
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/index-4j7lBSGl.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dwdz7brg.css">
+    <link rel="stylesheet" href="./responsive-fixes.css">
+    <link rel="stylesheet" href="./action-queue.css">
+    <script type="module" src="./responsive-fixes.js"></script>
+    <script type="module" src="./content-consistency.js"></script>
+    <script type="module" src="./portfolio-context.js"></script>
+    <script type="module" src="./credibility-layer.js"></script>
+    <script type="module" src="./final-qa.js"></script>
+    <script type="module" src="./intake-workflow.js"></script>
+    <script type="module" src="./action-queue.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

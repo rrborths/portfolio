@@ -1059,6 +1059,28 @@ section {
     color: var(--accent);
 }
 
+.featured-build-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.featured-build-image-wrap {
+    padding: 28px;
+}
+
+.featured-build-image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
+}
+
 /* big stat in feature art */
 .feature-stat {
     text-align: center;
@@ -1126,6 +1148,10 @@ section {
 
     .case-feature-text {
         padding: 32px;
+    }
+
+    .featured-build-image-wrap {
+        padding: 20px;
     }
 }
 

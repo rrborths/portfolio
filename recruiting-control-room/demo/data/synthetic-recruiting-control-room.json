@@ -1,0 +1,22 @@
+{
+  "claimsBoundary": "Synthetic portfolio demonstration only. No employer, candidate, or live-system data.",
+  "canonicalScenarioModule": "../shared-scenario.js",
+  "canonicalScenarioRule": "All rendered Funnel Health metrics, calculations, requisitions, decisions, traceability records, and exports resolve from one selected period object in the canonical module. This manifest does not duplicate those values.",
+  "reportingPeriods": [
+    {
+      "key": "2025-04-06_2025-05-03",
+      "label": "Apr 6 – May 3, 2025",
+      "snapshotDate": "2025-05-03",
+      "sourceVersion": "RCR-SYN-2025.05.03-v1",
+      "comparison": "Unavailable — no earlier baseline dataset is loaded"
+    },
+    {
+      "key": "2025-05-04_2025-05-31",
+      "label": "May 4 – May 31, 2025",
+      "snapshotDate": "2025-05-31",
+      "sourceVersion": "RCR-SYN-2025.05.31-v2",
+      "comparison": "Apr 6 – May 3, 2025"
+    }
+  ],
+  "unchangedModules": ["Intake & Kickoff", "Weekly Review"]
+}

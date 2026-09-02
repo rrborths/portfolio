@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#081b41" />
+    <meta name="description" content="A proposed integration and data contract for approved aggregate recruiting data, lineage, validation, failure recovery, and human approval." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23081b41'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial' font-size='22' font-weight='700' fill='white'%3ERC%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="../documentation.css" />
+    <title>Integration and Data Contract | Recruiting Control Room</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#document-content">Skip to document</a>
+    <header class="doc-header">
+      <a class="brand" href="../../index.html" aria-label="Recruiting Control Room home"><span class="brand-mark" aria-hidden="true">RC</span><span>Recruiting Control Room</span></a>
+      <a class="back-link" href="../../index.html#production">Back to case study</a>
+    </header>
+    <nav class="document-nav" aria-label="Production documentation">
+      <a href="../production-operating-model/index.html">Production Operating Model</a>
+<a href="../weekly-recruiting-review-runbook/index.html">Weekly Recruiting Review Runbook</a>
+<a href="../integration-data-contract/index.html" aria-current="page">Integration and Data Contract</a>
+    </nav>
+    <main id="document-content">
+      <section class="doc-hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Data governance</p>
+          <h1 id="page-title">Integration and Data Contract</h1>
+          <div class="status-badge"><span aria-hidden="true"></span> Proposed future state</div>
+        </div>
+        <p class="hero-description">A proposed integration and data contract for approved aggregate recruiting data, lineage, validation, failure recovery, and human approval.</p>
+      </section>
+      <div class="document-layout">
+        <aside class="toc" aria-labelledby="toc-title">
+          <div>
+            <p id="toc-title">On this page</p>
+            <ol><li><a href="#section-1-scope-and-contract-principles">1. Scope and contract principles</a></li>
+<li><a href="#section-2-explicit-exclusions">2. Explicit exclusions</a></li>
+<li><a href="#section-3-source-contracts">3. Source contracts</a></li>
+<li><a href="#section-4-cross-source-validation-and-snapshot-promotion">4. Cross-source validation and snapshot promotion</a></li>
+<li><a href="#section-5-source-to-decision-lineage-example">5. Source-to-decision lineage example</a></li>
+<li><a href="#section-6-production-incident-example-failed-nightly-ats-reconciliation">6. Production incident example — failed nightly ATS reconciliation</a></li>
+<li><a href="#section-7-contract-changes-and-unresolved-production-decisions">7. Contract changes and unresolved production decisions</a></li></ol>
+            <a class="download-link" href="../downloads/integration-data-contract.md" download>Download Markdown</a>
+          </div>
+        </aside>
+        <article class="document-body">
+          <blockquote><strong>Status: proposed future state.</strong> This contract describes how approved aggregate data could move from source systems into a production Recruiting Control Room. The current portfolio artifact is a local synthetic prototype; it has no live integrations, production data, external writes, or production SLA.</blockquote>
+<p><strong>Interview summary:</strong> The proposed contract moves only minimum-necessary aggregate data through versioned, idempotent interfaces, preserves source-to-decision lineage, and fails safely to the last reconciled snapshot instead of presenting partial data as current.</p>
+<h2 id="section-1-scope-and-contract-principles">1. Scope and contract principles<a class="heading-anchor" href="#section-1-scope-and-contract-principles" aria-label="Link to 1. Scope and contract principles">#</a></h2>
+<p>The production path should use versioned, aggregate, minimum-necessary contracts. The ATS, calendar, workforce plan, benchmark store, task platform, and optional notification platform remain authoritative for their own domains.</p>
+<p>Every inbound batch or outbound action should carry:</p>
+<ul>
+<li><code>contract_version</code>, <code>source_system</code>, <code>source_tenant</code>, and <code>environment</code></li>
+<li><code>batch_id</code>, <code>correlation_id</code>, <code>extracted_at</code>, and <code>received_at</code></li>
+<li><code>period_start</code>, <code>period_end</code>, <code>snapshot_as_of</code>, and enterprise timezone</li>
+<li><code>record_count</code>, <code>schema_hash</code>, validation status, and source owner</li>
+</ul>
+<p>Accepted snapshots are immutable. Corrections create a new version; they do not overwrite lineage. Times use ISO 8601 UTC in transit, with the enterprise reporting timezone preserved as metadata.</p>
+<h2 id="section-2-explicit-exclusions">2. Explicit exclusions<a class="heading-anchor" href="#section-2-explicit-exclusions" aria-label="Link to 2. Explicit exclusions">#</a></h2>
+<p>The following data is excluded from the proposed contract:</p>
+<ul>
+<li>Raw email messages, subjects, bodies, attachments, and mailbox metadata.</li>
+<li>Candidate names, email addresses, phone numbers, postal addresses, résumés, interview notes, evaluations, compensation, demographic data, and other candidate-level personal data.</li>
+<li>Calendar attendee names, event titles, descriptions, meeting links, and free text.</li>
+<li>Automated candidate scoring, ranking, disposition, communication, offer, or hiring action.</li>
+</ul>
+<p>If excluded data is detected, reject and quarantine the batch, restrict access, notify Privacy/Security and the source owner, and do not promote a snapshot.</p>
+<h2 id="section-3-source-contracts">3. Source contracts<a class="heading-anchor" href="#section-3-source-contracts" aria-label="Link to 3. Source contracts">#</a></h2>
+<h3 id="section-3-1-ats-requisition-and-stage-data">3.1 ATS requisition and stage data<a class="heading-anchor" href="#section-3-1-ats-requisition-and-stage-data" aria-label="Link to 3.1 ATS requisition and stage data">#</a></h3>
+<ul>
+<li><strong>System of record:</strong> ATS.</li>
+<li><strong>Integration method:</strong> Read-only incremental API or change export every 1–4 hours; full extract and reconciliation nightly. Governed CSV is the fallback.</li>
+<li><strong>Required aggregate fields:</strong> <code>period_start</code>, <code>period_end</code>, <code>requisition_id</code>, <code>role</code>, <code>function</code>, <code>owner</code>, <code>applied_count</code>, <code>recruiter_screen_count</code>, <code>hiring_manager_count</code>, <code>interview_count</code>, <code>offer_count</code>, <code>hired_count</code>; production metadata adds <code>requisition_status</code>, <code>source_updated_at</code>, and <code>snapshot_as_of</code>.</li>
+<li><strong>Field owner:</strong> ATS/HRIS administrator for source configuration; Recruiting Operations for canonical stage definitions and business semantics.</li>
+<li><strong>Sync cadence:</strong> Incremental every 1–4 hours; nightly full reconciliation.</li>
+<li><strong>Freshness SLA:</strong> Incremental data available within 4 hours of an authoritative change; reconciled daily snapshot available before the agreed business-morning cutoff.</li>
+<li><strong>Idempotency/deduplication key:</strong> <code>source_tenant + requisition_id + period_start + period_end + snapshot_as_of</code>; within a batch, retain the latest <code>source_updated_at</code> for an identical key.</li>
+<li><strong>Validation rules:</strong> Required keys present; counts are non-negative integers; stage counts do not increase downstream without an approved stage-model exception; requisition IDs are unique at the snapshot grain; period end is not before period start; stage taxonomy and status map to approved values.</li>
+<li><strong>Failure and retry behavior:</strong> Reject the affected batch, retain the last-known-good snapshot, retry with the same <code>batch_id</code>, then run full reconciliation. Material variance requires source-owner and Recruiting Operations approval before promotion.</li>
+<li><strong>Manual fallback:</strong> Authorized aggregate CSV using the prototype’s ATS stage snapshot shape, plus required production metadata and two-person reconciliation.</li>
+<li><strong>Retention:</strong> Proposed 30 days in restricted landing, 13 months as accepted aggregate snapshots, and 24 months for decision/audit references; final policy requires approval.</li>
+<li><strong>Permissions:</strong> Read-only service account; least-privilege ingestion role; no candidate-record write scope.</li>
+<li><strong>Downstream consumers:</strong> Normalization, funnel calculations, requisition risk context, weekly review, lineage, monitoring, and approved task handoff.</li>
+</ul>
+<h3 id="section-3-2-interview-calendar-aggregates">3.2 Interview calendar aggregates<a class="heading-anchor" href="#section-3-2-interview-calendar-aggregates" aria-label="Link to 3.2 Interview calendar aggregates">#</a></h3>
+<ul>
+<li><strong>System of record:</strong> Enterprise calendar or approved scheduling platform; the aggregate service is a derived source, not authoritative for event content.</li>
+<li><strong>Integration method:</strong> Privacy-preserving aggregation job or approved scheduling API; no raw event storage in Recruiting Control Room.</li>
+<li><strong>Required aggregate fields:</strong> <code>period_start</code>, <code>period_end</code>, <code>requisition_id</code>, <code>interviews_due</code>, <code>interviews_completed_on_time</code>, <code>panel_status</code>, <code>snapshot_as_of</code>; optional approved metrics may include aggregate cancellation or reschedule counts.</li>
+<li><strong>Field owner:</strong> Calendar/scheduling administrator for extraction; Recruiting Operations for SLA definitions.</li>
+<li><strong>Sync cadence:</strong> Every 1–4 hours, with a nightly summary.</li>
+<li><strong>Freshness SLA:</strong> Aggregate updates within 4 hours; nightly summary before the business-morning cutoff.</li>
+<li><strong>Idempotency/deduplication key:</strong> <code>source_tenant + requisition_id + period_start + period_end + snapshot_as_of</code>.</li>
+<li><strong>Validation rules:</strong> Non-negative integers; completed-on-time does not exceed due unless an approved definition explains it; requisition ID maps to the accepted ATS/plan record; panel status uses the approved enumeration; no attendee or free-text fields are present.</li>
+<li><strong>Failure and retry behavior:</strong> Mark calendar metrics unavailable, never as zero; retry the aggregate job with the same batch key; do not block unrelated sources, but prevent decisions that depend on missing calendar evidence.</li>
+<li><strong>Manual fallback:</strong> Aggregate CSV with the prototype’s interview calendar summary fields; source owner confirms privacy filtering and counts.</li>
+<li><strong>Retention:</strong> Proposed 30 days in landing and 13 months as aggregate snapshots; no raw calendar content retained.</li>
+<li><strong>Permissions:</strong> Read-only aggregate scope; no access to bodies, attachments, attendee identity, or private calendar content.</li>
+<li><strong>Downstream consumers:</strong> Interview SLA, panel-readiness context, exception scan, weekly review, and lineage.</li>
+</ul>
+<h3 id="section-3-3-requisition-and-workforce-plan">3.3 Requisition and workforce plan<a class="heading-anchor" href="#section-3-3-requisition-and-workforce-plan" aria-label="Link to 3.3 Requisition and workforce plan">#</a></h3>
+<ul>
+<li><strong>System of record:</strong> Approved workforce-planning system, HRIS position control, or finance-approved demand ledger.</li>
+<li><strong>Integration method:</strong> Read-only API or governed extract; approved-demand event webhook only if it carries high decision value and passes security review.</li>
+<li><strong>Required aggregate fields:</strong> <code>requisition_id</code>, <code>role</code>, <code>function</code>, <code>owner</code>, <code>open_date</code>, <code>target_hires</code>, <code>target_date</code>, <code>priority</code>, <code>approved_status</code>; production metadata adds <code>plan_version</code>, <code>effective_at</code>, and <code>source_updated_at</code>.</li>
+<li><strong>Field owner:</strong> Workforce-planning/HRIS owner for approved demand; TA leader for recruiting priority; Recruiting Operations for canonical mapping.</li>
+<li><strong>Sync cadence:</strong> Nightly and on approved-demand events.</li>
+<li><strong>Freshness SLA:</strong> Approved demand reflected by the next nightly snapshot; approved high-value event reflected within the agreed event SLA.</li>
+<li><strong>Idempotency/deduplication key:</strong> <code>source_tenant + requisition_id + plan_version + effective_at</code>.</li>
+<li><strong>Validation rules:</strong> Requisition ID maps to ATS or is explicitly marked pre-open; target hires is a positive integer; priority and approval status use controlled values; owner resolves to an active enterprise principal; target date is valid; canceled demand cannot remain active.</li>
+<li><strong>Failure and retry behavior:</strong> Hold the prior accepted plan, flag demand freshness, retry idempotently, and block new priorities based on unconfirmed demand.</li>
+<li><strong>Manual fallback:</strong> Authorized requisition-plan CSV plus documented plan version and approver.</li>
+<li><strong>Retention:</strong> Proposed 30 days in landing, 13 months in snapshots, and plan history per the workforce system’s records policy.</li>
+<li><strong>Permissions:</strong> Read-only plan scope; limited to approved demand and minimum role metadata.</li>
+<li><strong>Downstream consumers:</strong> Demand reconciliation, age/priority/risk context, forecast context, weekly review, and action ownership.</li>
+</ul>
+<h3 id="section-3-4-prior-period-benchmark">3.4 Prior-period benchmark<a class="heading-anchor" href="#section-3-4-prior-period-benchmark" aria-label="Link to 3.4 Prior-period benchmark">#</a></h3>
+<ul>
+<li><strong>System of record:</strong> Governed analytics store or previously accepted Recruiting Control Room snapshots.</li>
+<li><strong>Integration method:</strong> Versioned query or snapshot export using the same canonical stage model.</li>
+<li><strong>Required aggregate fields:</strong> <code>period_start</code>, <code>period_end</code>, <code>stage</code>, <code>stage_count</code>, <code>conversion_benchmark</code>; production metadata adds <code>benchmark_version</code>, <code>population_definition</code>, and <code>approved_at</code>.</li>
+<li><strong>Field owner:</strong> Recruiting Operations; TA leader approves operational thresholds and population changes.</li>
+<li><strong>Sync cadence:</strong> Nightly refresh when a reporting period closes; threshold and forecast review monthly.</li>
+<li><strong>Freshness SLA:</strong> Approved benchmark available before the next reporting period’s first weekly review.</li>
+<li><strong>Idempotency/deduplication key:</strong> <code>population_definition + period_start + period_end + stage + benchmark_version</code>.</li>
+<li><strong>Validation rules:</strong> Stage maps to the canonical taxonomy; counts and rates are non-negative; conversion is in the approved scale; population and period are complete; benchmark method and approver are recorded.</li>
+<li><strong>Failure and retry behavior:</strong> Mark comparison unavailable rather than substituting a stale or mismatched population; retry the versioned query; require approval for a method change.</li>
+<li><strong>Manual fallback:</strong> Authorized prior-period benchmark CSV with population and version metadata.</li>
+<li><strong>Retention:</strong> Proposed 25 months for comparable aggregate benchmarks; final duration subject to records policy.</li>
+<li><strong>Permissions:</strong> Read access to governed aggregates; threshold changes limited to approved administrators.</li>
+<li><strong>Downstream consumers:</strong> Period deltas, conversion comparison, bottleneck context, monthly calibration, and lineage.</li>
+</ul>
+<h3 id="section-3-5-external-task-management-system">3.5 External task-management system<a class="heading-anchor" href="#section-3-5-external-task-management-system" aria-label="Link to 3.5 External task-management system">#</a></h3>
+<ul>
+<li><strong>System of record:</strong> Enterprise task-management platform for action state after an approved handoff.</li>
+<li><strong>Integration method:</strong> Outbound API using a restricted service account; read-back API or webhook for task status. No handoff occurs without human approval.</li>
+<li><strong>Required aggregate fields:</strong> <code>decision_id</code>, <code>requisition_id</code>, <code>action_type</code>, <code>action_summary</code>, <code>owner_principal_id</code>, <code>due_at</code>, <code>priority</code>, <code>approval_actor_id</code>, <code>approval_at</code>, <code>source_snapshot_id</code>, <code>idempotency_key</code>, <code>status</code>, and returned <code>external_task_id</code>.</li>
+<li><strong>Field owner:</strong> TA leader owns priority/approval; action owner owns completion evidence; task-system administrator owns technical fields.</li>
+<li><strong>Sync cadence:</strong> On approved action; status read-back at least daily and before Friday closure.</li>
+<li><strong>Freshness SLA:</strong> Creation/update acknowledged within 5 minutes or marked failed; status reflected by the next daily reconciliation.</li>
+<li><strong>Idempotency/deduplication key:</strong> <code>environment + decision_id + action_type + approved_revision</code>.</li>
+<li><strong>Validation rules:</strong> Approval actor and time present; owner is active; due date is valid; snapshot exists and was accepted; no candidate-level data or raw email content; returned task ID is unique.</li>
+<li><strong>Failure and retry behavior:</strong> Retry with the same key using bounded backoff; after threshold, use the controlled manual register and escalate. Read back before any retry that could create a duplicate.</li>
+<li><strong>Manual fallback:</strong> Controlled action register containing the same fields; create the external task later with the original key and reconcile IDs.</li>
+<li><strong>Retention:</strong> Task content follows the task platform’s approved policy; Recruiting Control Room retains the decision-to-task audit reference for the proposed 24 months.</li>
+<li><strong>Permissions:</strong> Create/update only in the approved project or queue; no delete, workspace-admin, or unrelated-project scope.</li>
+<li><strong>Downstream consumers:</strong> Weekly commitments, Thursday exception check, Friday closure, audit, and operational reporting.</li>
+</ul>
+<h3 id="section-3-6-optional-notification-platform">3.6 Optional notification platform<a class="heading-anchor" href="#section-3-6-optional-notification-platform" aria-label="Link to 3.6 Optional notification platform">#</a></h3>
+<ul>
+<li><strong>System of record:</strong> Recruiting Control Room decision audit for why a notification was approved; notification platform for delivery status.</li>
+<li><strong>Integration method:</strong> Approved outbound API, queue, or webhook after human approval or a separately approved incident rule.</li>
+<li><strong>Required aggregate fields:</strong> <code>notification_event_id</code>, <code>decision_id</code>, <code>template_code</code>, <code>audience_group_id</code>, <code>channel</code>, <code>severity</code>, <code>approved_by</code>, <code>approved_at</code>, <code>source_snapshot_id</code>, <code>sent_at</code>, and <code>delivery_status</code>.</li>
+<li><strong>Field owner:</strong> TA leader owns business message and audience; IT/Security owns channel integration; Communications or Privacy reviews templates where required.</li>
+<li><strong>Sync cadence:</strong> Event-driven only for approved decisions or incidents; delivery reconciliation daily.</li>
+<li><strong>Freshness SLA:</strong> Delivery acknowledgement within 5 minutes or marked failed.</li>
+<li><strong>Idempotency/deduplication key:</strong> <code>environment + decision_id + template_code + approved_revision + audience_group_id</code>.</li>
+<li><strong>Validation rules:</strong> Approved template and audience; no candidate identifiers or free-form source content; valid snapshot and approval; permitted channel and severity.</li>
+<li><strong>Failure and retry behavior:</strong> Bounded retry with the same key; suppress duplicates; escalate rather than switching channels without approval.</li>
+<li><strong>Manual fallback:</strong> Named human sends the approved message through the approved channel and records the delivery reference.</li>
+<li><strong>Retention:</strong> Delivery metadata per platform policy; decision/approval reference under the proposed audit retention.</li>
+<li><strong>Permissions:</strong> Send only with approved templates and audience groups; no directory export, channel administration, or unrestricted direct messaging.</li>
+<li><strong>Downstream consumers:</strong> Operational awareness, incident communication, and delivery audit. Notifications do not create decisions or tasks.</li>
+</ul>
+<h2 id="section-4-cross-source-validation-and-snapshot-promotion">4. Cross-source validation and snapshot promotion<a class="heading-anchor" href="#section-4-cross-source-validation-and-snapshot-promotion" aria-label="Link to 4. Cross-source validation and snapshot promotion">#</a></h2>
+<p>A candidate snapshot is promotable only when:</p>
+<ol>
+<li>All required source contracts pass schema and privacy validation.</li>
+<li>Requisition IDs reconcile across ATS, approved demand, and applicable calendar aggregates.</li>
+<li>Period, timezone, stage taxonomy, and snapshot grain are consistent.</li>
+<li>Duplicate, rejected-row, and variance rates are below approved tolerances.</li>
+<li>Calculation and threshold versions are recorded.</li>
+<li>Source freshness is within SLA or a named human approves a visible limitation.</li>
+<li>Recruiting Operations records the promotion actor, time, and correlation ID.</li>
+</ol>
+<p>Partial batches may be stored for diagnosis but must not silently replace the accepted decision snapshot.</p>
+<h2 id="section-5-source-to-decision-lineage-example">5. Source-to-decision lineage example<a class="heading-anchor" href="#section-5-source-to-decision-lineage-example" aria-label="Link to 5. Source-to-decision lineage example">#</a></h2>
+<p><strong>Illustrative only; no live integration is implied.</strong></p>
+<ol>
+<li>ATS snapshot <code>ATS-2026-09-07-0600</code> reports 90 recruiter screens and 35 hiring-manager advances for requisition <code>SYN-2002</code>.</li>
+<li>Calendar aggregate <code>CAL-2026-09-07-0600</code> reports 16 interviews due and 5 completed on time.</li>
+<li>Approved plan <code>PLAN-2026-09-07-v3</code> reports four target hires, high priority, and an approved status.</li>
+<li>Canonical calculation version <code>RCR-CALC-1.0</code> derives 38.9% screen-to-hiring-manager conversion and 31.3% interview SLA.</li>
+<li>Threshold version <code>RCR-THRESH-1.0</code> marks SLA below 65% as high risk and proposes: “Restore interview feedback and scheduling SLA.”</li>
+<li>A recruiter validates the operating context; the TA leader approves the priority, owner, and due date.</li>
+<li>Task handoff key <code>prod:SYN-2002:restore-interview-sla:r1</code> creates one external task. The audit retains all source IDs, formulas, versions, approval, and returned task ID.</li>
+</ol>
+<p>The source metrics produce a review recommendation, not a candidate or hiring decision.</p>
+<h2 id="section-6-production-incident-example-failed-nightly-ats-reconciliation">6. Production incident example — failed nightly ATS reconciliation<a class="heading-anchor" href="#section-6-production-incident-example-failed-nightly-ats-reconciliation" aria-label="Link to 6. Production incident example — failed nightly ATS reconciliation">#</a></h2>
+<p><strong>Scenario:</strong> The nightly full extract returns 8% fewer open requisitions than the accepted incremental view and fails the approved variance tolerance.</p>
+<ol>
+<li>Monitoring marks the batch failed and opens an incident with source, batch ID, counts, variance, and last-known-good snapshot.</li>
+<li>Snapshot promotion stops; the workspace remains on the prior accepted snapshot and displays its actual <code>as of</code> time.</li>
+<li>New task and notification handoffs based on affected ATS data are frozen. Existing human-owned tasks remain intact.</li>
+<li>The ATS/HRIS administrator checks API pagination, permissions, deleted/closed requisitions, and schema change; IT/Security checks credential and service health.</li>
+<li>The job retries with the same batch ID and idempotency keys, then performs a complete source-total reconciliation.</li>
+<li>Recruiting Operations compares corrected ATS results with demand and calendar coverage and documents any downstream decisions affected.</li>
+<li>The ATS/HRIS administrator confirms source integrity; Recruiting Operations approves the recovered snapshot; the TA leader approves resuming affected operating decisions.</li>
+<li>The incident record captures root cause, duration, affected snapshots/tasks, corrective action, and a monitoring improvement.</li>
+</ol>
+<p>No source data is rewritten from Recruiting Control Room, no failed audit event is deleted, and no stale snapshot is presented as current.</p>
+<h2 id="section-7-contract-changes-and-unresolved-production-decisions">7. Contract changes and unresolved production decisions<a class="heading-anchor" href="#section-7-contract-changes-and-unresolved-production-decisions" aria-label="Link to 7. Contract changes and unresolved production decisions">#</a></h2>
+<ul>
+<li>Backward-compatible optional fields may use a minor contract version; required-field, meaning, grain, or enum changes require a major version and migration plan.</li>
+<li>Producers and consumers should test both current and next contract versions before cutover.</li>
+<li>Unknown fields may be retained in restricted staging for diagnosis but are not promoted automatically.</li>
+<li>Final decisions remain open for vendor APIs, regional residency, enterprise timezone, stage taxonomy, tolerance thresholds, SLA cutoff, retention, encryption/key management, incident severity, task platform, notification channel, and production support ownership.</li>
+</ul>
+        </article>
+      </div>
+    </main>
+    <footer class="doc-footer">
+      <p>Recruiting Control Room · Working synthetic prototype</p>
+      <a href="../../index.html#production">Return to production design</a>
+    </footer>
+  </body>
+</html>

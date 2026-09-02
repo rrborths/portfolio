@@ -1,0 +1,4 @@
+period_start,period_end,requisition_id,role,function,owner,applied_count,recruiter_screen_count,hiring_manager_count,interview_count,offer_count,hired_count
+2025-06-01,2025-06-28,SYN-2001,Principal Platform Engineer,Engineering,Morgan Lee,260,130,52,26,8,4
+2025-06-01,2025-06-28,SYN-2002,Enterprise Account Executive,Sales,Casey Patel,180,90,35,12,3,1
+2025-06-01,2025-06-28,SYN-2003,Senior Product Manager,Product,Jordan Kim,140,70,32,16,5,2

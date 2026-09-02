@@ -1,0 +1,4 @@
+requisition_id,role,function,owner,open_date,target_hires,target_date,priority,approved_status
+SYN-2001,Principal Platform Engineer,Engineering,Morgan Lee,2025-05-01,6,2025-08-15,High,Approved
+SYN-2002,Enterprise Account Executive,Sales,Casey Patel,2025-04-14,4,2025-07-31,High,Approved
+SYN-2003,Senior Product Manager,Product,Jordan Kim,2025-05-12,3,2025-08-29,Medium,Approved

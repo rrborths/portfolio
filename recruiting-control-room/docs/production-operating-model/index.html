@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#081b41" />
+    <meta name="description" content="A proposed operating model for moving the Recruiting Control Room from a local synthetic prototype to a governed production implementation." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23081b41'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial' font-size='22' font-weight='700' fill='white'%3ERC%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="../documentation.css" />
+    <title>Production Operating Model | Recruiting Control Room</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#document-content">Skip to document</a>
+    <header class="doc-header">
+      <a class="brand" href="../../index.html" aria-label="Recruiting Control Room home"><span class="brand-mark" aria-hidden="true">RC</span><span>Recruiting Control Room</span></a>
+      <a class="back-link" href="../../index.html#production">Back to case study</a>
+    </header>
+    <nav class="document-nav" aria-label="Production documentation">
+      <a href="../production-operating-model/index.html" aria-current="page">Production Operating Model</a>
+<a href="../weekly-recruiting-review-runbook/index.html">Weekly Recruiting Review Runbook</a>
+<a href="../integration-data-contract/index.html">Integration and Data Contract</a>
+    </nav>
+    <main id="document-content">
+      <section class="doc-hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Production design</p>
+          <h1 id="page-title">Production Operating Model</h1>
+          <div class="status-badge"><span aria-hidden="true"></span> Proposed future state</div>
+        </div>
+        <p class="hero-description">A proposed operating model for moving the Recruiting Control Room from a local synthetic prototype to a governed production implementation.</p>
+      </section>
+      <div class="document-layout">
+        <aside class="toc" aria-labelledby="toc-title">
+          <div>
+            <p id="toc-title">On this page</p>
+            <ol><li><a href="#section-1-business-purpose-and-intended-users">1. Business purpose and intended users</a></li>
+<li><a href="#section-2-systems-of-record">2. Systems of record</a></li>
+<li><a href="#section-3-proposed-hybrid-integration-architecture">3. Proposed hybrid integration architecture</a></li>
+<li><a href="#section-4-operating-cadence">4. Operating cadence</a></li>
+<li><a href="#section-5-data-to-decision-flow-and-approval-boundaries">5. Data-to-decision flow and approval boundaries</a></li>
+<li><a href="#section-6-access-and-least-privilege">6. Access and least privilege</a></li>
+<li><a href="#section-7-audit-retention-monitoring-and-recovery">7. Audit, retention, monitoring, and recovery</a></li>
+<li><a href="#section-8-manual-csv-fallback">8. Manual CSV fallback</a></li>
+<li><a href="#section-9-recommended-90-day-implementation-plan">9. Recommended 90-day implementation plan</a></li>
+<li><a href="#section-10-assumptions-dependencies-and-open-decisions">10. Assumptions, dependencies, and open decisions</a></li></ol>
+            <a class="download-link" href="../downloads/production-operating-model.md" download>Download Markdown</a>
+          </div>
+        </aside>
+        <article class="document-body">
+          <blockquote><strong>Status: proposed future state.</strong> This document describes a recommended path from the working local, synthetic prototype to a production implementation. It does not claim that production integrations, automated syncs, external writes, or production controls exist today.</blockquote>
+<p><strong>Interview summary:</strong> I would productionize the prototype as a snapshot-based decision system: read-only incremental feeds keep data current, nightly reconciliation creates the trusted operating view, and humans retain authority over priorities and every external action.</p>
+<h2 id="section-1-business-purpose-and-intended-users">1. Business purpose and intended users<a class="heading-anchor" href="#section-1-business-purpose-and-intended-users" aria-label="Link to 1. Business purpose and intended users">#</a></h2>
+<p>Recruiting Control Room would give Talent Acquisition (TA) leaders a stable, traceable decision workspace for answering four questions: What changed? Where is delivery at risk? Which decision is needed? Who owns the next action?</p>
+<p>The intended users are:</p>
+<ul>
+<li><strong>TA leader:</strong> process owner and final prioritization authority.</li>
+<li><strong>Recruiting Operations:</strong> data steward, control owner, and weekly meeting operator.</li>
+<li><strong>Recruiter:</strong> requisition expert and approved-action owner.</li>
+<li><strong>Hiring manager:</strong> owner of role context, hiring-team commitments, and business decisions.</li>
+<li><strong>ATS/HRIS administrator:</strong> source-system and integration owner.</li>
+<li><strong>IT/Security:</strong> owner of identity, permissions, credentials, monitoring, and incident support.</li>
+</ul>
+<p>The workspace should support operating decisions; it should not rank candidates, make selection decisions, or replace recruiter and hiring-manager judgment.</p>
+<h2 id="section-2-systems-of-record">2. Systems of record<a class="heading-anchor" href="#section-2-systems-of-record" aria-label="Link to 2. Systems of record">#</a></h2>
+<div class="doc-table-scroll" role="region" tabindex="0" aria-label="Domain, Proposed system of record, Recruiting Control Room responsibility table"><table><thead><tr><th scope="col">Domain</th><th scope="col">Proposed system of record</th><th scope="col">Recruiting Control Room responsibility</th></tr></thead><tbody><tr><td>Requisitions and aggregate recruiting stages</td><td>ATS</td><td>Read and normalize approved requisition metadata and aggregate stage counts. Never become the authoritative source for candidate status.</td></tr><tr><td>Interview activity</td><td>Enterprise calendar or approved scheduling platform</td><td>Ingest aggregate completion and timeliness signals only; exclude attendees, subjects, bodies, and candidate-level records.</td></tr><tr><td>Approved demand and workforce plan</td><td>HRIS, workforce-planning system, or finance-approved demand ledger</td><td>Read approved headcount, priority, target dates, and ownership.</td></tr><tr><td>Prior-period benchmark</td><td>Governed analytics store or approved historical snapshot</td><td>Supply comparison baselines using the same stage definitions and reporting grain.</td></tr><tr><td>Follow-up work</td><td>Enterprise task-management system</td><td>Receive only human-approved action handoffs; remain the system of record for task state.</td></tr><tr><td>Notifications</td><td>Optional approved notification platform</td><td>Deliver approved operational alerts; never act as the decision or audit system of record.</td></tr></tbody></table></div>
+<h2 id="section-3-proposed-hybrid-integration-architecture">3. Proposed hybrid integration architecture<a class="heading-anchor" href="#section-3-proposed-hybrid-integration-architecture" aria-label="Link to 3. Proposed hybrid integration architecture">#</a></h2>
+<p>The recommended architecture combines scheduled API syncs, nightly reconciliations, an aggregate snapshot layer, and a controlled manual CSV fallback:</p>
+<ol>
+<li><strong>Source adapters</strong> read approved aggregate fields from the ATS, calendar, workforce plan, and benchmark store.</li>
+<li><strong>Landing and validation</strong> preserve source timestamps, schema version, row counts, and validation results in a restricted staging area.</li>
+<li><strong>Normalization</strong> maps source fields and stage names to a versioned canonical contract.</li>
+<li><strong>Reconciliation</strong> compares incremental results with source totals and the prior accepted snapshot.</li>
+<li><strong>Snapshot promotion</strong> makes a complete, reconciled, immutable snapshot available to the workspace.</li>
+<li><strong>Calculation and exception logic</strong> derives funnel conversion, period change, interview SLA, delivery risk, forecast context, and review recommendations.</li>
+<li><strong>Human review</strong> confirms priority, context, owner, and due date.</li>
+<li><strong>Action handoff</strong> creates or updates an external task only after explicit human approval; optional notifications follow the same boundary.</li>
+</ol>
+<p>The core decision workspace should use <strong>stable, reconciled snapshots</strong>, not a continuously changing event stream. Real-time processing should be reserved for genuine high-value events—for example, an approved requisition opening or cancellation, a material integration incident, or another event whose delay would create a clear business risk. Routine stage movement and calendar activity do not require real-time processing for a weekly operating rhythm.</p>
+<h2 id="section-4-operating-cadence">4. Operating cadence<a class="heading-anchor" href="#section-4-operating-cadence" aria-label="Link to 4. Operating cadence">#</a></h2>
+<div class="doc-table-scroll" role="region" tabindex="0" aria-label="Control or activity, Recommended cadence, Decision use table"><table><thead><tr><th scope="col">Control or activity</th><th scope="col">Recommended cadence</th><th scope="col">Decision use</th></tr></thead><tbody><tr><td>ATS/API incremental sync</td><td>Every 1–4 hours</td><td>Maintain a current working view without destabilizing the decision snapshot.</td></tr><tr><td>Full ATS reconciliation</td><td>Nightly</td><td>Confirm totals, close gaps, detect deletes/closures, and promote the next trusted snapshot.</td></tr><tr><td>Calendar aggregates</td><td>Every 1–4 hours, with nightly summary</td><td>Monitor interview-capacity and completion signals without ingesting event content.</td></tr><tr><td>Requisition/workforce plan</td><td>Nightly and on approved-demand events</td><td>Keep approved demand, priorities, owners, and target dates aligned.</td></tr><tr><td>Agentic read-only exception scan</td><td>Each business morning</td><td>Identify stale data, threshold breaches, and conflicts for human review; take no action.</td></tr><tr><td>Human TA operating review</td><td>Weekly</td><td>Set priorities, assign actions, and confirm commitments.</td></tr><tr><td>Threshold and forecast review</td><td>Monthly</td><td>Recalibrate rules, benchmarks, and forecast assumptions with evidence.</td></tr><tr><td>Access, retention, and governance review</td><td>Quarterly</td><td>Revalidate need-to-know access, service accounts, retention, controls, and open risks.</td></tr></tbody></table></div>
+<h2 id="section-5-data-to-decision-flow-and-approval-boundaries">5. Data-to-decision flow and approval boundaries<a class="heading-anchor" href="#section-5-data-to-decision-flow-and-approval-boundaries" aria-label="Link to 5. Data-to-decision flow and approval boundaries">#</a></h2>
+<h3 id="section-ingestion-and-normalization">Ingestion and normalization<a class="heading-anchor" href="#section-ingestion-and-normalization" aria-label="Link to Ingestion and normalization">#</a></h3>
+<ul>
+<li>Integrations use read-only service accounts wherever possible.</li>
+<li>Every batch carries a source-system identifier, extraction time, reporting period, schema version, and idempotency key.</li>
+<li>Validation rejects missing keys, invalid dates, negative counts, impossible stage sequences, duplicate records, and unapproved demand states.</li>
+<li>A failed source does not silently produce a partial decision snapshot.</li>
+</ul>
+<h3 id="section-calculation-and-review">Calculation and review<a class="heading-anchor" href="#section-calculation-and-review" aria-label="Link to Calculation and review">#</a></h3>
+<ul>
+<li>Versioned rules calculate aggregate stage totals, transition conversion, period deltas, interview SLA, requisition age, threshold-based risk, and forecast context.</li>
+<li>Each displayed recommendation retains lineage to the accepted source snapshot, fields, calculation version, and threshold version.</li>
+<li>The read-only exception scan may propose review items; it may not change ATS records, assign people, contact candidates, or create tasks.</li>
+</ul>
+<h3 id="section-human-approval-and-action-handoff">Human approval and action handoff<a class="heading-anchor" href="#section-human-approval-and-action-handoff" aria-label="Link to Human approval and action handoff">#</a></h3>
+<ul>
+<li>The <strong>TA leader</strong> owns final prioritization and any decision that changes the weekly operating plan.</li>
+<li><strong>Recruiting Operations</strong> confirms data readiness and operates the review.</li>
+<li>The <strong>recruiter</strong> validates role context before accepting an action.</li>
+<li>The <strong>hiring manager</strong> owns business commitments and role decisions.</li>
+<li>External task creation, notification, or source-system change requires a named human approver and a recorded approval event.</li>
+<li>Candidate evaluation, candidate communication, disposition, offer, and hiring decisions remain outside automated scope.</li>
+</ul>
+<h2 id="section-6-access-and-least-privilege">6. Access and least privilege<a class="heading-anchor" href="#section-6-access-and-least-privilege" aria-label="Link to 6. Access and least privilege">#</a></h2>
+<p>Recommended access profiles:</p>
+<ul>
+<li><strong>Viewer:</strong> read accepted aggregate snapshots and approved decisions.</li>
+<li><strong>Recruiter:</strong> viewer access plus update rights for assigned operational notes and tasks, not integration configuration.</li>
+<li><strong>Recruiting Operations:</strong> manage mappings, validate snapshots, operate reviews, and administer calculation thresholds through change control.</li>
+<li><strong>TA leader:</strong> approve priorities, action handoffs, and threshold changes.</li>
+<li><strong>ATS/HRIS administrator:</strong> manage source credentials and adapters; no default authority over TA decisions.</li>
+<li><strong>IT/Security:</strong> manage identity, secrets, logs, monitoring, and incident response; no default access to recruiting content beyond operational need.</li>
+</ul>
+<p>Use single sign-on, role groups, time-bounded elevated access, separate service accounts, secrets management, environment separation, and quarterly access certification. No shared credentials should be permitted.</p>
+<h2 id="section-7-audit-retention-monitoring-and-recovery">7. Audit, retention, monitoring, and recovery<a class="heading-anchor" href="#section-7-audit-retention-monitoring-and-recovery" aria-label="Link to 7. Audit, retention, monitoring, and recovery">#</a></h2>
+<h3 id="section-audit-trail">Audit trail<a class="heading-anchor" href="#section-audit-trail" aria-label="Link to Audit trail">#</a></h3>
+<p>Record source batch, validation result, snapshot promotion, calculation version, threshold version, recommendation, human approval or rejection, task handoff, actor, timestamp, and correlation ID. Audit events should be append-only and searchable without exposing candidate-level data.</p>
+<h3 id="section-proposed-retention-defaults">Proposed retention defaults<a class="heading-anchor" href="#section-proposed-retention-defaults" aria-label="Link to Proposed retention defaults">#</a></h3>
+<ul>
+<li>Raw aggregate landing files: 30 days.</li>
+<li>Validation and integration logs: 90 days.</li>
+<li>Accepted aggregate snapshots: 13 months for annual comparison.</li>
+<li>Decision and approval audit: 24 months.</li>
+<li>External task and notification records: governed by their systems of record.</li>
+</ul>
+<p>Legal, Privacy, Security, and records-management owners must approve final periods before launch.</p>
+<h3 id="section-monitoring">Monitoring<a class="heading-anchor" href="#section-monitoring" aria-label="Link to Monitoring">#</a></h3>
+<p>Monitor source freshness, batch completeness, schema drift, duplicate rate, rejected-row rate, reconciliation variance, snapshot promotion, calculation failures, action-handoff failures, permission changes, and unusual access. Alerts should name the affected source, last-known-good snapshot, business impact, and owner.</p>
+<h3 id="section-failure-recovery">Failure recovery<a class="heading-anchor" href="#section-failure-recovery" aria-label="Link to Failure recovery">#</a></h3>
+<p>If an incremental or nightly job fails, retain the last-known-good snapshot, label it with its actual <code>as of</code> time, and suppress promotion of incomplete data. Retry with the same idempotency key, reconcile against source totals, and require Recruiting Operations to approve the recovered snapshot when material variance or schema change occurred. Rollback means repointing the decision workspace to the last accepted immutable snapshot; it does not alter the source system.</p>
+<h2 id="section-8-manual-csv-fallback">8. Manual CSV fallback<a class="heading-anchor" href="#section-8-manual-csv-fallback" aria-label="Link to 8. Manual CSV fallback">#</a></h2>
+<p>The local prototype’s four aggregate contracts provide the proposed fallback shape: ATS stage snapshot, interview calendar summary, requisition plan, and prior-period benchmark.</p>
+<p>Production fallback should require:</p>
+<ol>
+<li>Export by an authorized source-system owner.</li>
+<li>Aggregate-only files with the approved schema and no candidate-level personal data.</li>
+<li>Malware scan, schema validation, row-count reconciliation, and source-period confirmation.</li>
+<li>Two-person review by Recruiting Operations and the applicable source owner.</li>
+<li>A uniquely versioned fallback batch and full audit record.</li>
+<li>Promotion only after all four required sources are complete or an approved exception documents the missing source and resulting limitations.</li>
+</ol>
+<p>Fallback files should enter the same normalization, validation, calculation, approval, and retention controls as API-sourced data.</p>
+<h2 id="section-9-recommended-90-day-implementation-plan">9. Recommended 90-day implementation plan<a class="heading-anchor" href="#section-9-recommended-90-day-implementation-plan" aria-label="Link to 9. Recommended 90-day implementation plan">#</a></h2>
+<h3 id="section-days-1-30-decide-and-control">Days 1–30 — decide and control<a class="heading-anchor" href="#section-days-1-30-decide-and-control" aria-label="Link to Days 1–30 — decide and control">#</a></h3>
+<ul>
+<li>Confirm business owner, pilot group, systems of record, source owners, and success measures.</li>
+<li>Approve the canonical aggregate contract, stage taxonomy, identity model, retention, and candidate-data exclusion.</li>
+<li>Complete Security, Privacy, Legal, and architecture reviews.</li>
+<li>Establish non-production environments, service accounts, secrets, monitoring, and incident ownership.</li>
+<li>Run the manual CSV path with synthetic data and signed reconciliation evidence.</li>
+</ul>
+<p><strong>Exit gate:</strong> approved design and controls; no production data or external writes required.</p>
+<h3 id="section-days-31-60-integrate-and-reconcile">Days 31–60 — integrate and reconcile<a class="heading-anchor" href="#section-days-31-60-integrate-and-reconcile" aria-label="Link to Days 31–60 — integrate and reconcile">#</a></h3>
+<ul>
+<li>Build read-only ATS incremental sync and nightly full reconciliation.</li>
+<li>Add aggregate calendar, approved-demand, and benchmark ingestion.</li>
+<li>Implement canonical normalization, immutable snapshots, lineage, thresholds, and freshness indicators.</li>
+<li>Test duplicates, late-arriving data, schema drift, source outages, and last-known-good recovery.</li>
+</ul>
+<p><strong>Exit gate:</strong> source-owner reconciliation and control evidence in a restricted pilot environment.</p>
+<h3 id="section-days-61-90-pilot-and-operationalize">Days 61–90 — pilot and operationalize<a class="heading-anchor" href="#section-days-61-90-pilot-and-operationalize" aria-label="Link to Days 61–90 — pilot and operationalize">#</a></h3>
+<ul>
+<li>Run two to four weekly reviews with a limited TA pilot using read-only recommendations.</li>
+<li>Calibrate thresholds and forecasts; document accepted false positives and misses.</li>
+<li>Enable human-approved task handoff only after audit and rollback tests pass.</li>
+<li>Train roles, rehearse the failed-reconciliation incident, certify access, and complete production-readiness review.</li>
+</ul>
+<p><strong>Exit gate:</strong> named business and technical owners approve go-live scope, operating runbook, control evidence, and rollback readiness.</p>
+<h2 id="section-10-assumptions-dependencies-and-open-decisions">10. Assumptions, dependencies, and open decisions<a class="heading-anchor" href="#section-10-assumptions-dependencies-and-open-decisions" aria-label="Link to 10. Assumptions, dependencies, and open decisions">#</a></h2>
+<h3 id="section-assumptions">Assumptions<a class="heading-anchor" href="#section-assumptions" aria-label="Link to Assumptions">#</a></h3>
+<ul>
+<li>Source systems expose approved aggregate data with stable identifiers and timestamps.</li>
+<li>The ATS remains authoritative for requisition and stage state.</li>
+<li>Candidate-level personal data is not needed for the proposed operating decisions.</li>
+<li>Human review remains the final control for priorities, ownership, and action handoffs.</li>
+</ul>
+<h3 id="section-dependencies">Dependencies<a class="heading-anchor" href="#section-dependencies" aria-label="Link to Dependencies">#</a></h3>
+<ul>
+<li>Source API or governed export access; enterprise identity and secrets management.</li>
+<li>Named source owners and a common stage taxonomy.</li>
+<li>Approved task-management and optional notification integrations.</li>
+<li>Security, Privacy, Legal, records-management, and accessibility review.</li>
+<li>Monitoring, incident management, and support capacity.</li>
+</ul>
+<h3 id="section-open-decisions">Open decisions<a class="heading-anchor" href="#section-open-decisions" aria-label="Link to Open decisions">#</a></h3>
+<ul>
+<li>Exact source products, API limits, and regional data-residency constraints.</li>
+<li>Enterprise reporting timezone and business-day cutoff.</li>
+<li>Final freshness SLAs, retention periods, and reconciliation tolerances.</li>
+<li>Threshold owners, forecast method, and change-approval process.</li>
+<li>Pilot population, success measures, support hours, and go-live authority.</li>
+<li>Which events, if any, justify real-time processing.</li>
+</ul>
+        </article>
+      </div>
+    </main>
+    <footer class="doc-footer">
+      <p>Recruiting Control Room · Working synthetic prototype</p>
+      <a href="../../index.html#production">Return to production design</a>
+    </footer>
+  </body>
+</html>

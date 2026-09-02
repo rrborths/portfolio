@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#081b41" />
+    <meta name="description" content="A proposed weekly recruiting review runbook covering readiness, decisions, task handoffs, exception checks, closure, and recovery." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23081b41'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial' font-size='22' font-weight='700' fill='white'%3ERC%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="../documentation.css" />
+    <title>Weekly Recruiting Review Runbook | Recruiting Control Room</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#document-content">Skip to document</a>
+    <header class="doc-header">
+      <a class="brand" href="../../index.html" aria-label="Recruiting Control Room home"><span class="brand-mark" aria-hidden="true">RC</span><span>Recruiting Control Room</span></a>
+      <a class="back-link" href="../../index.html#production">Back to case study</a>
+    </header>
+    <nav class="document-nav" aria-label="Production documentation">
+      <a href="../production-operating-model/index.html">Production Operating Model</a>
+<a href="../weekly-recruiting-review-runbook/index.html" aria-current="page">Weekly Recruiting Review Runbook</a>
+<a href="../integration-data-contract/index.html">Integration and Data Contract</a>
+    </nav>
+    <main id="document-content">
+      <section class="doc-hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Operating runbook</p>
+          <h1 id="page-title">Weekly Recruiting Review Runbook</h1>
+          <div class="status-badge"><span aria-hidden="true"></span> Proposed future state</div>
+        </div>
+        <p class="hero-description">A proposed weekly recruiting review runbook covering readiness, decisions, task handoffs, exception checks, closure, and recovery.</p>
+      </section>
+      <div class="document-layout">
+        <aside class="toc" aria-labelledby="toc-title">
+          <div>
+            <p id="toc-title">On this page</p>
+            <ol><li><a href="#section-runbook-control">Runbook control</a></li>
+<li><a href="#section-roles">Roles</a></li>
+<li><a href="#section-prerequisites">Prerequisites</a></li>
+<li><a href="#section-weekly-operating-sequence">Weekly operating sequence</a></li>
+<li><a href="#section-verification-checklist">Verification checklist</a></li>
+<li><a href="#section-troubleshooting">Troubleshooting</a></li>
+<li><a href="#section-rollback-procedure">Rollback procedure</a></li>
+<li><a href="#section-escalation-matrix">Escalation matrix</a></li>
+<li><a href="#section-run-history">Run history</a></li></ol>
+            <a class="download-link" href="../downloads/weekly-recruiting-review-runbook.md" download>Download Markdown</a>
+          </div>
+        </aside>
+        <article class="document-body">
+          <blockquote><strong>Status: proposed future state.</strong> This runbook describes how a production implementation could operate after approval and integration. It does not represent a currently deployed process, live data feed, or production task integration.</blockquote>
+<p><strong>Interview summary:</strong> The operating rhythm is Monday readiness and prioritization, human-approved task assignment, Thursday exception management, and Friday evidence-based closure—with a last-known-good snapshot and explicit escalation path when data is not trustworthy.</p>
+<h2 id="section-runbook-control">Runbook control<a class="heading-anchor" href="#section-runbook-control" aria-label="Link to Runbook control">#</a></h2>
+<ul>
+<li><strong>Owner:</strong> TA leader (process owner); Recruiting Operations (run operator)</li>
+<li><strong>Frequency:</strong> Weekly, with Monday review, Thursday exception check, and Friday closure</li>
+<li><strong>Purpose:</strong> Convert a trusted aggregate recruiting snapshot into explicit priorities, named human-owned actions, and traceable weekly commitments.</li>
+<li><strong>Scope:</strong> Requisition delivery, aggregate funnel health, interview operating signals, approved demand, and follow-up tasks. Candidate evaluation and candidate communication are out of scope.</li>
+</ul>
+<h2 id="section-roles">Roles<a class="heading-anchor" href="#section-roles" aria-label="Link to Roles">#</a></h2>
+<div class="doc-table-scroll" role="region" tabindex="0" aria-label="Role, Accountability table"><table><thead><tr><th scope="col">Role</th><th scope="col">Accountability</th></tr></thead><tbody><tr><td>TA leader</td><td>Process owner and final prioritization; approves action handoffs and material exceptions.</td></tr><tr><td>Recruiting Operations</td><td>Data steward and meeting operator; verifies readiness, records decisions, and maintains run history.</td></tr><tr><td>Recruiter</td><td>Action owner and requisition expert; validates context and executes approved work.</td></tr><tr><td>Hiring manager</td><td>Provides role context, makes commitments, and owns hiring-team decisions.</td></tr><tr><td>ATS/HRIS administrator</td><td>Owns source-system configuration, data access, and integration support.</td></tr><tr><td>IT/Security</td><td>Owns identity, permissions, credentials, monitoring, and incident support.</td></tr></tbody></table></div>
+<h2 id="section-prerequisites">Prerequisites<a class="heading-anchor" href="#section-prerequisites" aria-label="Link to Prerequisites">#</a></h2>
+<ul>
+<li>The nightly ATS reconciliation completed or a documented exception identifies the last-known-good snapshot.</li>
+<li>Calendar aggregates, requisition/workforce plan, and prior-period benchmark meet their freshness SLAs.</li>
+<li>The workspace displays source version, reporting period, snapshot <code>as of</code> time, validation state, and comparison availability.</li>
+<li>Role, stage, owner, priority, and target-date mappings are approved.</li>
+<li>Calculation and threshold versions are known and unchanged, or an approved change record is attached.</li>
+<li>Participants have least-privilege access; task and notification handoffs are disabled unless explicitly approved.</li>
+<li>Previous-week actions and unresolved incidents are available.</li>
+</ul>
+<h2 id="section-weekly-operating-sequence">Weekly operating sequence<a class="heading-anchor" href="#section-weekly-operating-sequence" aria-label="Link to Weekly operating sequence">#</a></h2>
+<h3 id="section-step-1-monday-data-readiness-check">Step 1 — Monday data-readiness check<a class="heading-anchor" href="#section-step-1-monday-data-readiness-check" aria-label="Link to Step 1 — Monday data-readiness check">#</a></h3>
+<p><strong>Owner:</strong> Recruiting Operations; ATS/HRIS administrator supports source issues.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Confirm the reporting period, enterprise timezone, snapshot <code>as of</code> time, and source versions.</li>
+<li>Verify nightly ATS reconciliation, source freshness, row counts, rejected records, duplicates, schema drift, and material variance.</li>
+<li>Confirm all approved requisitions have corresponding plan records and calendar aggregates where applicable.</li>
+<li>Compare the accepted snapshot with the last-known-good snapshot and the source totals.</li>
+<li>Mark the workspace <strong>Ready</strong>, <strong>Ready with limitation</strong>, or <strong>Not ready</strong>; record the reason and approver.</li>
+</ol>
+<p><strong>Expected result:</strong> One complete, reconciled snapshot is approved for Monday review, with any limitation visible and bounded.</p>
+<p><strong>Failure handling:</strong> Do not promote partial data. Keep the last-known-good snapshot active, label its true age, open an integration incident, and notify the TA leader. A review may proceed only if the TA leader accepts the documented limitation; no task handoff may rely on an unavailable source.</p>
+<h3 id="section-step-2-monday-ta-decision-review">Step 2 — Monday TA decision review<a class="heading-anchor" href="#section-step-2-monday-ta-decision-review" aria-label="Link to Step 2 — Monday TA decision review">#</a></h3>
+<p><strong>Owner:</strong> TA leader; Recruiting Operations facilitates.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Review changes in approved demand, funnel stages, conversion, period deltas, interview SLA, aging, and forecast context.</li>
+<li>Inspect each exception’s source lineage, calculation, threshold, and proposed recommendation.</li>
+<li>Ask the recruiter and hiring manager for business context not present in aggregate data.</li>
+<li>Choose one disposition for each item: <strong>Prioritize</strong>, <strong>Monitor</strong>, <strong>Return for data correction</strong>, or <strong>Close with rationale</strong>.</li>
+<li>Confirm action, owner, due date, success evidence, and escalation point for every prioritized item.</li>
+</ol>
+<p><strong>Expected result:</strong> A short, ranked decision list with explicit human rationale and no unowned priority.</p>
+<p><strong>Failure handling:</strong> If evidence conflicts or the decision owner is absent, mark the item <strong>Decision pending</strong>, assign a fact-finding owner and deadline, and do not create an execution task. Candidate decisions and communications remain outside the workspace.</p>
+<h3 id="section-step-3-task-assignment-procedure">Step 3 — task-assignment procedure<a class="heading-anchor" href="#section-step-3-task-assignment-procedure" aria-label="Link to Step 3 — task-assignment procedure">#</a></h3>
+<p><strong>Owner:</strong> Recruiting Operations creates the handoff; TA leader approves; recruiter or hiring manager accepts ownership.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Convert only an approved decision into a task payload.</li>
+<li>Include decision ID, requisition ID, action summary, named owner, due date, priority, source snapshot ID, approval actor and timestamp, and completion evidence.</li>
+<li>Search the external task system for the idempotency key before creation.</li>
+<li>Create or update one task; capture the external task ID and returned status.</li>
+<li>Ask the owner to confirm acceptance; keep decision state and task state linked but distinct.</li>
+</ol>
+<p><strong>Expected result:</strong> One traceable task per approved action, with no duplicate and a confirmed owner.</p>
+<p><strong>Failure handling:</strong> If the external task system is unavailable, record the approved action in the controlled fallback register, assign it verbally in the meeting, and retry later with the same idempotency key. Do not send an unapproved notification or create a second task.</p>
+<h3 id="section-step-4-thursday-exception-check">Step 4 — Thursday exception check<a class="heading-anchor" href="#section-step-4-thursday-exception-check" aria-label="Link to Step 4 — Thursday exception check">#</a></h3>
+<p><strong>Owner:</strong> Recruiting Operations; recruiters update their actions; TA leader resolves material exceptions.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Review source freshness and any incident opened since Monday.</li>
+<li>Check overdue, unaccepted, blocked, or materially changed actions.</li>
+<li>Re-examine high-risk requisitions and approved-demand changes using the latest reconciled snapshot.</li>
+<li>Escalate only items meeting the agreed threshold; record changed context and decision.</li>
+<li>Confirm that no automated recommendation changed an owner, task, ATS record, or candidate state without human approval.</li>
+</ol>
+<p><strong>Expected result:</strong> Blocked actions are corrected or escalated before week-end, and unchanged items stay out of the meeting flow.</p>
+<p><strong>Failure handling:</strong> If data is stale or materially inconsistent, freeze new handoffs for the affected source, retain existing task ownership, and invoke the incident or rollback procedure.</p>
+<h3 id="section-step-5-friday-closure-and-rollover">Step 5 — Friday closure and rollover<a class="heading-anchor" href="#section-step-5-friday-closure-and-rollover" aria-label="Link to Step 5 — Friday closure and rollover">#</a></h3>
+<p><strong>Owner:</strong> Recruiting Operations; action owners supply evidence; TA leader approves rollover priorities.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Reconcile decision records with external task status and owner-provided evidence.</li>
+<li>Mark each action <strong>Completed</strong>, <strong>Rollover</strong>, <strong>Canceled</strong>, or <strong>Blocked</strong>; preserve rationale and actor.</li>
+<li>Close resolved incidents and document any residual limitation.</li>
+<li>Carry forward only unresolved decisions that still matter; do not duplicate their tasks.</li>
+<li>Publish the internal weekly summary and update run history.</li>
+</ol>
+<p><strong>Expected result:</strong> The week closes with an auditable outcome for every priority and a clean starting queue for Monday.</p>
+<p><strong>Failure handling:</strong> Missing evidence prevents closure. Keep the item open, assign an evidence owner and deadline, and record the unresolved dependency. If task-state reconciliation fails, use the last confirmed external status and mark it stale.</p>
+<h2 id="section-verification-checklist">Verification checklist<a class="heading-anchor" href="#section-verification-checklist" aria-label="Link to Verification checklist">#</a></h2>
+<ul>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Reporting period, timezone, source versions, and <code>as of</code> time are visible.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Nightly ATS reconciliation is complete or an accepted limitation is recorded.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Calendar, approved-demand, and benchmark freshness meet the agreed SLA.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Requisition, stage, owner, and target-date mappings passed validation.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Every displayed recommendation has source and calculation lineage.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Every prioritized item has human rationale, owner, due date, and success evidence.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Every external task has an approval record and idempotency key.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>No duplicate task, unauthorized notification, source-system write, or candidate action occurred.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Thursday exceptions and Friday outcomes are recorded.</li>
+<li class="check-item"><span class="check-box" aria-hidden="true"></span>Run history includes status, limitations, incidents, and final approver.</li>
+</ul>
+<h2 id="section-troubleshooting">Troubleshooting<a class="heading-anchor" href="#section-troubleshooting" aria-label="Link to Troubleshooting">#</a></h2>
+<div class="doc-table-scroll" role="region" tabindex="0" aria-label="Symptom, Likely cause, Operator response, Recovery proof table"><table><thead><tr><th scope="col">Symptom</th><th scope="col">Likely cause</th><th scope="col">Operator response</th><th scope="col">Recovery proof</th></tr></thead><tbody><tr><td>ATS snapshot is stale</td><td>Incremental sync or nightly reconciliation failed</td><td>Keep last-known-good snapshot, open incident, retry with same batch key, reconcile totals</td><td>Successful full reconciliation and approved snapshot promotion</td></tr><tr><td>Stage totals exceed the preceding stage</td><td>Mapping mismatch, duplicate row, or source definition change</td><td>Block promotion; validate stage taxonomy and deduplication</td><td>Corrected source totals and zero blocking validation errors</td></tr><tr><td>Approved requisition is missing</td><td>Plan/ATS join failure or late approved-demand event</td><td>Confirm source IDs and effective dates with source owners</td><td>Requisition present in both authoritative source and accepted snapshot</td></tr><tr><td>Calendar SLA is unavailable</td><td>Aggregate job failed or requisition key mismatch</td><td>Mark SLA unavailable; do not infer zero; repair mapping</td><td>Fresh aggregate with expected requisition coverage</td></tr><tr><td>Duplicate task appears</td><td>Retry used a new key or lookup failed</td><td>Stop further retries; preserve one canonical task; close duplicate with audit note</td><td>One active external task linked to the decision ID</td></tr><tr><td>Recommendation looks wrong</td><td>Stale snapshot, threshold issue, or missing business context</td><td>Inspect lineage; return for correction or override with rationale</td><td>Human disposition and, if needed, approved threshold change</td></tr><tr><td>User has unexpected access</td><td>Role-group drift or stale entitlement</td><td>Remove access, notify IT/Security, preserve access logs</td><td>Access recertified and incident closed</td></tr></tbody></table></div>
+<h2 id="section-rollback-procedure">Rollback procedure<a class="heading-anchor" href="#section-rollback-procedure" aria-label="Link to Rollback procedure">#</a></h2>
+<ol>
+<li><strong>Declare:</strong> Recruiting Operations marks the affected source or snapshot unavailable and opens an incident.</li>
+<li><strong>Freeze:</strong> Disable new snapshot promotion and new task/notification handoffs for the affected scope.</li>
+<li><strong>Repoint:</strong> Restore the workspace to the last accepted immutable snapshot and display its actual <code>as of</code> time.</li>
+<li><strong>Reconcile:</strong> Compare source totals, mappings, schema, calculation version, and task handoffs against the failed release.</li>
+<li><strong>Correct:</strong> Repair in a non-production environment; rerun validation and idempotent reconciliation.</li>
+<li><strong>Approve:</strong> ATS/HRIS administrator confirms source integrity, Recruiting Operations confirms decision data, and TA leader approves return to service.</li>
+<li><strong>Close:</strong> Record impact, affected decisions/tasks, root cause, corrective action, and monitoring improvement.</li>
+</ol>
+<p>Rollback never rewrites the ATS or erases the audit trail. Any task created from a bad snapshot is paused or corrected by a named human; it is not silently deleted.</p>
+<h2 id="section-escalation-matrix">Escalation matrix<a class="heading-anchor" href="#section-escalation-matrix" aria-label="Link to Escalation matrix">#</a></h2>
+<div class="doc-table-scroll" role="region" tabindex="0" aria-label="Condition, First owner, Escalate to, Target response, Decision authority table"><table><thead><tr><th scope="col">Condition</th><th scope="col">First owner</th><th scope="col">Escalate to</th><th scope="col">Target response</th><th scope="col">Decision authority</th></tr></thead><tbody><tr><td>Source freshness misses SLA, no decision impact</td><td>Recruiting Operations</td><td>ATS/HRIS administrator</td><td>Same business day</td><td>Recruiting Operations may use last-known-good data with visible warning</td></tr><tr><td>Failed nightly ATS reconciliation or material variance</td><td>ATS/HRIS administrator</td><td>IT/Security and TA leader</td><td>Before Monday review or within 2 business hours during review window</td><td>TA leader decides whether a limited review may proceed</td></tr><tr><td>Suspected unauthorized access or credential exposure</td><td>IT/Security</td><td>Security incident lead and system owner</td><td>Immediate, per incident policy</td><td>IT/Security controls containment; business owners assess impact</td></tr><tr><td>Task handoff failure or duplicate</td><td>Recruiting Operations</td><td>Task-system administrator and TA leader</td><td>Same business day</td><td>TA leader confirms manual fallback or pause</td></tr><tr><td>Threshold or forecast dispute</td><td>Recruiting Operations</td><td>TA leader and relevant recruiter/hiring manager</td><td>Before next prioritization</td><td>TA leader approves operational use; monthly governance approves rule change</td></tr><tr><td>Candidate-level data detected</td><td>Recruiting Operations</td><td>Privacy/Security and source owner</td><td>Immediate containment</td><td>Privacy/Security determines handling and restart conditions</td></tr></tbody></table></div>
+<h2 id="section-run-history">Run history<a class="heading-anchor" href="#section-run-history" aria-label="Link to Run history">#</a></h2>
+<p>No production runs are claimed or recorded. Use this table only after implementation.</p>
+<div class="doc-table-scroll" role="region" tabindex="0" aria-label="Run date, Snapshot ID / as-of, Readiness, Decisions / tasks, Limitations or incidents, Final approver table"><table><thead><tr><th scope="col">Run date</th><th scope="col">Snapshot ID / as-of</th><th scope="col">Readiness</th><th scope="col">Decisions / tasks</th><th scope="col">Limitations or incidents</th><th scope="col">Final approver</th></tr></thead><tbody><tr><td><em>YYYY-MM-DD</em></td><td><em>ID / timestamp</em></td><td><em>Ready / limited / not ready</em></td><td><em>count / count</em></td><td><em>reference or none</em></td><td><em>name / timestamp</em></td></tr></tbody></table></div>
+        </article>
+      </div>
+    </main>
+    <footer class="doc-footer">
+      <p>Recruiting Control Room · Working synthetic prototype</p>
+      <a href="../../index.html#production">Return to production design</a>
+    </footer>
+  </body>
+</html>

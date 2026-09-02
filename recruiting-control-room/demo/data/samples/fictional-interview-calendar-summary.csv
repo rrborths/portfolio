@@ -1,0 +1,4 @@
+period_start,period_end,requisition_id,interviews_due,interviews_completed_on_time,panel_status
+2025-06-01,2025-06-28,SYN-2001,30,18,Complete
+2025-06-01,2025-06-28,SYN-2002,16,5,Incomplete
+2025-06-01,2025-06-28,SYN-2003,15,12,Complete

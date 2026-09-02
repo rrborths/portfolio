@@ -1,0 +1,7 @@
+period_start,period_end,stage,stage_count,conversion_benchmark
+2025-05-04,2025-05-31,Applied,600,100
+2025-05-04,2025-05-31,Recruiter Screen,315,50
+2025-05-04,2025-05-31,Hiring Manager,145,45
+2025-05-04,2025-05-31,Interview,72,50
+2025-05-04,2025-05-31,Offer,18,25
+2025-05-04,2025-05-31,Hired,9,50
