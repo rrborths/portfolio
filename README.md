@@ -25,6 +25,9 @@ existing component classes (`.cs-hero`, `.decisions`, `.tools-grid`, `.boundarie
 Asset paths on case study pages must be absolute (`/brand-mark.png`), and homepage
 anchors must be prefixed (`/#portfolio`). Within the homepage itself use bare
 anchors (`#portfolio`) so smooth scroll and the active-section highlight still work.
+Standalone tools deployed below a clean URL must use route-prefixed absolute asset
+and internal links (for example, `/workforce-demand-capacity-lab/styles.css`) so
+removing the trailing slash cannot redirect requests to the site root.
 
 Feature a case study from the Practical AI section with `<a class="tool featured">`.
 If visitors might look for it in the wrong section, add a `.bridge` callout there —

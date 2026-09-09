@@ -33,8 +33,8 @@ Open `http://localhost:4173`.
 
 - `index.html`, `styles.css`, `app.js` — portable interactive demo.
 - `src/model.mjs` — all formulas, thresholds, scenarios, memo logic, and CSV conversion.
-- `tests/model.test.mjs` — 115 deterministic assertions covering scenarios, tradeoff previews, the portable methodology link, responsive-accessibility guardrails, and chart decision signals.
-- `tests/served-app.test.mjs` — 12 Playwright checks covering synchronized previews, reset behavior, responsive rendering, touch targets, and console errors.
+- `tests/model.test.mjs` — 118 deterministic assertions covering scenarios, tradeoff previews, production-safe asset and methodology paths, responsive-accessibility guardrails, and chart decision signals.
+- `tests/served-app.test.mjs` — 13 Playwright checks covering synchronized previews, reset behavior, responsive rendering, touch targets, console errors, and deployed-route navigation.
 - `docs/model-methodology.md` — formulas, assumptions, controls, and interpretation.
 - `docs/design-spec-and-fidelity-ledger.md` — accepted concept, implementation inventory, and visual QA record.
 - `docs/mobile-accessibility-qa.md` — responsive, keyboard, and accessibility verification record.
@@ -50,4 +50,4 @@ Open `http://localhost:4173`.
 
 ## Release status
 
-The app is integrated into the portfolio on a review branch. Production deployment remains gated on pull-request review and merge; employer-specific customization remains out of scope.
+The app is integrated into the portfolio and deployed through Vercel. Future production changes remain gated on pull-request review and merge; employer-specific customization remains out of scope.

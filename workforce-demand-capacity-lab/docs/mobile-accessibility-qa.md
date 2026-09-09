@@ -33,7 +33,7 @@ At sub-640 widths, mobile card values use 14px minimum text, explanatory body co
 
 ## Test evidence
 
-- `npm test` passes 115 model and static assertions, including guardrails for the mobile cards, slider wiring, live region, tradeoff association, and sub-640 responsive rule.
-- `npm run test:served` passes 12 Playwright checks for synchronized previews, reset behavior, 390px and 1440px rendering, 44px controls, and a clean browser console.
+- `npm test` passes 118 model and static assertions, including guardrails for production-safe asset paths, mobile cards, slider wiring, live region, tradeoff association, and the sub-640 responsive rule.
+- `npm run test:served` passes 13 Playwright checks for synchronized previews, reset behavior, 390px and 1440px rendering, 44px controls, a clean browser console, and deployed-route navigation.
 - Rendered captures were reviewed at 390, 768, 1024, and 1440 widths.
 - The gstack Browser runner was attempted but remained blocked by its existing startup lock; rendered viewport and keyboard validation used the local browser/Playwright fallback.

@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 async function load(page, viewport = { width: 1440, height: 1000 }) {
   await page.setViewportSize(viewport);
-  await page.goto("/");
+  await page.goto("./");
 }
 
 function monthlyRow(page, month) {
@@ -147,4 +147,12 @@ test("12. Controls meet 44px hit targets and console has no errors", async ({ pa
     .filter((control) => control.height < 44));
   expect(undersized).toEqual([]);
   expect(errors).toEqual([]);
+});
+
+test("13. Methodology and back links stay inside the deployed portfolio route", async ({ page }) => {
+  await load(page);
+  await page.getByRole("link", { name: "Read the model methodology" }).click();
+  await expect(page).toHaveURL(/\/workforce-demand-capacity-lab\/docs\/model-methodology\.html$/);
+  await page.getByRole("link", { name: "Back to model" }).first().click();
+  await expect(page).toHaveURL(/\/workforce-demand-capacity-lab\/$/);
 });
