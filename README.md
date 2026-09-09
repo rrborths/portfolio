@@ -17,7 +17,7 @@ vercel.json                             cleanUrls so /case-studies/marketsync-ta
 sitemap.xml, robots.txt                 Add every new page to sitemap.xml
 ```
 
-All styling lives in `styles.css` and is shared by every page. Add a new case study
+Portfolio and case-study styling lives in the root `styles.css` and is shared by those pages. The standalone Workforce Demand & Capacity Lab keeps its own scoped `styles.css` and application assets inside its route folder. Add a new case study
 by creating `case-studies/<slug>/index.html`, linking `/styles.css`, and reusing the
 existing component classes (`.cs-hero`, `.decisions`, `.tools-grid`, `.boundaries`,
 `.stack-rows`). Page-specific CSS goes at the bottom of `styles.css`, not inline.
@@ -33,6 +33,7 @@ a compact one-line cross-link, never a second copy of the full card.
 The nav row fits seven links, the logo and the CTA only at >=1000px; below that it
 hides. Adding an eighth link means shortening labels or rethinking the row.
 
-Both pages carry JSON-LD in `<head>`. The homepage defines the canonical `Person`
-node (`https://www.ryanborths.com/#ryan`); case studies reference it by `@id` rather
-than redefining it, so bio details are edited in one place.
+The homepage and case-study pages carry JSON-LD in `<head>`. The homepage defines
+the canonical `Person` node (`https://www.ryanborths.com/#ryan`); case studies
+reference it by `@id` rather than redefining it, so bio details are edited in one
+place. Standalone interactive tools use route-specific canonical and social metadata.

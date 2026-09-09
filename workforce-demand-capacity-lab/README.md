@@ -33,10 +33,12 @@ Open `http://localhost:4173`.
 
 - `index.html`, `styles.css`, `app.js` — portable interactive demo.
 - `src/model.mjs` — all formulas, thresholds, scenarios, memo logic, and CSV conversion.
-- `tests/model.test.mjs` — 70 deterministic assertions covering scenarios, tradeoff previews, the portable methodology link, responsive-accessibility guardrails, and chart decision signals.
+- `tests/model.test.mjs` — 115 deterministic assertions covering scenarios, tradeoff previews, the portable methodology link, responsive-accessibility guardrails, and chart decision signals.
+- `tests/served-app.test.mjs` — 12 Playwright checks covering synchronized previews, reset behavior, responsive rendering, touch targets, and console errors.
 - `docs/model-methodology.md` — formulas, assumptions, controls, and interpretation.
 - `docs/design-spec-and-fidelity-ledger.md` — accepted concept, implementation inventory, and visual QA record.
-- `assets/design-concept.png` — generated full-screen design concept used as the implementation spec.
+- `docs/mobile-accessibility-qa.md` — responsive, keyboard, and accessibility verification record.
+- `assets/design-concept.png` — generated full-screen design concept used as the implementation spec; final desktop and mobile captures live alongside it.
 
 ## Honest limits
 
@@ -46,6 +48,6 @@ Open `http://localhost:4173`.
 - Tradeoff impacts are modeled arithmetic, not cost, quality, speed, or hiring-outcome claims.
 - The app stores no data and connects to no ATS, HRIS, email, candidate, or employer system.
 
-## Publication gate
+## Release status
 
-This package is private and review-ready. Publication, portfolio integration, hosted deployment, employer-specific customization, or external sharing requires separate approval.
+The app is integrated into the portfolio on a review branch. Production deployment remains gated on pull-request review and merge; employer-specific customization remains out of scope.

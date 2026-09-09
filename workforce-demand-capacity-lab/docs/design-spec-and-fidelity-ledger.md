@@ -35,7 +35,7 @@
 | Chart | One dominant demand/capacity chart with shaded gap | Code-native accessible SVG with six months | Verified; plot, labels, legend, and totals align |
 | Metrics | Four narrow summary panels | Demand, capacity, gap, utilization totals | Verified against 94 / 78 / 16 / 120.5% base math |
 | Table | Six-month operating table with status semantics | Formula-driven rows and total | Verified; status and formula note remain visible |
-| Tradeoffs | Three choice rows with impact | Radio selection updates memo only | Verified; contract option changed memo gap from 16 to 6 |
+| Tradeoffs | Three choice rows with impact | Radio selection creates a non-destructive full-surface preview | Verified; chart, KPIs, table, statuses, and memo stay synchronized |
 | Memo | Concept prompt required executive memo though generated image cropped it | Added below the main analysis surface as a functional necessity | Intentional extension |
 | Mobile | Not shown in concept | Single-column, non-overflowing continuation | Verified at 390 × 844; document width equals viewport width |
 
