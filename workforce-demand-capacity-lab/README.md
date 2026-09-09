@@ -50,4 +50,4 @@ Open `http://localhost:4173`.
 
 ## Release status
 
-The app is integrated into the portfolio on a review branch. Production deployment remains gated on pull-request review and merge; employer-specific customization remains out of scope.
+The app is integrated into the portfolio and deployed through Vercel. Future production changes remain gated on pull-request review and merge; employer-specific customization remains out of scope.
