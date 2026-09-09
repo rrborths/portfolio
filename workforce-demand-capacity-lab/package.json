@@ -1,0 +1,14 @@
+{
+  "name": "workforce-demand-capacity-lab",
+  "version": "1.13.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/model.test.mjs",
+    "test:served": "playwright test",
+    "serve": "python3 -m http.server 4173"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}
