@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recruiting Capacity Decision Workflow | Ryan Borths</title>
+    <meta name="description"
+        content="Case study: a synthetic, human-governed n8n workflow that turns recruiting intake into capacity tradeoffs, named approvals, SLA ownership, and executive-ready visibility." />
+    <link rel="canonical" href="https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow" />
+
+    <meta property="og:title" content="Recruiting Capacity Decision Workflow" />
+    <meta property="og:description"
+        content="A synthetic n8n demonstration of governed recruiting intake, capacity recommendations, human approval, SLA ownership, and weekly executive visibility." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow" />
+    <meta property="og:image"
+        content="https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow/assets/workflow-overview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0a1628" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow#article",
+          "headline": "Recruiting Capacity Decision Workflow",
+          "description": "A case study of a synthetic, human-governed recruiting workflow for capacity tradeoffs, named approvals, SLA ownership, and executive visibility.",
+          "url": "https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow",
+          "datePublished": "2026-09-09",
+          "dateModified": "2026-09-09",
+          "author": { "@id": "https://www.ryanborths.com/#ryan" },
+          "publisher": { "@id": "https://www.ryanborths.com/#ryan" },
+          "image": "https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow/assets/workflow-overview.png",
+          "about": { "@id": "https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow#workflow" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow#workflow",
+          "name": "Recruiting Capacity Decision Workflow",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "author": { "@id": "https://www.ryanborths.com/#ryan" },
+          "description": "An inactive, synthetic n8n portfolio demonstration. It does not connect to live ATS, HRIS, Slack, email, or employer data and does not make hiring decisions.",
+          "isAccessibleForFree": true
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://www.ryanborths.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Practical AI", "item": "https://www.ryanborths.com/#portfolio" },
+            { "@type": "ListItem", "position": 3, "name": "Recruiting Capacity Decision Workflow", "item": "https://www.ryanborths.com/case-studies/recruiting-capacity-decision-workflow" }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="/" aria-label="Ryan Borths — home">
+                <img class="brand-mark" src="/brand-mark.png" alt="Ryan Borths" width="64" height="44" />
+                <span>Ryan Borths</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#assessment">Assessment</a></li>
+                <li><a href="/#impact">Proof</a></li>
+                <li><a href="/#cases">In-house Case Studies</a></li>
+                <li><a href="/#portfolio">Practical AI</a></li>
+                <li><a href="/#operating-system">Operating System</a></li>
+                <li><a href="/#experience">About</a></li>
+                <li><a href="/#insights">Insights</a></li>
+            </ul>
+            <a class="nav-cta" href="#contact">Compare notes <span class="arrow">→</span></a>
+        </div>
+    </nav>
+
+    <header id="top" class="cs-hero rcdw-hero">
+        <div class="wrap">
+            <div class="crumb">
+                <a href="/">Portfolio</a>
+                <span class="sep">/</span>
+                <a href="/#portfolio">Practical AI</a>
+                <span class="sep">/</span>
+                <span>Recruiting Capacity Decision Workflow</span>
+            </div>
+
+            <h1>Turn recruiting demand into a <em>governed capacity decision.</em></h1>
+            <p class="cs-sub">
+                A synthetic n8n workflow that makes the operating conversation explicit:
+                validate the request, surface the capacity tradeoff, name the human
+                decision-maker, assign SLA ownership, and give leaders a weekly view of
+                what needs intervention.
+            </p>
+
+            <div class="rcdw-disclosure" role="note" aria-label="Synthetic demonstration disclosure">
+                <strong>Portfolio demonstration only.</strong> Inactive and synthetic by design. No live ATS, HRIS,
+                Slack, email, candidate, or employer data; no external sends or durable writes; no automated hiring
+                decisions.
+            </div>
+
+            <div class="cs-actions">
+                <a class="btn btn-primary" href="#evidence">See the workflow <span class="arrow">→</span></a>
+                <a class="btn btn-ghost" href="#controls">Review the controls</a>
+            </div>
+
+            <div class="spec-strip">
+                <div class="spec-cell">
+                    <div class="k">My role</div>
+                    <div class="v">Operating design · decision logic · control boundaries</div>
+                </div>
+                <div class="spec-cell">
+                    <div class="k">Status</div>
+                    <div class="v">Inactive synthetic demonstration</div>
+                </div>
+                <div class="spec-cell">
+                    <div class="k">Platform</div>
+                    <div class="v">n8n · 27 nodes · two manual demo paths</div>
+                </div>
+                <div class="spec-cell">
+                    <div class="k">Evidence</div>
+                    <div class="v">15/15 artifact checks · three captured views</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="problem">
+        <div class="wrap">
+            <span class="eyebrow">The operating problem</span>
+            <h2 class="section-title">Priority enters the system. The <em>tradeoff often stays invisible.</em></h2>
+            <div class="split" style="margin-top: 34px">
+                <div class="prose">
+                    <p>
+                        Recruiting teams routinely receive requests labeled urgent without a transparent view of
+                        capacity, service-level risk, or who owns the decision to displace existing work. The result is
+                        predictable: every requisition looks equally important, commitments drift, and leaders learn
+                        about constraints after delivery is already at risk.
+                    </p>
+                </div>
+                <div class="prose">
+                    <p>
+                        I designed this workflow to make those decisions visible before work is silently absorbed. The
+                        automation prepares the evidence and records the operating context; a named human remains
+                        accountable for the consequential decision.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="approach" class="cases">
+        <div class="wrap">
+            <span class="eyebrow">Operating design</span>
+            <h2 class="section-title">Five stages from intake to <em>executive visibility.</em></h2>
+            <p class="section-lede">
+                The workflow is deliberately legible on one canvas. Exceptions sit beneath the decision they belong
+                to, and the weekly leadership branch reuses the same operating model.
+            </p>
+
+            <div class="decisions rcdw-stages">
+                <div class="decision">
+                    <div class="n">01</div>
+                    <div><h4>Intake</h4><p>Load a structured synthetic request and establish a traceable requisition ID.</p></div>
+                </div>
+                <div class="decision">
+                    <div class="n">02</div>
+                    <div><h4>Validation and safeguards</h4><p>Normalize required fields, reject invalid intake, and expose duplicate-ID handling.</p></div>
+                </div>
+                <div class="decision">
+                    <div class="n">03</div>
+                    <div><h4>Capacity recommendation</h4><p>Use an embedded synthetic snapshot to make the assignment recommendation and constraint visible.</p></div>
+                </div>
+                <div class="decision">
+                    <div class="n">04</div>
+                    <div><h4>Human decision gate</h4><p>Prepare an approval packet, pause for a named approver, and record decision, approver, and reason.</p></div>
+                </div>
+                <div class="decision">
+                    <div class="n">05</div>
+                    <div><h4>SLA and executive visibility</h4><p>Draft the operating record, SLA ownership, and a leadership brief without sending or persisting it.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="evidence">
+        <div class="wrap">
+            <span class="eyebrow">Captured evidence</span>
+            <h2 class="section-title">The workflow is visible at three <em>decision moments.</em></h2>
+            <p class="section-lede">
+                These are direct captures from the local n8n demonstration on September 9, 2026. They show the design,
+                the human stop, and the weekly decision brief—not a production deployment.
+            </p>
+
+            <div class="rcdw-gallery">
+                <figure class="rcdw-shot rcdw-shot-wide">
+                    <a href="/case-studies/recruiting-capacity-decision-workflow/assets/workflow-overview.png"
+                        target="_blank" rel="noopener">
+                        <img src="/case-studies/recruiting-capacity-decision-workflow/assets/workflow-overview.png"
+                            alt="Full n8n canvas showing five recruiting capacity workflow stages and a weekly operating rhythm branch" />
+                    </a>
+                    <figcaption><span>01 · System view</span>All five stages, exception paths, and the weekly operating rhythm in one zoom-to-fit frame.</figcaption>
+                </figure>
+
+                <figure class="rcdw-shot">
+                    <a href="/case-studies/recruiting-capacity-decision-workflow/assets/approval-gate.png"
+                        target="_blank" rel="noopener">
+                        <img src="/case-studies/recruiting-capacity-decision-workflow/assets/approval-gate.png"
+                            alt="n8n workflow paused at the named human approval gate after a synthetic run" />
+                    </a>
+                    <figcaption><span>02 · Human control</span>The synthetic path pauses at “Wait for Named Human Approval”; downstream action remains blocked.</figcaption>
+                </figure>
+
+                <figure class="rcdw-shot">
+                    <a href="/case-studies/recruiting-capacity-decision-workflow/assets/weekly-executive-brief.png"
+                        target="_blank" rel="noopener">
+                        <img src="/case-studies/recruiting-capacity-decision-workflow/assets/weekly-executive-brief.png"
+                            alt="n8n output showing a synthetic weekly executive operating brief in JSON" />
+                    </a>
+                    <figcaption><span>03 · Leadership output</span>The manual weekly branch drafts priorities, capacity exceptions, pending approvals, SLA risks, and three recommended actions.</figcaption>
+                </figure>
+            </div>
+
+            <div class="rcdw-brief" aria-label="Weekly synthetic operating brief summary">
+                <div><span>Open reqs</span><strong>9</strong><small>P0 2 · P1 4 · P2 3</small></div>
+                <div><span>Capacity exceptions</span><strong>2</strong><small>Engineering · Sales</small></div>
+                <div><span>Approvals waiting</span><strong>2</strong><small>Named decision owners</small></div>
+                <div><span>SLA milestones at risk</span><strong>3</strong><small>Recovery dates required</small></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="controls" class="cases">
+        <div class="wrap">
+            <div class="boundaries">
+                <h3>Designed to demonstrate control—not <em>autonomous hiring.</em></h3>
+                <p class="lede">
+                    The prototype keeps consequential authority with people and states plainly what would have to
+                    change before production use.
+                </p>
+                <div class="claims-grid">
+                    <div class="claims-col demonstrates">
+                        <h4>What this demonstrates</h4>
+                        <ul>
+                            <li>A visible decision model from request through executive review.</li>
+                            <li>Named approval, decision reason, accountable owner, and timestamp fields.</li>
+                            <li>Exception paths for invalid intake, duplicate IDs, and declined decisions.</li>
+                            <li>Capacity and SLA signals translated into specific leadership actions.</li>
+                            <li>A repeatable weekly operating rhythm built from one governed data shape.</li>
+                        </ul>
+                    </div>
+                    <div class="claims-col limits">
+                        <h4>What this does not claim</h4>
+                        <ul>
+                            <li>No connection to live ATS, HRIS, Slack, email, candidate, or employer data.</li>
+                            <li>No automated hiring, candidate-ranking, or employment decision.</li>
+                            <li>No external notification, scheduled run, credential, or durable write.</li>
+                            <li>No measured production outcome or claim that this is operating inside an employer.</li>
+                            <li>No production-grade identity, access-control, audit-store, or data-retention layer.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="production">
+        <div class="wrap">
+            <span class="eyebrow">From demonstration to production</span>
+            <h2 class="section-title">The prototype proves the model. Production requires <em>more controls.</em></h2>
+            <div class="rcdw-table-wrap">
+                <table class="rcdw-table">
+                    <thead><tr><th>Area</th><th>Synthetic demonstration</th><th>Production requirement</th></tr></thead>
+                    <tbody>
+                        <tr><th scope="row">Data</th><td>Embedded fictional records</td><td>Authorized system-of-record data, minimization, retention, and lineage</td></tr>
+                        <tr><th scope="row">Identity</th><td>Named approver field</td><td>Authenticated, signed, single-use approval with role-based access</td></tr>
+                        <tr><th scope="row">Audit</th><td>In-memory decision fields</td><td>Durable, tamper-evident decision and exception log</td></tr>
+                        <tr><th scope="row">Integration</th><td>No external sends or writes</td><td>Approved ATS/HRIS interfaces, error handling, retries, and reconciliation</td></tr>
+                        <tr><th scope="row">Operations</th><td>Manual demo triggers</td><td>Monitoring, alert ownership, rollback, change control, and periodic review</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="authorship" class="cases">
+        <div class="wrap">
+            <div class="split">
+                <div>
+                    <h3 class="h3-rule">My role and <em>authorship.</em></h3>
+                    <div class="prose">
+                        <p>
+                            I defined the operating problem, workflow stages, decision logic, control boundaries, and
+                            acceptance criteria. I used AI-assisted development to accelerate implementation, while
+                            retaining human accountability for consequential decisions.
+                        </p>
+                        <p>
+                            The point is not that automation can replace recruiting judgment. The point is that a
+                            recruiting leader can make judgment more consistent by designing where evidence appears,
+                            who owns each decision, and what becomes visible when the system is under pressure.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="h3-rule">What I would measure <em>next.</em></h3>
+                    <div class="prose">
+                        <ul>
+                            <li>Time from validated request to named capacity decision.</li>
+                            <li>Share of priority changes with a recorded owner and rationale.</li>
+                            <li>SLA risk identified before, rather than after, a missed milestone.</li>
+                            <li>Exception age and recurring causes by function or approval owner.</li>
+                            <li>Leadership actions closed between weekly operating reviews.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cs-cta" style="margin-top: clamp(40px, 6vw, 68px)">
+                <h3>Want to see how I would adapt this to <em>your operating model?</em></h3>
+                <div class="cs-actions" style="margin-top: 0">
+                    <a class="btn btn-primary"
+                        href="mailto:rrborths@gmail.com?subject=Recruiting%20Capacity%20Decision%20Workflow">Compare notes
+                        <span class="arrow">→</span></a>
+                    <a class="btn btn-ghost" href="/#portfolio" style="color: var(--ink); border-color: var(--line)">More Practical AI work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="wrap contact-inner">
+            <div class="contact-head">
+                <span class="eyebrow">Contact</span>
+                <h2>Building a recruiting function that needs clearer <em>decisions, ownership, and operating rhythm?</em></h2>
+                <p>
+                    I am open to remote Head of Talent Acquisition and talent operations roles with technology,
+                    HR/workforce tech, and B2B SaaS companies, and to selected consulting engagements.
+                </p>
+            </div>
+            <div class="contact-grid">
+                <a class="contact-card" href="mailto:rrborths@gmail.com?subject=Recruiting%20operating%20systems">
+                    <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg></div>
+                    <div class="k">Compare notes with Ryan</div><div class="v">Start a conversation</div>
+                </a>
+                <a class="contact-card" href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">
+                    <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.5 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.44h-4.55v-6.6c0-1.57-.03-3.59-2.19-3.59-2.2 0-2.53 1.71-2.53 3.48V22H7.72V8z" /></svg></div>
+                    <div class="k">LinkedIn</div><div class="v">linkedin.com/in/ryanborths</div>
+                </a>
+                <a class="contact-card" href="https://x.com/RyanBorths" target="_blank" rel="noopener">
+                    <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></div>
+                    <div class="k">X / Twitter</div><div class="v">@RyanBorths</div>
+                </a>
+                <a class="contact-card" href="/#portfolio">
+                    <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 12H5M12 19l-7-7 7-7" /></svg></div>
+                    <div class="k">Back to portfolio</div><div class="v">More Practical AI work</div>
+                </a>
+            </div>
+            <div class="wrap foot">
+                <span class="foot-brand">Ryan Borths</span>
+                <div class="foot-links">
+                    <a href="/">Home</a><a href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://x.com/RyanBorths" target="_blank" rel="noopener">X</a>
+                    <a href="https://www.recruitingoperator.com/" target="_blank" rel="noopener">Substack</a>
+                    <a href="mailto:rrborths@gmail.com">Email</a><a href="#top">Top ↑</a>
+                </div>
+                <span class="foot-meta">© 2026 Ryan Borths · Built with intention</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in");
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        document.querySelectorAll(".decision, .boundaries, .rcdw-shot, .rcdw-brief, .rcdw-table-wrap")
+            .forEach((element) => {
+                element.classList.add("reveal");
+                io.observe(element);
+            });
+    </script>
+</body>
+
+</html>

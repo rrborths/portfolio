@@ -11,6 +11,8 @@ Static site, deployed on Vercel.
 index.html                              Homepage (single page, section anchors)
 styles.css                              Shared design system — tokens + all components
 case-studies/marketsync-ta/index.html   Case study: MarketSync TA
+case-studies/recruiting-capacity-decision-workflow/
+                                        Case study: governed n8n capacity workflow
 recruiting-control-room/                Recruiting Control Room case study and demo
 workforce-demand-capacity-lab/          Interactive workforce capacity planning lab
 vercel.json                             cleanUrls so /case-studies/marketsync-ta resolves
