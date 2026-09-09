@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A synthetic workforce demand and recruiter capacity planning model for executive tradeoff decisions." />
+    <title>Workforce Demand & Capacity Lab</title>
+    <link rel="canonical" href="https://www.ryanborths.com/workforce-demand-capacity-lab/" />
+    <meta property="og:title" content="Workforce Demand & Capacity Lab" />
+    <meta property="og:description" content="An interactive synthetic TA planning model for monthly feasibility, capacity gaps, and executive tradeoff decisions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.ryanborths.com/workforce-demand-capacity-lab/" />
+    <meta property="og:image" content="https://www.ryanborths.com/workforce-demand-capacity-lab/assets/implementation-desktop.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 fill=%22%230a1628%22/><path d=%22M14 42L26 30l9 7 15-18%22 fill=%22none%22 stroke=%22%2306b6d4%22 stroke-width=%226%22/></svg>" />
+    <link rel="stylesheet" href="styles.css?v=1.13.1" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-block">
+        <a class="brand" href="#main">Workforce Demand &amp; Capacity Lab</a>
+        <p class="brand-subtitle">An interactive TA capacity-planning model that translates hiring demand, recruiter availability, and delivery constraints into executive tradeoff decisions.</p>
+      </div>
+      <div class="topbar-actions">
+        <div class="scenario-tabs" role="tablist" aria-label="Scenario presets">
+          <button class="scenario-tab is-active" type="button" role="tab" aria-selected="true" data-scenario="base">Base plan</button>
+          <button class="scenario-tab" type="button" role="tab" aria-selected="false" data-scenario="aggressive">Aggressive hire</button>
+          <button class="scenario-tab" type="button" role="tab" aria-selected="false" data-scenario="conservative">Conservative plan</button>
+        </div>
+        <button class="export-button" id="export-memo" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 15v4h14v-4" /></svg>
+          Export decision memo
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="app-shell">
+      <aside class="controls" aria-labelledby="controls-title">
+        <div>
+          <h1 id="controls-title">Scenario controls</h1>
+          <p class="controls-intro">Adjust the operating assumptions. Every output updates from the visible formulas in real time.</p>
+        </div>
+
+        <div class="control-block">
+          <span class="control-heading"><label id="demand-label" for="demand-multiplier">Demand multiplier</label><output id="demand-value" for="demand-multiplier">1.00×</output></span>
+          <input id="demand-multiplier" type="range" min="0.75" max="1.5" step="0.05" value="1" aria-labelledby="demand-label demand-value" aria-describedby="demand-description" />
+          <span class="range-labels" aria-hidden="true"><span>0.75</span><span>1.00</span><span>1.25</span><span>1.50</span></span>
+          <small id="demand-description">Scales the approved-role plan up or down.</small>
+        </div>
+
+        <div class="control-block">
+          <span class="control-heading"><label id="availability-label" for="availability">Recruiter availability</label><output id="availability-value" for="availability">100%</output></span>
+          <input id="availability" type="range" min="60" max="120" step="5" value="100" aria-labelledby="availability-label availability-value" aria-describedby="availability-description" />
+          <span class="range-labels" aria-hidden="true"><span>60%</span><span>80%</span><span>100%</span><span>120%</span></span>
+          <small id="availability-description">Percentage of modeled recruiter capacity available for requisitions.</small>
+        </div>
+
+        <div class="control-block">
+          <span class="control-heading"><label id="agency-label" for="agency-support">Agency support</label><output id="agency-value" for="agency-support">0%</output></span>
+          <input id="agency-support" type="range" min="0" max="40" step="5" value="0" aria-labelledby="agency-label agency-value" aria-describedby="agency-description" />
+          <span class="range-labels" aria-hidden="true"><span>0%</span><span>10%</span><span>25%</span><span>40%</span></span>
+          <small id="agency-description">Adds external capacity as a percentage of monthly demand.</small>
+        </div>
+
+        <div class="control-block select-block">
+          <span class="control-heading"><label for="risk-tolerance">Risk tolerance</label></span>
+          <select id="risk-tolerance" aria-describedby="risk-description">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+          <small id="risk-description">Changes the utilization thresholds used to label commitments.</small>
+        </div>
+
+        <button class="reset-button" id="reset-plan" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.34-5.66L4 8.68M4 4v4.68h4.68" /></svg>
+          Reset to base plan
+        </button>
+      </aside>
+
+      <section class="workspace" aria-label="Scenario results">
+        <section class="chart-region" aria-labelledby="chart-title">
+          <div class="section-heading-row">
+            <div>
+              <h2 id="chart-title">Demand vs capacity</h2>
+              <p>Weighted units by month</p>
+            </div>
+            <div class="chart-legend" aria-label="Chart legend">
+              <span><i class="legend-line demand"></i>Demand</span>
+              <span><i class="legend-line capacity"></i>Capacity</span>
+              <span id="legend-preview-demand" hidden><i class="legend-line adjusted-demand"></i>Preview demand</span>
+              <span id="legend-preview-capacity" hidden><i class="legend-line adjusted-capacity"></i>Preview capacity</span>
+              <span><i class="legend-gap"></i>Gap</span>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <svg id="capacity-chart" role="img" aria-labelledby="chart-title chart-description" viewBox="0 0 900 330"></svg>
+            <p id="chart-description" class="sr-only">A line chart comparing monthly weighted demand units and capacity units.</p>
+          </div>
+          <p id="chart-text-summary" class="chart-text-summary"></p>
+        </section>
+
+        <section class="metric-rail" aria-label="Scenario summary">
+          <article><h3>Weighted demand</h3><strong id="metric-demand">94</strong><p>Total Sep–Feb</p></article>
+          <article><h3>Capacity units</h3><strong id="metric-capacity">78</strong><p>Total Sep–Feb</p></article>
+          <article><h3>Unit gap</h3><strong id="metric-gap" class="risk">16</strong><p>Demand minus capacity</p></article>
+          <article><h3>Aggregate utilization</h3><strong id="metric-utilization">121%</strong><p>Demand ÷ capacity across Sep–Feb</p></article>
+        </section>
+
+        <section class="model-context" aria-labelledby="model-context-title">
+          <div>
+            <h2 id="model-context-title">Model context</h2>
+            <p>Planning scope for the active synthetic scenario.</p>
+          </div>
+          <dl class="context-details">
+            <div class="context-decision"><dt>Decision</dt><dd>Can the six-month hiring plan be delivered under the selected capacity assumptions?</dd></div>
+            <div><dt>Audience</dt><dd>CEO, CFO, People leader, and Talent Acquisition leader</dd></div>
+            <div><dt>Horizon</dt><dd>September–February</dd></div>
+            <div><dt>Data</dt><dd>Synthetic portfolio scenario</dd></div>
+            <div><dt>Output</dt><dd>Monthly feasibility, capacity gaps, and modeled tradeoffs</dd></div>
+          </dl>
+        </section>
+
+        <div class="analysis-bottom">
+        <section class="operating-table-region" aria-labelledby="table-title">
+          <div class="section-heading-row compact">
+            <div><h2 id="table-title">Monthly operating view</h2><p>Formula-driven synthetic scenario</p></div>
+            <button class="text-button" id="export-csv" type="button">Export CSV</button>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Month</th><th>Demand</th><th>Capacity</th><th>Gap</th><th>Utilization</th><th>Status</th></tr></thead>
+              <tbody id="operating-rows"></tbody>
+              <tfoot><tr><th>Aggregate</th><td id="total-demand">94</td><td id="total-capacity">78</td><td id="total-gap">16</td><td id="total-utilization">121%</td><td>Peak-month status drives decision</td></tr></tfoot>
+            </table>
+          </div>
+          <div id="mobile-operating-cards" class="mobile-operating-cards" aria-label="Monthly operating cards"></div>
+          <p class="formula-note">Aggregate utilization = total demand ÷ total capacity across Sep–Feb. The executive status uses the worst monthly feasibility result under the selected guardrails.</p>
+        </section>
+
+        <section class="tradeoff-region" aria-labelledby="tradeoff-title">
+          <div class="section-heading-row compact"><div><h2 id="tradeoff-title">Tradeoff options</h2><p id="preview-state">Select one to preview its decision impact.</p></div><button class="text-button" id="clear-preview" type="button" hidden>Clear preview</button></div>
+          <div id="tradeoff-options" class="tradeoff-list" role="radiogroup" aria-labelledby="tradeoff-title"></div>
+        </section>
+        </div>
+
+        <section class="memo-region" aria-labelledby="memo-title">
+          <div class="memo-heading">
+            <div><h2 id="memo-title">Executive decision memo</h2><p id="memo-assumptions"></p></div>
+            <span id="memo-status" class="status-label">At risk</span>
+          </div>
+          <h3 id="memo-headline">Capacity tradeoff required</h3>
+          <p id="memo-summary"></p>
+          <p id="memo-decision" class="memo-decision"></p>
+          <p id="memo-boundary" class="claims-boundary"></p>
+        </section>
+      </section>
+    </main>
+
+    <section class="demonstrates" aria-labelledby="demonstrates-title">
+      <div class="demonstrates-panel">
+        <h2 id="demonstrates-title">What this demonstrates</h2>
+        <ul>
+          <li>Workforce and headcount planning</li>
+          <li>Recruiting-capacity modeling</li>
+          <li>Scenario and sensitivity analysis</li>
+          <li>Executive decision communication</li>
+          <li>Responsible use of synthetic data</li>
+        </ul>
+        <p class="synthetic-disclosure">Synthetic portfolio model. No candidate, employee, or employer-confidential data.</p>
+      </div>
+    </section>
+
+    <footer>
+      <a href="docs/model-methodology.html">Read the model methodology</a>
+      <a href="/">Back to Ryan Borths's portfolio</a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <script src="app.js?v=1.13.1"></script>
+  </body>
+</html>
