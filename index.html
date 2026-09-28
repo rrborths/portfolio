@@ -4,24 +4,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ryan Borths — Head of Talent Acquisition &amp; Recruiting Operating-System Builder</title>
+    <title>Ryan Borths — Talent Acquisition · Builder · Operator</title>
     <meta name="description"
-        content="Ryan Borths helps growing companies turn fragmented recruiting into a measurable operating system — as a full-time leader, fractional partner, or advisor." />
+        content="Building AI-forward recruiting engines across HealthTech, SaaS, and Fortune 500 retail. Writing The Recruiting Operator on Substack." />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Ryan Borths — Head of Talent Acquisition &amp; Recruiting Operating-System Builder" />
+    <meta property="og:title" content="Ryan Borths — Talent Acquisition · Builder · Operator" />
     <meta property="og:description"
-        content="Ryan Borths helps growing companies turn fragmented recruiting into a measurable operating system — as a full-time leader, fractional partner, or advisor." />
+        content="Building AI-forward recruiting engines across HealthTech, SaaS, and Fortune 500 retail. Writing The Recruiting Operator on Substack." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://www.ryanborths.com/headshot.jpg" />
+    <meta property="og:image" content="headshot.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Favicon set -->
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#0a1628" />
+    <!-- Favicon: cyan brand mark, matches the nav logo. Inline SVG = no extra file. -->
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%2306b6d4"/><text x="16" y="22" font-family="-apple-system,BlinkMacSystemFont,system-ui,sans-serif" font-weight="800" font-size="14" fill="%230a1628" text-anchor="middle" letter-spacing="-0.5">RB</text></svg>' />
+    <!-- Fallback file reference for browsers that prefer it; create favicon.svg alongside index.html -->
+    <link rel="alternate icon" href="favicon.svg" type="image/svg+xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,71 +27,2061 @@
         href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="/styles.css" />
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://www.ryanborths.com/#ryan",
-          "name": "Ryan Borths",
-          "url": "https://www.ryanborths.com/",
-          "image": "https://www.ryanborths.com/headshot.jpg",
-          "email": "rrborths@gmail.com",
-          "jobTitle": "Head of Talent Acquisition",
-          "description": "Talent acquisition leader and recruiting operating-system builder. Helps growing companies turn fragmented recruiting into a measurable operating system, and builds practical AI tooling for technology, HR/workforce technology, and B2B SaaS organizations.",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Grand Rapids",
-            "addressRegion": "MI",
-            "addressCountry": "US"
-          },
-          "knowsAbout": [
-            "Talent Acquisition Strategy",
-            "Recruiting Operations",
-            "Workforce Planning",
-            "Applicant Tracking Systems",
-            "Labor Market Intelligence",
-            "AI Workflow Automation"
-          ],
-          "sameAs": [
-            "https://www.linkedin.com/in/ryanborths",
-            "https://x.com/RyanBorths",
-            "https://www.recruitingoperator.com/"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://www.ryanborths.com/#website",
-          "url": "https://www.ryanborths.com/",
-          "name": "Ryan Borths",
-          "publisher": { "@id": "https://www.ryanborths.com/#ryan" }
+    <style>
+        /* ---------- Tokens ---------- */
+        :root {
+            --ink: #0a1628;
+            /* deep navy — primary dark */
+            --ink-2: #0f1e33;
+            /* slightly lighter navy */
+            --ink-soft: #1b2b44;
+            /* card on dark */
+            --paper: #f7f5f0;
+            /* warm off-white */
+            --paper-2: #ffffff;
+            /* pure white surface */
+            --line: #e5e1d7;
+            /* subtle warm border */
+            --line-dark: rgba(255, 255, 255, 0.1);
+            --muted: #5b6473;
+            /* secondary text on light */
+            --muted-dark: rgba(255, 255, 255, 0.62);
+            --accent: #06b6d4;
+            /* cyan — confident, technical */
+            --accent-2: #0891b2;
+            /* deeper cyan for hover */
+            --highlight: #fde68a;
+            /* warm marker for emphasis */
+            --serif: "Fraunces", Georgia, "Times New Roman", serif;
+            --sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+            --mono: "JetBrains Mono", ui-monospace, monospace;
+            --max: 1240px;
+            --pad: clamp(20px, 4vw, 56px);
+            --radius: 14px;
+            --radius-sm: 8px;
         }
-      ]
-    }
-    </script>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            font-weight: 400;
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--ink);
+            color: var(--accent);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ---------- Layout helpers ---------- */
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding-left: var(--pad);
+            padding-right: var(--pad);
+        }
+
+        section {
+            padding: clamp(72px, 10vw, 140px) 0;
+            position: relative;
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 24px;
+            height: 1px;
+            background: var(--accent-2);
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(36px, 5.5vw, 68px);
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            margin-top: 18px;
+            color: var(--ink);
+        }
+
+        .section-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-2);
+        }
+
+        .section-lede {
+            font-size: clamp(16px, 1.3vw, 18px);
+            color: var(--muted);
+            max-width: 56ch;
+            margin-top: 22px;
+            line-height: 1.65;
+        }
+
+        /* ---------- Nav ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: saturate(140%) blur(12px);
+            -webkit-backdrop-filter: saturate(140%) blur(12px);
+            border-bottom: 1px solid var(--line-dark);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 18px;
+            padding-bottom: 18px;
+            color: #fff;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #fff;
+        }
+
+        .brand-mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            display: grid;
+            place-items: center;
+            color: var(--ink);
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.78);
+            transition: color 180ms ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--ink);
+            padding: 11px 20px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            transition:
+                transform 200ms ease,
+                background 200ms ease;
+        }
+
+        .nav-cta:hover {
+            background: #fff;
+            transform: translateY(-1px);
+        }
+
+        .nav-burger {
+            display: none;
+            background: none;
+            border: 0;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 880px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            background: var(--ink);
+            color: #fff;
+            padding-top: clamp(80px, 10vw, 130px);
+            padding-bottom: clamp(80px, 10vw, 130px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 78% 18%,
+                    rgba(6, 182, 212, 0.18),
+                    transparent 45%),
+                radial-gradient(circle at 12% 90%,
+                    rgba(6, 182, 212, 0.08),
+                    transparent 50%);
+            pointer-events: none;
+        }
+
+        /* faint dot grid overlay */
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px,
+                    transparent 1px);
+            background-size: 28px 28px;
+            mask-image: linear-gradient(to bottom,
+                    black 0%,
+                    black 60%,
+                    transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom,
+                    black 0%,
+                    black 60%,
+                    transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: clamp(40px, 6vw, 88px);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .hero-eyebrow .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.18);
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.18);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(6, 182, 212, 0.04);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(44px, 7vw, 96px);
+            line-height: 0.98;
+            letter-spacing: -0.025em;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: clamp(17px, 1.4vw, 19px);
+            line-height: 1.62;
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 56ch;
+            margin-bottom: 38px;
+        }
+
+        .hero-sub strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 26px;
+            border-radius: 999px;
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 220ms ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--ink);
+        }
+
+        .btn-primary:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.5);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn .arrow {
+            transition: transform 220ms ease;
+        }
+
+        .btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Hero portrait card */
+        .hero-card {
+            background: linear-gradient(160deg, var(--ink-soft), var(--ink-2));
+            border: 1px solid var(--line-dark);
+            border-radius: 18px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle at top right,
+                    rgba(6, 182, 212, 0.25),
+                    transparent 70%);
+        }
+
+        .portrait {
+            aspect-ratio: 1 / 1;
+            background: var(--ink);
+            border: 1px solid var(--line-dark);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            /* B&W portrait — slight contrast and brightness fine-tune */
+            filter: grayscale(1) contrast(1.06) brightness(0.96);
+            transition:
+                filter 600ms ease,
+                transform 800ms ease;
+        }
+
+        .hero-card:hover .portrait img {
+            filter: grayscale(1) contrast(1.1) brightness(1.02);
+            transform: scale(1.02);
+        }
+
+        /* Subtle cyan-tinted vignette to lock the photo into the palette */
+        .portrait::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 70% 0%,
+                    rgba(6, 182, 212, 0.06),
+                    transparent 55%),
+                linear-gradient(180deg, transparent 60%, rgba(10, 22, 40, 0.18) 100%);
+            pointer-events: none;
+        }
+
+        .hero-card-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .meta-cell {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--line-dark);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .meta-cell .k {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+            margin-bottom: 6px;
+        }
+
+        .meta-cell .v {
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .meta-cell .v .accent {
+            color: var(--accent);
+        }
+
+        /* Hero stats strip */
+        .hero-stats {
+            margin-top: clamp(60px, 8vw, 90px);
+            border-top: 1px solid var(--line-dark);
+            border-bottom: 1px solid var(--line-dark);
+            padding: 28px 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-mini .num {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(28px, 3vw, 40px);
+            line-height: 1;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-mini .num em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .stat-mini .lbl {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+
+        @media (max-width: 880px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ---------- About ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+            gap: clamp(36px, 6vw, 88px);
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--ink);
+            margin-bottom: 20px;
+        }
+
+        .about-text p:first-of-type {
+            font-family: var(--serif);
+            font-size: clamp(22px, 2vw, 26px);
+            font-weight: 400;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+        }
+
+        .about-text p:first-of-type em {
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .pillars {
+            display: grid;
+            gap: 16px;
+        }
+
+        .pillar {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            transition:
+                transform 240ms ease,
+                border-color 240ms ease,
+                box-shadow 240ms ease;
+        }
+
+        .pillar:hover {
+            transform: translateY(-2px);
+            border-color: var(--ink);
+            box-shadow: 0 10px 30px -16px rgba(10, 22, 40, 0.18);
+        }
+
+        .pillar h4 {
+            font-family: var(--sans);
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-num {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--accent-2);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .pillar p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        @media (max-width: 880px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Impact / Big metrics ---------- */
+        .impact {
+            background: var(--paper);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+            margin-top: 56px;
+        }
+
+        .metric {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 32px;
+            grid-column: span 4;
+            position: relative;
+            overflow: hidden;
+            transition:
+                border-color 220ms ease,
+                transform 220ms ease;
+        }
+
+        .metric:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+        .metric.span-6 {
+            grid-column: span 6;
+        }
+
+        .metric.dark {
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+        }
+
+        .metric.dark .metric-label {
+            color: var(--muted-dark);
+        }
+
+        .metric.dark .metric-context {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .metric-num {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(56px, 6vw, 88px);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .metric.dark .metric-num {
+            color: #fff;
+        }
+
+        .metric-num em {
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .metric.dark .metric-num em {
+            color: var(--accent);
+        }
+
+        .metric-num .unit {
+            font-family: var(--sans);
+            font-size: 0.32em;
+            font-weight: 600;
+            letter-spacing: 0;
+            color: var(--muted);
+            margin-left: 4px;
+            align-self: center;
+        }
+
+        .metric.dark .metric-num .unit {
+            color: var(--muted-dark);
+        }
+
+        .metric-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .metric-context {
+            margin-top: 18px;
+            font-size: 14.5px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .metric-context strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .metric.dark .metric-context strong {
+            color: #fff;
+        }
+
+        @media (max-width: 980px) {
+
+            .metric,
+            .metric.span-6 {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .metric,
+            .metric.span-6 {
+                grid-column: span 12;
+            }
+        }
+
+        /* ---------- Experience timeline ---------- */
+        .experience {
+            background: var(--paper-2);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .timeline {
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: var(--line);
+        }
+
+        .job {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 28px;
+            padding: 28px 0;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .job:last-child {
+            border-bottom: 0;
+        }
+
+        .job-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            margin-top: 4px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .job-dot::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: var(--ink);
+            border-radius: 50%;
+        }
+
+        .job.current .job-dot {
+            border-color: var(--accent);
+        }
+
+        .job.current .job-dot::after {
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2);
+        }
+
+        .job-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 12px 18px;
+            margin-bottom: 8px;
+        }
+
+        .job-role {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(22px, 2vw, 28px);
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+
+        .job-co {
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--accent-2);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .job-meta {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+            margin-bottom: 14px;
+        }
+
+        .job-meta span+span::before {
+            content: "·";
+            margin: 0 10px;
+            color: var(--line);
+        }
+
+        .job-bullets {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 8px;
+            max-width: 78ch;
+        }
+
+        .job-bullets li {
+            font-size: 15.5px;
+            color: var(--ink);
+            line-height: 1.65;
+            padding-left: 22px;
+            position: relative;
+        }
+
+        .job-bullets li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-2);
+            font-weight: 600;
+        }
+
+        .job-bullets li strong {
+            font-weight: 700;
+        }
+
+        /* ---------- Case Studies ---------- */
+        .cases {
+            background: var(--paper);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin-top: 56px;
+        }
+
+        .case {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 38px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition:
+                transform 240ms ease,
+                border-color 240ms ease,
+                box-shadow 240ms ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 320ms ease;
+        }
+
+        .case:hover {
+            border-color: var(--ink);
+            transform: translateY(-3px);
+            box-shadow: 0 24px 40px -28px rgba(10, 22, 40, 0.25);
+        }
+
+        .case:hover::before {
+            width: 100%;
+        }
+
+        .case.feature {
+            grid-column: span 2;
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+            flex-direction: row;
+            align-items: stretch;
+            padding: 0;
+        }
+
+        .case.feature::before {
+            background: var(--accent);
+        }
+
+        .case-feature-text {
+            padding: 48px;
+            flex: 1.2;
+        }
+
+        .case-feature-art {
+            flex: 1;
+            background:
+                radial-gradient(circle at 70% 30%,
+                    rgba(6, 182, 212, 0.2),
+                    transparent 60%),
+                var(--ink-soft);
+            border-left: 1px solid var(--line-dark);
+            display: grid;
+            place-items: center;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-tag {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 6px 12px;
+            border-radius: 999px;
+            align-self: flex-start;
+            font-weight: 500;
+        }
+
+        .case.feature .case-tag {
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.16);
+        }
+
+        .case h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(24px, 2.4vw, 32px);
+            line-height: 1.18;
+            letter-spacing: -0.015em;
+            color: inherit;
+        }
+
+        .case h3 em {
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .case.feature h3 em {
+            color: var(--accent);
+        }
+
+        .case-body {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: var(--muted);
+        }
+
+        .case.feature .case-body {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .case-result {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--line);
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+
+        .case.feature .case-result {
+            border-color: var(--line-dark);
+            color: var(--accent);
+        }
+
+        /* big stat in feature art */
+        .feature-stat {
+            text-align: center;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-stat .num {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(80px, 11vw, 168px);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            color: #fff;
+        }
+
+        .feature-stat .num em {
+            font-style: italic;
+            color: var(--accent);
+            font-weight: 300;
+        }
+
+        .feature-stat .lbl {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.64);
+            margin-top: 14px;
+        }
+
+        .case-feature-art::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at center,
+                    black 30%,
+                    transparent 75%);
+            -webkit-mask-image: radial-gradient(circle at center,
+                    black 30%,
+                    transparent 75%);
+        }
+
+        @media (max-width: 880px) {
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case.feature {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+
+            .case-feature-art {
+                border-left: 0;
+                border-top: 1px solid var(--line-dark);
+                padding: 32px;
+            }
+
+            .case-feature-text {
+                padding: 32px;
+            }
+        }
+
+        /* ---------- AI Portfolio ---------- */
+        .portfolio {
+            background: var(--ink);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px,
+                    transparent 1px);
+            background-size: 32px 32px;
+            mask-image: linear-gradient(to bottom,
+                    transparent 0%,
+                    black 30%,
+                    black 70%,
+                    transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom,
+                    transparent 0%,
+                    black 30%,
+                    black 70%,
+                    transparent 100%);
+            pointer-events: none;
+        }
+
+        .portfolio .eyebrow {
+            color: var(--accent);
+        }
+
+        .portfolio .eyebrow::before {
+            background: var(--accent);
+        }
+
+        .portfolio .section-title {
+            color: #fff;
+        }
+
+        .portfolio .section-title em {
+            color: var(--accent);
+        }
+
+        .portfolio .section-lede {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool {
+            background: var(--ink-soft);
+            border: 1px solid var(--line-dark);
+            border-radius: var(--radius);
+            padding: 32px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition:
+                border-color 240ms ease,
+                transform 240ms ease,
+                background 240ms ease;
+            position: relative;
+            overflow: hidden;
+            color: inherit;
+        }
+
+        a.tool {
+            cursor: pointer;
+        }
+
+        .tool:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            background: rgba(6, 182, 212, 0.04);
+        }
+
+        .tool-external {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line-dark);
+            display: grid;
+            place-items: center;
+            color: var(--muted-dark);
+            transition: all 240ms ease;
+        }
+
+        .tool:hover .tool-external {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--ink);
+            transform: translate(2px, -2px);
+        }
+
+        .tool-external svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .tool-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tool-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(6, 182, 212, 0.12);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            display: grid;
+            place-items: center;
+            color: var(--accent);
+        }
+
+        .tool-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .tool-type {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+
+        .tool h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 22px;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+
+        .tool p {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .tool-foot {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid var(--line-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+
+        .tool-foot .live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+        }
+
+        .tool-foot .live::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+        }
+
+        @media (max-width: 980px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Skills / Tech Stack ---------- */
+        .skills {
+            background: var(--paper);
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 56px;
+        }
+
+        .stack {
+            background: var(--paper-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 32px 30px;
+        }
+
+        .stack h4 {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .chip {
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--line);
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 180ms ease;
+        }
+
+        .chip:hover {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .chip.implemented {
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+        }
+
+        .chip.implemented::after {
+            content: " ✓";
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .competencies {
+            margin-top: 56px;
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: clamp(36px, 5vw, 60px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .competencies::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle,
+                    rgba(6, 182, 212, 0.18),
+                    transparent 60%);
+            pointer-events: none;
+        }
+
+        .competencies h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(24px, 2.4vw, 32px);
+            margin-bottom: 30px;
+            letter-spacing: -0.01em;
+        }
+
+        .competencies h3 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .comp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .comp-cat {
+            border-left: 2px solid var(--accent);
+            padding-left: 18px;
+        }
+
+        .comp-cat h5 {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .comp-cat ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .comp-cat li {
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, 0.84);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 880px) {
+
+            .stack-grid,
+            .comp-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Insights / Newsletter ---------- */
+        .insights {
+            background: var(--paper-2);
+            border-top: 1px solid var(--line);
+        }
+
+        .insights-wrap {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: clamp(36px, 6vw, 88px);
+            align-items: start;
+        }
+
+        .topics {
+            display: grid;
+            gap: 14px;
+        }
+
+        .topic {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 18px;
+            align-items: center;
+            padding: 18px 22px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            transition: all 220ms ease;
+        }
+
+        .topic:hover {
+            border-color: var(--ink);
+        }
+
+        .topic-num {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+            width: 28px;
+        }
+
+        .topic-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .topic-text .t {
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--ink);
+            line-height: 1.35;
+        }
+
+        .topic-text .s {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .topic-tag {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            padding: 4px 8px;
+            background: rgba(6, 182, 212, 0.08);
+            border-radius: 4px;
+        }
+
+        /* Featured article card (Substack) */
+        .article-feature {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 36px 36px 32px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            transition: border-color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
+            position: relative;
+            overflow: hidden;
+            color: inherit;
+        }
+
+        a.article-feature { cursor: pointer; }
+
+        .article-feature::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 320ms ease;
+        }
+
+        .article-feature:hover {
+            border-color: var(--ink);
+            transform: translateY(-3px);
+            box-shadow: 0 24px 40px -28px rgba(10, 22, 40, 0.25);
+        }
+
+        .article-feature:hover::before { width: 100%; }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .article-meta .pub {
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+
+        .article-feature h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(24px, 2.6vw, 34px);
+            line-height: 1.18;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+        }
+
+        .article-feature h3 em {
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .article-subtitle {
+            font-family: var(--serif);
+            font-style: italic;
+            font-weight: 300;
+            font-size: 17px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-top: -6px;
+        }
+
+        .article-excerpt {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: var(--ink);
+            border-left: 2px solid var(--accent);
+            padding-left: 18px;
+            margin-top: 4px;
+        }
+
+        .article-cta {
+            margin-top: 8px;
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 220ms ease;
+        }
+
+        .article-feature:hover .article-cta {
+            gap: 14px;
+        }
+
+        /* Article stack — holds the featured card + earlier issues */
+        .article-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Compact card for earlier issues */
+        .article-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 24px 26px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            transition: border-color 220ms ease, transform 220ms ease;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .article-compact:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+        .ac-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .ac-meta .pub {
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+
+        .article-compact h4 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.28;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        .ac-cta {
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-2);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: gap 220ms ease;
+        }
+
+        .article-compact:hover .ac-cta {
+            gap: 12px;
+        }
+
+        /* View-all footer on article stack */
+        .view-all-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 11.5px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 14px 2px 4px;
+            border-top: 1px solid var(--line);
+            margin-top: 4px;
+            transition: color 180ms ease;
+        }
+
+        .view-all-link:hover { color: var(--accent-2); }
+        .view-all-link:hover .arrow { transform: translateX(4px); }
+
+        .newsletter-card {
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: clamp(32px, 4vw, 48px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-card::before {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle,
+                    rgba(6, 182, 212, 0.3),
+                    transparent 60%);
+        }
+
+        .newsletter-soon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 6px 12px;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 999px;
+            background: rgba(6, 182, 212, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-soon::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        .newsletter-card h3 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(28px, 3.4vw, 42px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 18px 0 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-card h3 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .newsletter-card p {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.78);
+            margin-bottom: 28px;
+            max-width: 46ch;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--line-dark);
+            border-radius: 999px;
+            padding: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            font-family: var(--sans);
+            font-size: 14px;
+            padding: 10px 16px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        .newsletter-form button {
+            border: 0;
+            background: var(--accent);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 13px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 200ms ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #fff;
+        }
+
+        .newsletter-note {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted-dark);
+            margin-top: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 880px) {
+            .insights-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Contact / Footer ---------- */
+        .contact {
+            background: var(--ink);
+            color: #fff;
+            padding: clamp(80px, 10vw, 130px) 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 80%;
+            background: radial-gradient(ellipse at center,
+                    rgba(6, 182, 212, 0.1),
+                    transparent 60%);
+            pointer-events: none;
+        }
+
+        .contact-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-head {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 70px;
+        }
+
+        .contact-head .eyebrow {
+            color: var(--accent);
+        }
+
+        .contact-head .eyebrow::before {
+            background: var(--accent);
+        }
+
+        .contact-head h2 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 1.02;
+            letter-spacing: -0.025em;
+            margin-top: 18px;
+            color: #fff;
+        }
+
+        .contact-head h2 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .contact-head p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.72);
+            margin-top: 22px;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--ink-soft);
+            border: 1px solid var(--line-dark);
+            border-radius: var(--radius);
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 240ms ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            background: rgba(6, 182, 212, 0.04);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+        }
+
+        .contact-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .contact-card .k {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+
+        .contact-card .v {
+            font-size: 15px;
+            color: #fff;
+            word-break: break-word;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        @media (max-width: 880px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .foot {
+            margin-top: clamp(80px, 10vw, 130px);
+            border-top: 1px solid var(--line-dark);
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .foot-brand {
+            font-family: var(--serif);
+            font-size: 18px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.84);
+        }
+
+        .foot-meta {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted-dark);
+            letter-spacing: 0.08em;
+        }
+
+        .foot-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .foot-links a {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+            transition: color 180ms ease;
+        }
+
+        .foot-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ---------- Reveal animation on scroll ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition:
+                opacity 700ms ease,
+                transform 700ms ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!-- =========================== NAV =========================== -->
     <nav class="nav">
         <div class="wrap nav-inner">
-            <a class="brand" href="#top" aria-label="Ryan Borths — home">
-                <img class="brand-mark" src="brand-mark.png" alt="Ryan Borths" width="64" height="44" />
+            <a class="brand" href="#top">
+                <span class="brand-mark">RB</span>
                 <span>Ryan Borths</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#impact">Proof</a></li>
-                <li><a href="#featured-builds">Builds</a></li>
-                <li><a href="#experience">About</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#cases">Case Studies</a></li>
-                <li><a href="#operating-system">Operating System</a></li>
-                <li><a href="#assessment">Assessment</a></li>
+                <li><a href="#portfolio">AI Portfolio</a></li>
                 <li><a href="#insights">Insights</a></li>
             </ul>
-            <a class="nav-cta" href="#contact">Compare notes <span class="arrow">→</span></a>
+            <a class="nav-cta" href="#contact">Get in touch <span class="arrow">→</span></a>
         </div>
     </nav>
 
@@ -103,23 +2091,24 @@
             <div class="hero-grid">
                 <div class="hero-left">
                     <div class="hero-eyebrow">
-                        <span class="dot"></span>Head of Talent Acquisition · Builder · Operator
+                        <span class="dot"></span>Talent Acquisition · Builder · Operator
                     </div>
                     <h1>
-                        Turn fragmented recruiting into a <em>measurable operating system.</em>
+                        Build <em>recruiting systems</em> that turn hiring into a growth
+                        engine.
                     </h1>
                     <p class="hero-sub">
-                        I help growing companies align workforce priorities, recruiting
-                        capacity, manager decisions, data, AI workflows, and hiring
-                        technology — primarily as a <strong>full-time TA leader</strong>,
-                        with advisory or fractional support available when the mandate
-                        is narrower.
+                        <strong>Talent Acquisition Leader· AI-Forward Recruiting
+                            Operator.</strong>
+                        15+ years building, scaling, and modernizing TA functions across
+                        Healthcare, global SaaS, and Fortune 500 retail — from zero-to-one
+                        builds in hypergrowth to standardizing operations across 8+
+                        countries and 195+ locations.
                     </p>
                     <div class="hero-ctas">
-                        <a class="btn btn-primary" href="#contact">Discuss a Head of TA role <span class="arrow">→</span></a>
-                        <a class="btn btn-ghost" href="#impact">See proof of work</a>
+                        <a class="btn btn-primary" href="#cases">View case studies <span class="arrow">→</span></a>
+                        <a class="btn btn-ghost" href="#contact">Let's connect</a>
                     </div>
-                    <a class="cta-tertiary" href="#assessment">Explore advisory support <span class="arrow">→</span></a>
                 </div>
                 <aside class="hero-card">
                     <div class="portrait">
@@ -127,20 +2116,18 @@
                     </div>
                     <div class="hero-card-meta">
                         <div class="meta-cell">
-                            <div class="k">Open to</div>
-                            <div class="v">Full-time Head/Director of TA roles</div>
+                            <div class="k">Currently</div>
+                            <div class="v">
+                                Talent Acquisition Leader <span class="accent">@ Optimal Care</span>
+                            </div>
                         </div>
                         <div class="meta-cell">
                             <div class="k">Based in</div>
                             <div class="v">Grand Rapids, MI</div>
                         </div>
                         <div class="meta-cell">
-                            <div class="k">Next step</div>
-                            <div class="v">20-minute fit conversation</div>
-                        </div>
-                        <div class="meta-cell">
-                            <div class="k">Best fit</div>
-                            <div class="v">B2B SaaS · HR/workforce tech · Multi-location services</div>
+                            <div class="k">Best Fit</div>
+                            <div class="v">B2B SaaS · HealthTech · Retail</div>
                         </div>
                     </div>
                 </aside>
@@ -148,16 +2135,16 @@
 
             <div class="hero-stats">
                 <div class="stat-mini">
-                    <div class="num"><em>43</em></div>
-                    <div class="lbl">Hires per month at Optimal Care</div>
+                    <div class="num"><em>20%</em></div>
+                    <div class="lbl">YoY Hiring Growth</div>
                 </div>
                 <div class="stat-mini">
                     <div class="num"><em>92%</em></div>
                     <div class="lbl">Offer Acceptance</div>
                 </div>
                 <div class="stat-mini">
-                    <div class="num"><em>38</em></div>
-                    <div class="lbl">Days to accept</div>
+                    <div class="num"><em>3×</em></div>
+                    <div class="lbl">Outreach Efficiency via AI</div>
                 </div>
                 <div class="stat-mini">
                     <div class="num"><em>2,400</em></div>
@@ -167,21 +2154,73 @@
         </div>
     </header>
 
-    <!-- =========================== BEST-FIT ROLES =========================== -->
-    <section id="best-fit">
+    <!-- =========================== ABOUT =========================== -->
+    <section id="about">
         <div class="wrap">
-            <span class="eyebrow">Best-fit roles</span>
-            <h2 class="section-title">Where I'm focused: <em>full-time TA leadership.</em></h2>
-            <p class="section-lede">
-                Actively targeting full-time roles where I can own the recruiting
-                operating system end to end.
-            </p>
-            <div class="chip-list" style="margin-top: 32px">
-                <span class="chip">Head of Talent Acquisition</span>
-                <span class="chip">Director of Talent Acquisition</span>
-                <span class="chip">TA Operations / Programs</span>
-                <span class="chip">Recruiting Transformation</span>
-                <span class="chip">AI-enabled TA Systems</span>
+            <span class="eyebrow">About</span>
+            <h2 class="section-title">A builder, not a <em>backfiller.</em></h2>
+
+            <div class="about-grid" style="margin-top: 56px">
+                <div class="about-text">
+                    <p>
+                        I've led talent acquisition and recruiting operations
+                        transformations across
+                        <em>healthcare, technology, and retail</em> — helping
+                        organizations build stronger systems, better processes, and more
+                        effective teams.
+                    </p>
+                    <p>
+                        My approach combines an AI-forward, data-driven mindset with the
+                        discipline of an operator. I treat recruiting as a system to be
+                        engineered: pipelines, interview infrastructure, scorecards,
+                        capacity models, and feedback loops — all instrumented and
+                        continuously improved.
+                    </p>
+                    <p>
+                        I've built recruiting from the ground up at a healthcare startup
+                        during hypergrowth, run global technical recruiting operations at
+                        an $8B telehealth leader, and led 13-person teams across 195+
+                        locations at a Fortune 400 retailer. Today I also build production
+                        AI tools that ship into live recruiting workflows.
+                    </p>
+                </div>
+
+                <div class="pillars">
+                    <div class="pillar">
+                        <h4><span class="pillar-num">01</span> Systems Thinking</h4>
+                        <p>
+                            Recruiting is a system. ATS architecture, interview rubrics,
+                            sourcing taxonomy, and feedback loops are designed — not
+                            improvised.
+                        </p>
+                    </div>
+                    <div class="pillar">
+                        <h4><span class="pillar-num">02</span> AI-Forward Operations</h4>
+                        <p>
+                            I build and deploy custom GPTs and agentic workflows that
+                            multiply recruiter output. AI augments judgment; it doesn't
+                            replace it.
+                        </p>
+                    </div>
+                    <div class="pillar">
+                        <h4>
+                            <span class="pillar-num">03</span> First-Principles Diagnosis
+                        </h4>
+                        <p>
+                            I don't optimize symptoms. I trace turnover spikes, offer
+                            declines, and pipeline collapse to root causes and rebuild from
+                            there.
+                        </p>
+                    </div>
+                    <div class="pillar">
+                        <h4><span class="pillar-num">04</span> Executive Partnership</h4>
+                        <p>
+                            I partner directly with CEOs, CFOs, and engineering leadership
+                            on capacity modeling, comp strategy, and org design — not just
+                            requisitions.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -189,25 +2228,26 @@
     <!-- =========================== IMPACT =========================== -->
     <section id="impact" class="impact">
         <div class="wrap">
-            <span class="eyebrow">Selected in-house results</span>
-            <h2 class="section-title">Proof from prior <em>operating roles.</em></h2>
+            <span class="eyebrow">Measurable Outcomes</span>
+            <h2 class="section-title">Strategic <em>impact.</em></h2>
             <p class="section-lede">
-                These are team-based results from in-house leadership work—not
-                consulting-client outcomes. Each measure is labeled to preserve the
-                operating context behind it.
+                Selected results from current and recent engagements. Every number
+                traces back to a documented system, process, or program — never a
+                one-off.
             </p>
 
             <div class="impact-grid">
                 <div class="metric">
                     <div class="metric-label">
-                        Monthly hiring capacity · Optimal Care
+                        YoY Hiring Productivity · Optimal Care
                     </div>
                     <div class="metric-num">
-                        <em>43</em><span class="unit">hires</span>
+                        <em>37.5</em><span class="unit">%</span>
                     </div>
                     <div class="metric-context">
-                        Built the recruiting operating cadence and team capacity supporting
-                        approximately 75 open roles as the company scaled.
+                        Sustained YoY increase in
+                        <strong>monthly hires per recruiter,</strong> demonstrating that
+                        improved systems and processes are driving better hiring outcomes.
                     </div>
                 </div>
 
@@ -222,11 +2262,12 @@
                 </div>
 
                 <div class="metric">
-                    <div class="metric-label">Time to accept · Optimal Care</div>
-                    <div class="metric-num"><em>38</em><span class="unit">days</span></div>
+                    <div class="metric-label">Early-Stage Turnover Reduction</div>
+                    <div class="metric-num"><em>70</em><span class="unit">%</span></div>
                     <div class="metric-context">
-                        Reached a <strong>38-day time to accept</strong> while sustaining a
-                        92% offer-acceptance rate.
+                        Diagnosed an initial 50% 60-day turnover rate as a
+                        <strong>root-cause interview-quality problem</strong>. Rebuilt
+                        hiring-manager enablement; drove sustained turnover to 7%.
                     </div>
                 </div>
 
@@ -245,15 +2286,42 @@
                     </div>
                 </div>
 
+                <div class="metric span-6">
+                    <div class="metric-label">
+                        2022 Performance vs. OKRs · Teladoc Health
+                    </div>
+                    <div class="metric-num">
+                        <em>167</em><span class="unit">%</span>
+                    </div>
+                    <div class="metric-context">
+                        Ranked <strong>top 5 of 22 global recruiters</strong>. Sourced
+                        FAANG-caliber engineering talent across multiple countries,
+                        competing against Big Tech compensation with a mission-first
+                        employer brand.
+                    </div>
+                </div>
+
                 <div class="metric">
                     <div class="metric-label">Global Tech Recruiting Operations</div>
                     <div class="metric-num"><em>30</em><span class="unit">%</span></div>
                     <div class="metric-context">
                         Standardized technical recruiting workflows, interview scheduling,
-                        and operating procedures across regions,
+                        and SOPs across 5+ countries for the world’s largest telehealth
+                        platform,
                         <strong>driving a 30% efficiency improvement</strong> hiring
                         software engineering, DevOps, data engineering, infrastructure,
                         and security teams.
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">Referral Conversion · Optimal Care</div>
+                    <div class="metric-num">
+                        <em>38.9</em><span class="unit">%</span>
+                    </div>
+                    <div class="metric-context">
+                        Designed and launched a formalized Employee Referral Program.
+                        <strong>97.8% referral-hire retention</strong> downstream.
                     </div>
                 </div>
 
@@ -274,180 +2342,82 @@
         </div>
     </section>
 
-    <!-- =========================== FEATURED BUILDS =========================== -->
-    <section id="featured-builds">
-        <div class="wrap">
-            <span class="eyebrow">Featured Recruiting Systems</span>
-            <h2 class="section-title">Three operating problems. <em>Three working systems.</em></h2>
-            <p class="section-lede">
-                Recruiting Control Room shows how Ryan turns internal recruiting signals
-                into governed decisions. MarketSync TA shows how he turns external labor-market
-                data into better intake, sourcing, and compensation conversations. Workforce
-                Demand &amp; Capacity Lab shows how hiring plans become explicit capacity and
-                executive tradeoff decisions.
-            </p>
-
-            <div class="case-grid" style="margin-top: 56px">
-                <article class="case feature featured-build-card">
-                    <div class="case-feature-text">
-                        <span class="case-tag">Working synthetic prototype · AI-assisted development</span>
-                        <h3 style="margin-top: 18px">
-                            Recruiting Control Room: from fragmented data to a <em>shared decision rhythm.</em>
-                        </h3>
-                        <p class="case-body" style="margin-top: 14px">
-                            A human-governed recruiting workspace connecting structured intake,
-                            funnel diagnosis, weekly leadership review, and approval-gated action
-                            drafts. Ryan defined the operating model, product workflow, data
-                            contracts, decision logic, and controls, then used AI-assisted
-                            development to turn them into a working browser prototype.
-                        </p>
-                        <div class="case-result" style="margin-top: 24px">
-                            TA Operating Model · Product Design · Data Contracts · Governance
-                        </div>
-                        <div class="featured-build-actions">
-                            <a class="btn btn-primary" href="/recruiting-control-room/">View the case study <span class="arrow">→</span></a>
-                            <a class="btn btn-ghost" href="/recruiting-control-room/demo/index.html#intake">Open the demo</a>
-                        </div>
-                    </div>
-                    <div class="case-feature-art featured-build-image-wrap">
-                        <img class="featured-build-image" src="/recruiting-control-room/assets/recruiting-control-room-social-preview.png"
-                            alt="Recruiting Control Room case study preview" loading="lazy" decoding="async" />
-                    </div>
-                </article>
-
-                <article class="case feature">
-                    <div class="case-feature-text">
-                        <span class="case-tag">Full-stack build · Next.js · Google Cloud Run</span>
-                        <h3 style="margin-top: 18px">
-                            Executive Talent Intelligence, <em>built solo.</em>
-                        </h3>
-                        <p class="case-body" style="margin-top: 14px">
-                            An AI-driven labor market intelligence and workflow platform built
-                            to move recruiting teams from order-taking to strategic advising.
-                            Market demand dashboards, a dynamic hiring manager intake
-                            generator, relocation offer calibration, candidate data hygiene,
-                            and one-click executive strategy briefs — designed, engineered,
-                            containerized, and deployed by Ryan.
-                        </p>
-                        <div class="case-result" style="margin-top: 24px">
-                            Market Intel · Intake · Comp · Data Quality
-                        </div>
-                        <div class="featured-build-actions">
-                            <a class="btn btn-primary" href="/case-studies/marketsync-ta">Read the case study <span class="arrow">→</span></a>
-                            <a class="btn btn-ghost" href="https://marketsync-ta-663237649522.us-central1.run.app/" target="_blank" rel="noopener">Open the live app</a>
-                        </div>
-                    </div>
-                    <div class="case-feature-art featured-build-image-wrap">
-                        <img class="featured-build-image" src="/case-studies/marketsync-ta/assets/marketsync-preview.png"
-                            alt="MarketSync TA dashboard preview showing the market demand and hiring volume overview" loading="lazy" decoding="async" />
-                    </div>
-                </article>
-
-                <article class="case feature">
-                    <div class="case-feature-text">
-                        <span class="case-tag">Interactive synthetic model · Formula-driven</span>
-                        <h3 style="margin-top: 18px">
-                            Workforce demand meets capacity, <em>before commitments become misses.</em>
-                        </h3>
-                        <p class="case-body" style="margin-top: 14px">
-                            An interactive six-month planning lab that translates hiring demand,
-                            recruiter availability, agency support, and risk tolerance into
-                            month-by-month feasibility, capacity gaps, and executive tradeoff
-                            decisions. The synthetic scenario keeps every assumption inspectable
-                            and separates portfolio demonstration from employer outcomes.
-                        </p>
-                        <div class="case-result" style="margin-top: 24px">
-                            Workforce Planning · Capacity Modeling · Scenario Analysis · Executive Communication
-                        </div>
-                        <div class="featured-build-actions">
-                            <a class="btn btn-primary" href="/workforce-demand-capacity-lab/">Open the interactive lab <span class="arrow">→</span></a>
-                            <a class="btn btn-ghost" href="/workforce-demand-capacity-lab/docs/model-methodology.html">Review the methodology</a>
-                        </div>
-                    </div>
-                    <div class="case-feature-art featured-build-image-wrap">
-                        <img class="featured-build-image" src="/workforce-demand-capacity-lab/assets/workforce-lab-preview.png"
-                            alt="Workforce Demand & Capacity Lab preview showing the monthly operating view and demand-vs-capacity chart" loading="lazy" decoding="async" />
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <!-- =========================== EXPERIENCE =========================== -->
     <section id="experience" class="experience">
         <div class="wrap">
-            <span class="eyebrow">About Ryan</span>
-            <h2 class="section-title">A recruiting operating-system <em>builder.</em></h2>
-            <p class="section-lede">
-                Ryan is looking for his next full-time Head or Director of Talent
-                Acquisition role — leading the recruiting operating system: workforce
-                planning, recruiting operations, technology, employer brand, executive
-                partnership, and carefully governed AI. He also takes on fractional,
-                advisory, and consulting work selectively.
-            </p>
+            <span class="eyebrow">Career Track</span>
+            <h2 class="section-title">15 years of <em>operating</em> at scale.</h2>
 
             <div class="timeline">
                 <article class="job current">
                     <div class="job-dot"></div>
                     <div>
                         <div class="job-head">
-                            <h3 class="job-role">Independent Talent &amp; Recruiting Advisor (Project-Based)</h3>
-                            <span class="job-co">GLG (Gerson Lehrman Group)</span>
+                            <h3 class="job-role">
+                                Director, Talent Management
+                                <span style="color: var(--muted); font-style: italic">(Head of Recruiting)</span>
+                            </h3>
+                            <span class="job-co">Optimal Care</span>
                         </div>
                         <div class="job-meta">
-                            <span>Jan 2024 – Present</span>
-                            <span>Intermittent expert work</span>
-                            <span>Remote</span>
+                            <span>Mar 2024 – Present</span>
+                            <span>$8M+ Healthcare Startup</span>
+                            <span>Grand Rapids, MI · Hybrid</span>
                         </div>
                         <ul class="job-bullets">
                             <li>
-                                Selected as a <strong>GLG Network expert</strong> for
-                                intermittent consultations on Talent Acquisition operating
-                                models, recruiting technology, and carefully governed AI adoption.
+                                Built the recruiting function from the ground up during
+                                hypergrowth — led
+                                <strong>Paycor → Greenhouse ATS migration</strong> and Gem CRM
+                                launch; rebuilt workflows, scorecards, and job architecture
+                                across all service lines.
+                            </li>
+                            <li>
+                                Partner directly with <strong>CEO and CFO</strong> on monthly
+                                headcount forecasting and capacity modeling; authored the
+                                organization's first structured pay-scale review, surfacing
+                                comp gaps driving offer declines.
+                            </li>
+                            <li>
+                                Led the company-wide
+                                <strong>employer brand overhaul</strong> following the
+                                Careline → Optimal Care rebrand: rewrote EVP, relaunched
+                                career site, standardized job descriptions, modernized every
+                                candidate-facing asset.
+                            </li>
+                            <li>
+                                Pioneered <strong>agentic AI sourcing workflows</strong> that
+                                tripled outreach efficiency and outperformed paid-board
+                                saturation; deployed a suite of custom GPTs and web apps
+                                across the team.
+                            </li>
+                            <li>
+                                Delivered
+                                <strong>20% YoY hiring growth, 92% offer acceptance, 38-day
+                                    time-to-accept</strong>, and drove early-stage turnover from 50% to a sustained 10%.
                             </li>
                         </ul>
                     </div>
                 </article>
 
-                <article class="job">
+                <article class="job current">
                     <div class="job-dot"></div>
                     <div>
                         <div class="job-head">
-                            <h3 class="job-role">
-                                Director, Talent Management
-                                <span style="color: var(--muted); font-style: italic">(Head of Talent Acquisition)</span>
-                            </h3>
-                            <span class="job-co">Optimal Care</span>
+                            <h3 class="job-role">Talent Management Consultant</h3>
+                            <span class="job-co">GLG (Gerson Lehrman Group)</span>
                         </div>
                         <div class="job-meta">
-                            <span>Mar 2024 – May 2026</span>
-                            <span>Growth-stage services organization</span>
-                            <span>Grand Rapids, MI · Hybrid</span>
+                            <span>Jan 2024 – Present</span>
+                            <span>Concurrent Engagement</span>
+                            <span>Remote</span>
                         </div>
                         <ul class="job-bullets">
                             <li>
-                                Built the Talent Acquisition function as the company grew
-                                from roughly 250 to more than 700 employees.
-                            </li>
-                            <li>
-                                Implemented <strong>Greenhouse and Gem</strong> and established
-                                the recruiting operating cadence, reporting, and workflow standards.
-                            </li>
-                            <li>
-                                Built and led the team supporting approximately 75 open roles
-                                across corporate and field hiring.
-                            </li>
-                            <li>
-                                Partnered with the <strong>CEO, CFO, and business leaders</strong>
-                                on workforce priorities, capacity, and hiring decisions.
-                            </li>
-                            <li>
-                                Increased monthly hiring capacity to <strong>43 hires</strong>
-                                while sustaining a 92% offer-acceptance rate and 38-day time to accept.
-                            </li>
-                            <li>
-                                Introduced practical AI workflows to reduce administrative
-                                work and improve recruiter leverage, with human review and operating controls.
+                                Vetted <strong>GLG Network expert</strong> advising TA and
+                                People leaders at enterprise and high-growth clients across
+                                healthcare, SaaS, and PE-backed industries on AI-enabled
+                                recruiting transformation and HR technology selection.
                             </li>
                         </ul>
                     </div>
@@ -469,10 +2439,11 @@
                         </div>
                         <ul class="job-bullets">
                             <li>
-                                Led global TA operations and programs supporting teams in the
-                                <strong>United States, Argentina, Spain, India, and Poland.</strong>
-                                Standardized workflows and operating procedures across regions,
-                                delivering a 30% efficiency improvement.
+                                Led
+                                <strong>global technical recruiting operations</strong> for
+                                the world's largest telehealth platform — standardized
+                                workflows and SOPs across 5+ countries, delivering 30%
+                                efficiency improvement.
                             </li>
                             <li>
                                 Led a cross-functional team of six to rebuild Teladoc's
@@ -549,10 +2520,11 @@
                         </div>
                         <ul class="job-bullets">
                             <li>
-                                Led the <strong>Workday ATS implementation</strong> for offices
-                                in the United States, Hong Kong, and Bangladesh, working remotely
-                                with local teams on vendor coordination, system integrations, and
-                                each location’s compliance requirements.
+                                Led cross-functional
+                                <strong>ATS implementation across U.S., Hong Kong, and
+                                    Bangladesh</strong>
+                                operations — vendor relations, system integrations, and
+                                compliance across three countries.
                             </li>
                             <li>
                                 Spearheaded targeted recruitment strategies for software
@@ -570,18 +2542,17 @@
     <!-- =========================== CASE STUDIES =========================== -->
     <section id="cases" class="cases">
         <div class="wrap">
-            <span class="eyebrow">Selected in-house leadership case studies</span>
-            <h2 class="section-title">Operating systems built <em>inside the work.</em></h2>
+            <span class="eyebrow">Case Studies</span>
+            <h2 class="section-title">A few defining <em>builds.</em></h2>
             <p class="section-lede">
-                This work was completed while Ryan was an employee of each organization.
-                Results reflect the broader team's work and the operating context described
-                here; they are not consulting-client outcomes.
+                Each represents a complete system change — built, deployed, measured,
+                and iterated.
             </p>
 
             <div class="case-grid">
                 <article class="case feature">
                     <div class="case-feature-text">
-                        <span class="case-tag">In-house leadership case study · Optimal Care</span>
+                        <span class="case-tag">Featured · Optimal Care · 2024</span>
                         <h3 style="margin-top: 18px">
                             Building a recruiting function from <em>baseline</em> during
                             hypergrowth.
@@ -590,20 +2561,20 @@
                             Joined a healthcare startup with limited recruiting
                             infrastructure and manual processes. Owned everything from ATS
                             migration and CRM launch to interview architecture, employer
-                            brand, comp benchmarking, and practical AI workflows with
-                            human review. Partnered with the CEO and CFO on forecasting,
-                            capacity, and hiring decisions while the company grew from
-                            roughly 250 to more than 700 employees.
+                            brand, comp benchmarking, and agentic AI sourcing workflows.
+                            Partnered with the CEO and CFO weekly on forecasting and
+                            capacity. Delivered 20% YoY hiring growth in a fully employed
+                            market.
                         </p>
                         <div class="case-result" style="margin-top: 24px">
-                            Greenhouse and Gem · operating cadence · manager decisions ·
-                            reporting · workflow standards
+                            ATS migration · employer brand overhaul · AI sourcing ·
+                            pay-scale program · referral program
                         </div>
                     </div>
                     <div class="case-feature-art">
                         <div class="feature-stat">
-                            <div class="num"><em>43</em></div>
-                            <div class="lbl">Hires per month · 92% offer acceptance · 38 days to accept</div>
+                            <div class="num">16 → <em>43</em></div>
+                            <div class="lbl">Fills per month / from a walking start</div>
                         </div>
                     </div>
                 </article>
@@ -611,8 +2582,8 @@
                 <article class="case">
                     <span class="case-tag">Teladoc Health · 2022–2024</span>
                     <h3>
-                        Standardizing technical recruiting across
-                        <em>regions and teams.</em>
+                        Standardizing global technical recruiting across
+                        <em>5+ countries.</em>
                     </h3>
                     <p class="case-body">
                         Led a six-person cross-functional team to rebuild Teladoc's entire
@@ -623,7 +2594,7 @@
                         hiring-manager training.
                     </p>
                     <div class="case-result">
-                        30% efficiency · 1,020+ roles cataloged
+                        30% efficiency · 1,020+ roles cataloged · 5+ countries
                     </div>
                 </article>
 
@@ -642,39 +2613,54 @@
                     </div>
                 </article>
 
-            </div>
-
-            <a class="bridge" href="/case-studies/marketsync-ta">
-                <div class="bridge-text">
-                    <span class="case-tag">Practical AI · public build</span>
+                <article class="case">
+                    <span class="case-tag">Optimal Care · 2024</span>
                     <h3>
-                        Looking for the software? <em>MarketSync TA</em> is a public
-                        build, not an in-house engagement.
+                        Diagnosing turnover as an <em>interview-quality</em> problem.
                     </h3>
-                    <p>
-                        A labor market intelligence and workflow platform Ryan designed,
-                        engineered, and deployed himself. The case study covers the
-                        architecture, the data sources, and the limits of what a
-                        portfolio demonstration can claim.
+                    <p class="case-body">
+                        A 60-day turnover baseline of 50% wasn't a sourcing problem or a
+                        comp problem — first-principles funnel diagnosis traced it to
+                        inconsistent interview rigor. Rebuilt hiring-manager enablement
+                        with structured scorecards, designed a formalized Employee
+                        Referral Program, and drove early-stage turnover to a sustained
+                        7%.
                     </p>
-                </div>
-                <span class="bridge-cta">Read the case study <span class="arrow">→</span></span>
-            </a>
+                    <div class="case-result">
+                        50% → 7% turnover · 38.9% referral conversion · 97.8% referral
+                        retention
+                    </div>
+                </article>
+
+                <article class="case">
+                    <span class="case-tag">Optimal Care · 2024</span>
+                    <h3>Deploying <em>agentic AI</em> across the recruiting team.</h3>
+                    <p class="case-body">
+                        Designed, built, and deployed a suite of custom GPTs and web apps
+                        spanning sourcing, outreach, market intelligence, and recruiter
+                        performance analytics. Multiplied outreach efficiency,
+                        outperformed competitor paid-advertising on national job boards,
+                        and raised proactive outreach targets from 30 to 100 per
+                        recruiter.
+                    </p>
+                    <div class="case-result">
+                        Multiplied outreach efficiency · 5 production tools shipped
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
     <!-- =========================== AI PORTFOLIO =========================== -->
     <section id="portfolio" class="portfolio">
         <div class="wrap">
-            <span class="eyebrow">Practical AI</span>
+            <span class="eyebrow">AI &amp; Automation Portfolio</span>
             <h2 class="section-title">
-                Tools support the system. They do not <em>replace it.</em>
+                Production AI tools, shipped into <em>live workflows.</em>
             </h2>
             <p class="section-lede">
-                Selected public demos and workflow tools Ryan designed and built for
-                recruiting strategy, distribution, analytics, market intelligence, and
-                sourcing. AI is used where it improves the work and can be governed
-                responsibly.
+                Custom web applications and GPTs I've designed, built, and deployed
+                for use by recruiting teams. All currently in active use.
             </p>
 
             <div class="tools-grid">
@@ -702,7 +2688,7 @@
                     </p>
                     <div class="tool-foot">
                         <span>Strategy · Planning</span>
-                        <span class="live">Public demo</span>
+                        <span class="live">Live</span>
                     </div>
                 </a>
 
@@ -729,7 +2715,7 @@
                     </p>
                     <div class="tool-foot">
                         <span>Brand · Distribution</span>
-                        <span class="live">Public demo</span>
+                        <span class="live">Live</span>
                     </div>
                 </a>
 
@@ -759,7 +2745,7 @@
                     </p>
                     <div class="tool-foot">
                         <span>Analytics · Coaching</span>
-                        <span class="live">Public demo</span>
+                        <span class="live">Live</span>
                     </div>
                 </a>
 
@@ -788,7 +2774,7 @@
                     </p>
                     <div class="tool-foot">
                         <span>Market Intel</span>
-                        <span class="live">Public demo</span>
+                        <span class="live">Live</span>
                     </div>
                 </a>
 
@@ -816,55 +2802,46 @@
                     </p>
                     <div class="tool-foot">
                         <span>Sourcing · Clinical</span>
-                        <span class="live">Public demo</span>
+                        <span class="live">Live</span>
                     </div>
                 </a>
 
-                <a class="tool featured" href="/case-studies/recruiting-capacity-decision-workflow">
-                    <span class="tool-flag">New case study</span>
+                <div class="tool" style="
+              background: rgba(6, 182, 212, 0.04);
+              border-color: rgba(6, 182, 212, 0.3);
+            ">
                     <div class="tool-head">
                         <div class="tool-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                                <path d="M4 6h5v5H4zM15 3h5v5h-5zM15 16h5v5h-5z" />
-                                <path d="M9 8.5h3a3 3 0 013 3v7M9 8.5h3a3 3 0 003-3" />
+                                <path d="M12 5v14M5 12h14" />
                             </svg>
                         </div>
-                        <span class="tool-type">n8n workflow</span>
+                        <span class="tool-type">In Development</span>
                     </div>
-                    <h3>Recruiting Capacity Decision Workflow</h3>
+                    <h3>Always shipping.</h3>
                     <p>
-                        A synthetic, human-governed workflow that turns recruiting intake
-                        into capacity tradeoffs, named approvals, SLA ownership, and
-                        executive-ready visibility.
+                        I treat the recruiting function as a product. New tools go from
+                        idea to deployed-and-in-use across the team in days. Have a
+                        workflow problem worth solving? Let's talk.
                     </p>
                     <div class="tool-foot">
-                        <span>Workflow design · Governance · TA operations</span>
-                        <span class="live">Case study</span>
+                        <span>Build · Ship · Iterate</span>
+                        <a href="#contact" style="color: var(--accent)">Talk to me →</a>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- =========================== OPERATING SYSTEM =========================== -->
-    <section id="operating-system" class="skills">
+    <!-- =========================== SKILLS / TECH STACK =========================== -->
+    <section id="skills" class="skills">
         <div class="wrap">
-            <span class="eyebrow">Recruiting Operating System Maturity Map</span>
-            <h2 class="section-title">Eight dimensions. One <em>decision system.</em></h2>
+            <span class="eyebrow">Capability &amp; Stack</span>
+            <h2 class="section-title">What I bring to the <em>table.</em></h2>
             <p class="section-lede">
-                The assessment tests where hiring is actually breaking, who owns the
-                decision, and which changes will materially improve the system.
+                Multi-platform implementation experience across ATS/HRIS, sourcing,
+                analytics, and AI tooling. Hands-on with every system on this list.
             </p>
-            <div class="chip-list" style="margin-top: 28px; max-width: 900px">
-                <span class="chip">Workforce priorities</span>
-                <span class="chip">Capacity</span>
-                <span class="chip">Process</span>
-                <span class="chip">Manager decisions</span>
-                <span class="chip">Candidate experience</span>
-                <span class="chip">Data &amp; measures</span>
-                <span class="chip">Technology &amp; AI</span>
-                <span class="chip">Ownership &amp; governance</span>
-            </div>
 
             <div class="stack-grid">
                 <div class="stack">
@@ -874,13 +2851,12 @@
                         <span class="chip implemented">Workday</span>
                         <span class="chip implemented">UKG Ready</span>
                         <span class="chip implemented">Yello</span>
-                        <span class="chip">iCIMS</span>
+                        <span class="chip">Hodes iQ</span>
                         <span class="chip">Jobvite</span>
                         <span class="chip">Taleo</span>
                         <span class="chip">Paycor</span>
                         <span class="chip">UltiPro</span>
-                        <span class="chip">SuccessFactors</span>
-                        <span class="chip">Hodes iQ</span>
+                        <span class="chip">iCIMS</span>
                     </div>
                     <div style="
                 font-family: var(--mono);
@@ -906,8 +2882,6 @@
                         <span class="chip">LinkedIn Recruiter</span>
                         <span class="chip">Cursor</span>
                         <span class="chip">Claude Code</span>
-                        <span class="chip">Codex</span>
-                        <span class="chip">Antigravity</span>
                         <span class="chip">n8n</span>
                         <span class="chip">Custom GPTs</span>
                         <span class="chip">Custom Web Apps</span>
@@ -984,124 +2958,71 @@
         </div>
     </section>
 
-    <!-- =========================== ASSESSMENT (secondary / advisory path) =========================== -->
-    <section id="assessment">
-        <div class="wrap">
-            <span class="eyebrow">Also available: Recruiting Operating System Assessment</span>
-            <h2 class="section-title">Find what is breaking—and decide <em>what to fix first.</em></h2>
-            <p class="section-lede">
-                For companies not hiring full-time right now: a scoped, fixed-fee
-                engagement. Starting at $7,500 · 3–4 weeks.
-            </p>
-
-            <div class="about-grid" style="margin-top: 56px">
-                <div class="about-text">
-                    <p>
-                        Hiring demand rarely breaks in one place. The visible symptom may
-                        be time to fill, recruiter workload, manager frustration, poor
-                        reporting, or an expensive tool that is not changing the work.
-                    </p>
-                    <p>
-                        The underlying issue is usually that priorities, capacity,
-                        process, decisions, data, and systems no longer move together.
-                        The assessment gives leadership one evidence base, the material
-                        risks, and a sequenced 90-day plan.
-                    </p>
-                    <p>
-                        Best fit: growing B2B SaaS/technology, HR/workforce technology,
-                        and multi-location services companies navigating growth,
-                        acquisition, reorganization, a hiring reset, or a systems change.
-                    </p>
-                    <a class="btn btn-primary" href="#contact">Start a fit conversation <span class="arrow">→</span></a>
-                </div>
-
-                <div class="pillars">
-                    <div class="pillar">
-                        <h4><span class="pillar-num">01</span> Diagnose</h4>
-                        <p>
-                            Executive decision questions, stakeholder interviews, and a
-                            current-state review across the operating system behind hiring.
-                        </p>
-                    </div>
-                    <div class="pillar">
-                        <h4><span class="pillar-num">02</span> Test the evidence</h4>
-                        <p>
-                            Review workforce priorities, recruiter capacity, process,
-                            manager decisions, data, technology, and ownership.
-                        </p>
-                    </div>
-                    <div class="pillar">
-                        <h4><span class="pillar-num">03</span> Prioritize</h4>
-                        <p>
-                            Translate findings into a material-risk map and an eight-dimension
-                            maturity assessment leadership can act on.
-                        </p>
-                    </div>
-                    <div class="pillar">
-                        <h4><span class="pillar-num">04</span> Leave with a roadmap</h4>
-                        <p>
-                            A prioritized 30/60/90 plan with owners, measures, dependencies,
-                            and the decisions leadership needs to make next.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- =========================== INSIGHTS / NEWSLETTER =========================== -->
     <section id="insights" class="insights">
         <div class="wrap">
             <span class="eyebrow">Insights &amp; Writing</span>
             <h2 class="section-title">
-                Frameworks for better <em>operating decisions.</em>
+                Frameworks for the <em>AI-forward</em> recruiting era.
             </h2>
             <p class="section-lede">
-                I write <a href="https://www.recruitingoperator.com/" target="_blank" rel="noopener" style="color: var(--accent-2); text-decoration: none; border-bottom: 1px solid currentColor;">The Recruiting Operator</a> — practical frameworks for building, scaling, and responsibly enabling the recruiting function.
+                I write <a href="https://www.recruitingoperator.com/" target="_blank" rel="noopener" style="color: var(--accent-2); text-decoration: none; border-bottom: 1px solid currentColor;">The Recruiting Operator</a> — a Substack on building, scaling, and AI-enabling the recruiting function. Practical frameworks from inside live operations, not theory.
             </p>
 
             <div class="insights-wrap" style="margin-top: 56px">
-                <div style="display: flex; flex-direction: column; gap: 20px;">
-                    <a class="article-feature" href="https://www.recruitingoperator.com/p/ai-recruiting-needs-permission-boundaries" target="_blank" rel="noopener">
+                <div class="article-stack">
+                    <a class="article-feature" href="https://www.recruitingoperator.com/p/ai-recruiting-needs-workrooms-not" target="_blank" rel="noopener">
                         <div class="article-meta">
                             <span class="pub">The Recruiting Operator</span>
                             <span>Latest Issue</span>
                         </div>
-                        <h3>AI Recruiting Needs Permission <em>Boundaries.</em></h3>
+                        <h3>AI Recruiting Needs Workrooms, <em>Not Chatbots.</em></h3>
                         <p class="article-subtitle">
-                            Before AI reads, writes, screenshots, summarizes, routes, or recommends inside recruiting work, decide what authority it has and where human review starts.
+                            Shared AI agents need workflows, memory rules, permissions, and human ownership before they become teammates.
+                        </p>
+                        <p class="article-excerpt">
+                            A chatbot is a tool. A workroom is an operating model.
                         </p>
                         <span class="article-cta">Read on Substack <span class="arrow">→</span></span>
                     </a>
 
-                    <a class="post-link" href="https://www.recruitingoperator.com/p/ai-recruiting-needs-approval-rules" target="_blank" rel="noopener">
-                        <span class="post-link-label">Jul 27, 2026</span>
-                        <span class="post-link-title">AI Recruiting Needs Approval <em>Rules.</em> <span class="arrow">→</span></span>
+                    <a class="article-compact" href="https://www.recruitingoperator.com/p/ai-access-is-not-an-operating-model" target="_blank" rel="noopener">
+                        <div class="ac-meta">
+                            <span class="pub">The Recruiting Operator</span>
+                            <span>Jun 22, 2026</span>
+                        </div>
+                        <h4>AI Access Is Not an Operating Model</h4>
+                        <span class="ac-cta">Read on Substack <span class="arrow">→</span></span>
                     </a>
 
-                    <a class="post-link" href="https://www.recruitingoperator.com/p/ai-defaults-need-recruiting-controls" target="_blank" rel="noopener">
-                        <span class="post-link-label">Jul 20, 2026</span>
-                        <span class="post-link-title">AI Defaults Need Recruiting <em>Controls.</em> <span class="arrow">→</span></span>
+                    <a class="article-compact" href="https://www.recruitingoperator.com/p/ai-recruiting-needs-evidence" target="_blank" rel="noopener">
+                        <div class="ac-meta">
+                            <span class="pub">The Recruiting Operator</span>
+                            <span>Jun 15, 2026</span>
+                        </div>
+                        <h4>AI Recruiting Needs Evidence</h4>
+                        <span class="ac-cta">Read on Substack <span class="arrow">→</span></span>
                     </a>
 
-                    <a class="post-link" href="https://www.recruitingoperator.com/p/ai-recruiting-needs-operating-records" target="_blank" rel="noopener">
-                        <span class="post-link-label">Jul 13, 2026</span>
-                        <span class="post-link-title">AI Recruiting Needs Operating <em>Records.</em> <span class="arrow">→</span></span>
+                    <a class="article-compact" href="https://www.recruitingoperator.com/p/ai-recruiting-needs-task-queues" target="_blank" rel="noopener">
+                        <div class="ac-meta">
+                            <span class="pub">The Recruiting Operator</span>
+                            <span>Jun 8, 2026</span>
+                        </div>
+                        <h4>AI Recruiting Needs Task Queues</h4>
+                        <span class="ac-cta">Read on Substack <span class="arrow">→</span></span>
                     </a>
 
-                    <a class="post-link" href="https://www.recruitingoperator.com/p/ai-agents-need-change-control" target="_blank" rel="noopener">
-                        <span class="post-link-label">Jul 6, 2026</span>
-                        <span class="post-link-title">AI Agents Need Change <em>Control.</em> <span class="arrow">→</span></span>
+                    <a class="view-all-link" href="https://www.recruitingoperator.com" target="_blank" rel="noopener">
+                        View all issues <span class="arrow">→</span>
                     </a>
-
-                    <a class="post-link-all" href="https://www.recruitingoperator.com/archive" target="_blank" rel="noopener">Read every issue on Substack <span class="arrow">→</span></a>
                 </div>
 
                 <aside class="newsletter-card">
                     <span class="newsletter-soon">Substack · Live Now</span>
                     <h3>Subscribe to <em>The Recruiting Operator.</em></h3>
                     <p>
-                        Practical breakdowns on building, scaling, and responsibly enabling the recruiting function.
+                        Practical breakdowns on building, scaling, and AI-enabling the recruiting function — from someone running it in production.
                     </p>
                     <a href="https://www.recruitingoperator.com/subscribe" target="_blank" rel="noopener" class="btn btn-primary" style="align-self: flex-start; position: relative; z-index: 1;">
                         Subscribe on Substack <span class="arrow">→</span>
@@ -1119,25 +3040,24 @@
         <div class="wrap contact-inner">
             <div class="contact-head">
                 <span class="eyebrow">Contact</span>
-                <h2>Looking for a Head or Director of TA who can <em>build the system?</em></h2>
+                <h2>Looking for a TA Leader who can <em>build the system?</em></h2>
                 <p>
-                    I’m prioritizing full-time Talent Acquisition leadership opportunities
-                    where the mandate includes team capacity, recruiting operations,
-                    technology, data, and executive decision support. Advisory support
-                    remains available selectively through the assessment path above.
+                    I prioritize full-time Talent Acquisition leadership where the scope
+                    includes team capacity, recruiting operations, technology, data, and
+                    executive partnership — not just filling reqs.
                 </p>
             </div>
 
             <div class="contact-grid">
-                <a class="contact-card" href="mailto:rrborths@gmail.com?subject=Full-time%20Talent%20Acquisition%20leadership%20opportunity">
+                <a class="contact-card" href="mailto:rrborths@gmail.com">
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                             <rect x="3" y="5" width="18" height="14" rx="2" />
                             <path d="M3 7l9 6 9-6" />
                         </svg>
                     </div>
-                    <div class="k">Discuss a full-time TA leadership role</div>
-                    <div class="v">Email Ryan about the opportunity</div>
+                    <div class="k">Email</div>
+                    <div class="v">rrborths@gmail.com</div>
                 </a>
                 <a class="contact-card" href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">
                     <div class="contact-icon">
@@ -1147,16 +3067,17 @@
                         </svg>
                     </div>
                     <div class="k">LinkedIn</div>
-                    <div class="v">/in/ryanborths</div>
+                    <div class="v">linkedin.com/in/ryanborths</div>
                 </a>
-                <a class="contact-card" href="https://x.com/RyanBorths" target="_blank" rel="noopener">
+                <a class="contact-card" href="tel:+12488609964">
                     <div class="contact-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0122 16.92z" />
                         </svg>
                     </div>
-                    <div class="k">X / Twitter</div>
-                    <div class="v">@RyanBorths</div>
+                    <div class="k">Phone</div>
+                    <div class="v">248.860.9964</div>
                 </a>
                 <div class="contact-card">
                     <div class="contact-icon">
@@ -1177,7 +3098,6 @@
                 <span class="foot-brand">Ryan Borths</span>
                 <div class="foot-links">
                     <a href="https://www.linkedin.com/in/ryanborths" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="https://x.com/RyanBorths" target="_blank" rel="noopener">X</a>
                     <a href="https://www.recruitingoperator.com/" target="_blank" rel="noopener">Substack</a>
                     <a href="mailto:rrborths@gmail.com">Email</a>
                     <a href="#top">Top ↑</a>
