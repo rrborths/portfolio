@@ -15,6 +15,9 @@ case-studies/recruiting-capacity-decision-workflow/
                                         Case study: governed n8n capacity workflow
 recruiting-control-room/                Recruiting Control Room case study and demo
 workforce-demand-capacity-lab/          Interactive workforce capacity planning lab
+walkthroughs/<app>/                     Narrated app walkthroughs and transcripts
+media/walkthroughs/<app>/<timeline>/    Approved video, captions, poster, and muted preview
+scripts/generate-walkthrough-media.py   Refresh media only from final-approved studio exports
 vercel.json                             cleanUrls so /case-studies/marketsync-ta resolves
 sitemap.xml, robots.txt                 Add every new page to sitemap.xml
 ```
@@ -30,6 +33,14 @@ anchors (`#portfolio`) so smooth scroll and the active-section highlight still w
 Standalone tools deployed below a clean URL must use route-prefixed absolute asset
 and internal links (for example, `/workforce-demand-capacity-lab/styles.css`) so
 removing the trailing slash cannot redirect requests to the site root.
+
+To refresh walkthrough media, run `python3 scripts/generate-walkthrough-media.py`
+from the portfolio repository while `/Users/ryanborths/my-video2` is available,
+or pass its location with `--studio`. The script selects only exports whose final
+approval hash matches both the studio review record and current video timeline.
+It copies the approved clean master and poster, converts SRT captions to WebVTT,
+and builds silent hover clips from three reviewed scenes. Walkthrough routes are
+static HTML; update the generator's `SPECS` before adding or renaming an app.
 
 Feature a case study from the Practical AI section with `<a class="tool featured">`.
 If visitors might look for it in the wrong section, add a `.bridge` callout there —

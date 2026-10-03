@@ -1156,6 +1156,226 @@ section {
     }
 }
 
+/* ---------- Featured app walkthroughs ---------- */
+.walkthrough-preview {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1200 / 630;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #071a3d;
+    isolation: isolate;
+}
+
+.walkthrough-preview .featured-build-image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 160ms ease;
+}
+
+.walkthrough-preview-video {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    pointer-events: none;
+    background: #071a3d;
+}
+
+.walkthrough-preview.is-preview-playing .featured-build-image {
+    opacity: 0;
+}
+
+.walkthrough-preview.is-preview-playing .walkthrough-preview-video {
+    opacity: 1;
+}
+
+.walkthrough-preview-prompt {
+    position: absolute;
+    z-index: 3;
+    right: 14px;
+    bottom: 14px;
+    padding: 9px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    background: rgba(7, 26, 61, 0.86);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    pointer-events: none;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.walkthrough-preview:hover .walkthrough-preview-prompt,
+.walkthrough-preview:focus-visible .walkthrough-preview-prompt {
+    background: #087f99;
+    transform: translateY(-2px);
+}
+
+.walkthrough-preview:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 5px;
+}
+
+.walkthrough-page {
+    min-height: 100vh;
+    background: var(--ink);
+    color: #fff;
+}
+
+.walkthrough-back {
+    color: var(--accent-2);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.walkthrough-main {
+    max-width: 1040px;
+    padding-top: clamp(48px, 8vw, 96px);
+    padding-bottom: 80px;
+}
+
+.walkthrough-main > h1 {
+    margin-top: 14px;
+    color: #fff;
+    font-family: var(--serif);
+    font-size: clamp(40px, 7vw, 76px);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+}
+
+.walkthrough-headline {
+    margin-top: 20px;
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: clamp(23px, 3.4vw, 36px);
+    font-weight: 400;
+}
+
+.walkthrough-description {
+    max-width: 760px;
+    margin-top: 16px;
+    color: var(--muted-dark);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.walkthrough-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.walkthrough-disclosure {
+    margin-top: 20px;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.035em;
+    line-height: 1.7;
+}
+
+.walkthrough-player {
+    margin-top: 28px;
+}
+
+.walkthrough-player video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line-dark);
+    border-radius: 12px;
+    background: #071a3d;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+}
+
+.walkthrough-player figcaption {
+    margin-top: 10px;
+    color: var(--muted-dark);
+    font-size: 13px;
+}
+
+.walkthrough-transcript {
+    margin-top: 28px;
+    border-top: 1px solid var(--line-dark);
+    border-bottom: 1px solid var(--line-dark);
+    color: var(--muted-dark);
+}
+
+.walkthrough-transcript summary {
+    padding: 18px 0;
+    color: var(--accent);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.walkthrough-transcript ol {
+    padding: 0 0 20px 24px;
+}
+
+.walkthrough-transcript li {
+    padding: 8px 0;
+    line-height: 1.7;
+}
+
+.walkthrough-transcript strong {
+    color: #fff;
+}
+
+.walkthrough-skip {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.walkthrough-skip:focus {
+    position: static;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.walkthrough-footer {
+    border-top: 1px solid var(--line-dark);
+    padding: 24px 0 36px;
+}
+
+.walkthrough-footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--muted-dark);
+    font-size: 13px;
+}
+
+.walkthrough-footer a {
+    color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .walkthrough-preview .featured-build-image,
+    .walkthrough-preview-prompt {
+        transition: none;
+    }
+}
+
 /* ---------- AI Portfolio ---------- */
 .portfolio {
     background: var(--ink);
