@@ -658,7 +658,7 @@ section {
 
 .impact-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
     margin-top: 56px;
 }
@@ -668,7 +668,6 @@ section {
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 32px;
-    grid-column: span 4;
     position: relative;
     overflow: hidden;
     transition:
@@ -679,10 +678,6 @@ section {
 .metric:hover {
     border-color: var(--ink);
     transform: translateY(-2px);
-}
-
-.metric.span-6 {
-    grid-column: span 6;
 }
 
 .metric.dark {
@@ -764,18 +759,14 @@ section {
 }
 
 @media (max-width: 980px) {
-
-    .metric,
-    .metric.span-6 {
-        grid-column: span 6;
+    .impact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 600px) {
-
-    .metric,
-    .metric.span-6 {
-        grid-column: span 12;
+    .impact-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1608,6 +1599,37 @@ a.tool {
     display: flex;
     flex-wrap: wrap;
     gap: 7px;
+}
+
+.dimension-chips {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 28px;
+}
+
+.dimension-chips .chip {
+    display: flex;
+    min-width: 0;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 8px;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: center;
+}
+
+@media (max-width: 980px) {
+    .dimension-chips {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .dimension-chips {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 .chip {
@@ -2661,7 +2683,7 @@ a.article-feature { cursor: pointer; }
 /* ---------- Featured tool card on homepage ---------- */
 
 .tool.featured {
-    grid-column: span 2;
+    grid-column: span 1;
     background: linear-gradient(180deg, rgba(6, 182, 212, 0.07), rgba(6, 182, 212, 0.02));
     border-color: rgba(6, 182, 212, 0.34);
 }
@@ -2688,10 +2710,13 @@ a.article-feature { cursor: pointer; }
     margin-top: 18px;
 }
 
-@media (max-width: 980px) {
-    .tool.featured {
-        grid-column: span 1;
-    }
+.tool.featured .tool-foot {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+}
+
+.tool.featured .tool-foot .live {
+    white-space: nowrap;
 }
 
 /* ---------- Case-study CTA band ---------- */
